@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo Data Editor — Van's Auto Dashboard</title>
+  <link rel="stylesheet" href="css/dashboard.css">
+  <style>
+    .editor-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      height: calc(100vh - 200px);
+    }
+    .editor-panel {
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .editor-panel h3 {
+      padding: 20px;
+      border-bottom: 1px solid #e5e7eb;
+      margin: 0;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    #json-editor {
+      flex: 1;
+      padding: 15px;
+      border: none;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      resize: none;
+      background: #f8f9fa;
+    }
+    #json-viewer {
+      flex: 1;
+      padding: 15px;
+      overflow: auto;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      background: #f8f9fa;
+      color: #666;
+    }
+    .button-group {
+      display: flex;
+      gap: 10px;
+      padding: 15px;
+      border-top: 1px solid #e5e7eb;
+    }
+    .button-group button {
+      flex: 1;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 150ms;
+    }
+    .btn-save {
+      background: #10b981;
+      color: white;
+    }
+    .btn-save:hover {
+      background: #059669;
+    }
+    .btn-reset {
+      background: #e5e7eb;
+      color: var(--text);
+    }
+    .btn-reset:hover {
+      background: #d1d5db;
+    }
+    .btn-download {
+      background: #3b82f6;
+      color: white;
+    }
+    .btn-download:hover {
+      background: #2563eb;
+    }
+    @media (max-width: 1024px) {
+      .editor-container {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+      #json-editor, #json-viewer {
+        height: 400px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- HEADER -->
+    <header class="sticky-header">
+      <div class="header-content">
+        <a href="index.html" class="back-button">← Dashboard</a>
+        <h1>Demo Data Editor</h1>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="container" style="padding: 30px 0;">
+      <div class="editor-container">
+        <div class="editor-panel">
+          <h3>📝 Edit JSON</h3>
+          <textarea id="json-editor"></textarea>
+          <div class="button-group">
+            <button class="btn-save" onclick="saveData()">💾 Save</button>
+            <button class="btn-reset" onclick="resetData()">↻ Reset</button>
+            <button class="btn-download" onclick="downloadData()">⬇ Download</button>
+          </div>
+        </div>
+
+        <div class="editor-panel">
+          <h3>👁 Live Preview</h3>
+          <div id="json-viewer"></div>
+        </div>
+      </div>
+    </main>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="toast"></div>
+  </div>
+
+  <script>
+    let originalData = null;
+
+    async function loadData() {
+      const res = await fetch('data/demo.json');
+      originalData = await res.json();
+      const json = JSON.stringify(originalData, null, 2);
+      document.getElementById('json-editor').value = json;
+      updatePreview();
+    }
+
+    function updatePreview() {
+      const editorValue = document.getElementById('json-editor').value;
+      const viewer = document.getElementById('json-viewer');
+      try {
+        const parsed = JSON.parse(editorValue);
+        viewer.textContent = JSON.stringify(parsed, null, 2);
+        viewer.style.color = '#10b981';
+      } catch (e) {
+        viewer.textContent = '❌ Invalid JSON: ' + e.message;
+        viewer.style.color = '#ef4444';
+      }
+    }
+
+    function saveData() {
+      const editorValue = document.getElementById('json-editor').value;
+      try {
+        JSON.parse(editorValue);
+        localStorage.setItem('demo-data', editorValue);
+        showToast('✓ Data saved to browser storage', '#10b981');
+      } catch (e) {
+        showToast('❌ Invalid JSON: ' + e.message, '#ef4444');
+      }
+    }
+
+    function resetData() {
+      const json = JSON.stringify(originalData, null, 2);
+      document.getElementById('json-editor').value = json;
+      updatePreview();
+      showToast('↻ Reset to original', '#6b7280');
+    }
+
+    function downloadData() {
+      const editorValue = document.getElementById('json-editor').value;
+      try {
+        JSON.parse(editorValue);
+        const blob = new Blob([editorValue], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'demo.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        showToast('⬇ Downloaded demo.json', '#3b82f6');
+      } catch (e) {
+        showToast('❌ Invalid JSON: ' + e.message, '#ef4444');
+      }
+    }
+
+    function showToast(message, color) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.style.background = color;
+      toast.style.display = 'block';
+      setTimeout(() => {
+        toast.style.display = 'none';
+      }, 3000);
+    }
+
+    // Auto-update preview as user types
+    document.getElementById('json-editor').addEventListener('input', updatePreview);
+
+    // Load data on page load
+    document.addEventListener('DOMContentLoaded', loadData);
+  </script>
+</body>
+</html>
