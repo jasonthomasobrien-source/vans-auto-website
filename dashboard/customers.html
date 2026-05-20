@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customers — Van's Auto Repair Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <style>
+    .main { padding: 20px; }
+
+    .search-bar {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .search-input {
+      flex: 1;
+      min-width: 200px;
+      padding: 10px 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+    }
+
+    .search-input::placeholder { color: var(--text-dim); }
+    .search-input:focus { outline: none; border-color: var(--red); }
+
+    .filter-group {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .filter-btn {
+      padding: 8px 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 500;
+      transition: all 150ms;
+    }
+
+    .filter-btn:hover { border-color: var(--red); color: var(--red); }
+    .filter-btn.active { background: var(--red); border-color: var(--red); color: white; }
+
+    .customers-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .customers-table thead { background: var(--surface-2); border-bottom: 1px solid var(--border); }
+    .customers-table th {
+      padding: 14px 16px;
+      text-align: left;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .customers-table th:hover { background: rgba(255,255,255,0.05); }
+    .customers-table tbody tr { border-bottom: 1px solid var(--border); cursor: pointer; transition: background 150ms; }
+    .customers-table tbody tr:hover { background: rgba(255,255,255,0.03); }
+    .customers-table td { padding: 12px 16px; font-size: 14px; color: var(--text); }
+
+    .customer-name { font-weight: 600; display: flex; align-items: center; gap: 10px; }
+    .customer-avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--red); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px; flex-shrink: 0; }
+
+    .customer-status { font-size: 11px; padding: 4px 8px; border-radius: var(--radius-sm); width: fit-content; }
+    .status-returning { background: var(--success-bg); color: var(--success-text); }
+    .status-new { background: rgba(96,165,250,0.2); color: var(--blue); }
+    .status-overdue { background: var(--danger-bg); color: var(--danger-text); }
+
+    .currency { font-family: 'Courier New', monospace; font-weight: 600; color: var(--green); }
+
+    .empty-state { text-align: center; padding: 40px 20px; color: var(--text-dim); }
+    .empty-state-icon { font-size: 48px; margin-bottom: 16px; opacity: 0.5; }
+
+    .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 1000; align-items: center; justify-content: center; }
+    .modal-overlay.show { display: flex; }
+
+    .modal { background: var(--surface); border-radius: var(--radius); max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; box-shadow: 0 10px 40px rgba(0,0,0,0.5); animation: slideUp 200ms ease-out; }
+
+    @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+    .modal-header { display: flex; justify-content: space-between; align-items: center; padding: 20px; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: var(--surface); z-index: 10; }
+    .modal-close { background: none; border: none; color: var(--text-muted); font-size: 24px; cursor: pointer; padding: 0; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; }
+    .modal-close:hover { color: var(--text); }
+
+    .modal-body { padding: 20px; }
+
+    .detail-section { margin-bottom: 20px; }
+    .detail-section-title { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 12px; }
+    .detail-row { display: grid; grid-template-columns: auto 1fr; gap: 8px; margin-bottom: 8px; font-size: 14px; }
+    .detail-label { color: var(--text-muted); min-width: 100px; }
+    .detail-value { color: var(--text); font-weight: 500; }
+
+    .service-history { background: var(--surface-2); border-radius: var(--radius-sm); overflow: hidden; }
+    .history-item { padding: 12px; border-bottom: 1px solid var(--border); font-size: 13px; }
+    .history-item:last-child { border-bottom: none; }
+    .history-date { color: var(--text-muted); font-size: 11px; }
+    .history-service { color: var(--text); font-weight: 600; margin: 4px 0; }
+    .history-details { color: var(--text-dim); font-size: 12px; }
+
+    .pagination { display: flex; justify-content: center; gap: 8px; margin-top: 20px; align-items: center; }
+    .pagination-btn { padding: 8px 12px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text); cursor: pointer; font-size: 12px; transition: all 150ms; }
+    .pagination-btn:hover:not(:disabled) { border-color: var(--red); color: var(--red); }
+    .pagination-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .pagination-btn.active { background: var(--red); border-color: var(--red); color: white; }
+    .pagination-info { color: var(--text-muted); font-size: 12px; margin: 0 8px; }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-logo">
+      <span class="logo-badge">VAN'S AUTO</span>
+      <span class="header-subtitle">Customer Database</span>
+    </div>
+    <div class="header-actions">
+      <button class="btn btn-ghost" onclick="window.location='index.html'">← Back to Dashboard</button>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <div class="search-bar">
+      <input type="text" id="search-input" class="search-input" placeholder="Search by name, phone, email, or vehicle...">
+      <div class="filter-group">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="returning">Returning</button>
+        <button class="filter-btn" data-filter="new">New</button>
+        <button class="filter-btn" data-filter="overdue">Overdue for Service</button>
+      </div>
+    </div>
+
+    <div style="overflow-x: auto;">
+      <table class="customers-table" id="customers-table">
+        <thead>
+          <tr>
+            <th data-sort="name">Customer Name</th>
+            <th data-sort="vehicle">Vehicle</th>
+            <th data-sort="lastVisit">Last Visit</th>
+            <th data-sort="totalSpent">Total Spent</th>
+            <th data-sort="visits">Visits</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="customers-tbody">
+          <tr><td colspan="6" style="text-align:center;padding:20px;color:var(--text-dim)">Loading...</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="empty-state" id="empty-state" style="display:none">
+      <div class="empty-state-icon">🔍</div>
+      <div>No customers found</div>
+    </div>
+
+    <div class="pagination" id="pagination"></div>
+
+  </main>
+
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <div id="modal-title" style="font-weight:700;font-size:18px"></div>
+        <button class="modal-close" onclick="closeModal()">×</button>
+      </div>
+      <div class="modal-body" id="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="js/customers.js"></script>
+</body>
+</html>
