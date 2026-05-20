@@ -403,3 +403,58 @@ a { color: inherit; text-decoration: none; }
 .table-progress-cell { display: flex; align-items: center; gap: 8px; }
 .table-progress-bar { flex: 1; height: 6px; background: var(--border); border-radius: 2px; overflow: hidden; }
 .table-progress-fill { height: 100%; background: linear-gradient(to right, #e63946, #e63946cc); border-radius: 2px; }
+
+/* === CUSTOMER PROFILE === */
+.breadcrumb { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; }
+.breadcrumb a { color: var(--blue); cursor: pointer; }
+.breadcrumb a:hover { color: var(--text); }
+.profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.profile-col { display: flex; flex-direction: column; gap: 24px; }
+.profile-card { background: var(--surface); border-radius: var(--radius); padding: 24px; border: 1px solid var(--border); }
+.profile-hero { display: flex; flex-direction: column; gap: 20px; }
+.avatar-circle { width: 56px; height: 56px; border-radius: 50%; background: var(--blue); display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 700; color: #fff; }
+.profile-name { font-size: 20px; font-weight: 700; color: var(--text); }
+.profile-since { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+.vip-badge { display: inline-flex; align-items: center; gap: 4px; background: rgba(250, 204, 21, 0.15); color: var(--yellow); padding: 6px 12px; border-radius: 4px; font-size: 12px; font-weight: 600; margin-top: -8px; width: fit-content; }
+.profile-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+.profile-stat { text-align: center; }
+.profile-stat-val { font-size: 18px; font-weight: 700; color: var(--green); }
+.profile-stat-val.red { color: var(--red); }
+.profile-stat-lbl { font-size: 10px; color: var(--text-muted); margin-top: 4px; text-transform: uppercase; }
+.profile-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+.profile-card-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text); }
+.profile-card-action { font-size: 11px; color: var(--blue); cursor: pointer; font-weight: 600; }
+.profile-card-action:hover { color: var(--text); }
+.profile-card-body { display: flex; flex-direction: column; gap: 12px; }
+.info-row { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; }
+.info-icon { font-size: 16px; margin-top: 2px; }
+.info-lbl { font-size: 10px; color: var(--text-muted); text-transform: uppercase; font-weight: 600; }
+.info-val { font-size: 13px; color: var(--text); margin-top: 2px; word-break: break-word; }
+.notes-text { font-size: 13px; color: var(--text); line-height: 1.6; }
+.notes-empty { font-size: 13px; color: var(--text-muted); font-style: italic; }
+.vehicle-item { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+.vehicle-item:last-child { border-bottom: none; }
+.vehicle-icon { font-size: 20px; }
+.vehicle-name { font-size: 13px; font-weight: 600; color: var(--text); }
+.vehicle-detail { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+.vehicle-primary { display: inline-block; background: rgba(74, 222, 128, 0.15); color: var(--green); padding: 4px 8px; border-radius: 3px; font-size: 10px; font-weight: 600; }
+.history-entry { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+.history-entry:last-child { border-bottom: none; }
+.history-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+.history-dot.muted { background: var(--border); }
+.history-service-name { font-size: 13px; font-weight: 600; color: var(--text); }
+.history-meta { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+.history-entry-cost { font-size: 13px; font-weight: 700; color: var(--green); white-space: nowrap; }
+.history-view-all { font-size: 12px; color: var(--blue); padding: 12px 0; cursor: pointer; font-weight: 600; text-align: center; }
+.history-view-all:hover { color: var(--text); }
+.customer-name-link { color: var(--blue); cursor: pointer; font-weight: 600; }
+.customer-name-link:hover { color: var(--text); text-decoration: underline; }
+
+@media (max-width: 1024px) {
+  .profile-grid { grid-template-columns: 1fr; }
+  .profile-stats { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .profile-stats { grid-template-columns: 1fr; }
+  .profile-card-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+}

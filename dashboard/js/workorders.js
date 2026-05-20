@@ -11,6 +11,11 @@ function filterWorkOrders(orders, query) {
   );
 }
 
+function navigateToCustomerProfile(customerId, event) {
+  event.stopPropagation();
+  window.location.href = 'customer-profile.html?id=' + customerId;
+}
+
 function formatCurrency(n) {
   return '$' + Math.round(n).toLocaleString('en-US');
 }
@@ -64,10 +69,12 @@ function renderTable(orders) {
     const total = calculateTotal(wo);
     const color = getStatusColor(wo.status);
     const label = getStatusLabel(wo.status);
+    const customerId = wo.customerId || '';
+    const customerLink = customerId ? `<span class="customer-name-link" onclick="navigateToCustomerProfile(${customerId}, event)">${wo.customer}</span>` : wo.customer;
     return `
       <tr class="${wo.status === 'overdue' ? 'overdue' : ''}" onclick="openDetail('${wo.id}')">
         <td style="font-weight:600;font-size:13px">${wo.id}</td>
-        <td>${wo.customer}</td>
+        <td>${customerLink}</td>
         <td>${wo.vehicle}</td>
         <td>${wo.service}</td>
         <td><span style="background:${color};color:white;padding:4px 8px;border-radius:4px;font-size:12px;font-weight:500">${label}</span></td>
