@@ -8,106 +8,126 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/dashboard.css">
-  <style>
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 40px;
-    }
-  </style>
 </head>
 <body>
-  <header class="header">
-    <div class="header-logo">
-      <a href="index.html" class="btn btn-back">← Dashboard</a>
-      <span class="logo-badge">VAN'S AUTO</span>
-      <span class="header-subtitle">Work Orders</span>
-    </div>
-    <div class="header-actions">
-      <input type="text" class="search-input" id="search-input" placeholder="Search by order ID, customer, vehicle…">
-    </div>
-  </header>
+<div class="app-shell">
 
-  <main class="main">
-    <div id="alerts-section"></div>
-    <div class="card">
-      <div class="card-title" style="justify-content:space-between">
-        <span class="label">All Work Orders</span>
-        <span class="subtitle" id="order-count"></span>
-      </div>
-      <div class="customer-table-wrap">
-        <table class="customer-table" id="workorder-table">
-          <thead>
-            <tr>
-              <th data-sort="id">Order ID ↕</th>
-              <th data-sort="customer">Customer ↕</th>
-              <th data-sort="vehicle">Vehicle ↕</th>
-              <th data-sort="service">Service ↕</th>
-              <th data-sort="status">Status ↕</th>
-              <th data-sort="dateDue">Due Date ↕</th>
-              <th data-sort="estimatedAmount">Amount ↕</th>
-            </tr>
-          </thead>
-          <tbody id="workorder-tbody"></tbody>
-        </table>
-      </div>
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-wordmark">VAN'S AUTO</div>
+      <div class="sidebar-tagline">Staff Dashboard</div>
     </div>
-  </main>
+    <nav class="sidebar-nav">
+      <a href="index.html"             class="nav-item"><span class="nav-icon">🏠</span> Overview</a>
+      <a href="revenue-analytics.html" class="nav-item"><span class="nav-icon">📊</span> Revenue</a>
+      <a href="customers.html"         class="nav-item"><span class="nav-icon">👥</span> Customers</a>
+      <a href="index.html"             class="nav-item"><span class="nav-icon">📅</span> Schedule</a>
+      <a href="workorders.html"        class="nav-item active"><span class="nav-icon">🔧</span> Work Orders</a>
+      <a href="inventory.html"         class="nav-item"><span class="nav-icon">📦</span> Inventory</a>
+      <a href="technicians.html"       class="nav-item"><span class="nav-icon">👨‍🔧</span> Technicians</a>
+      <a href="settings.html"          class="nav-item"><span class="nav-icon">⚙️</span> Settings</a>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="sidebar-add-btn" id="open-add-customer">+ Add Customer</button>
+      <a href="/" class="sidebar-website-link">← Back to Website</a>
+    </div>
+  </aside>
 
-  <!-- DETAIL PANEL -->
-  <div class="history-panel" id="detail-panel">
-    <div class="history-panel-header">
+  <!-- PAGE CONTENT -->
+  <div class="page-content">
+    <header class="page-header">
       <div>
-        <div id="detail-order-id" style="font-weight:600;font-size:15px"></div>
-        <div id="detail-customer" class="subtitle"></div>
+        <h1>Work Orders</h1>
+        <div class="page-subtitle">Active jobs and service requests</div>
       </div>
-      <button class="close-btn" onclick="closeDetail()">×</button>
+      <div class="page-header-actions">
+        <input type="text" class="search-input" id="search-input" placeholder="Search by order ID, customer, vehicle…">
+      </div>
+    </header>
+
+    <main class="page-body">
+      <div id="alerts-section"></div>
+      <div class="card">
+        <div class="card-title" style="justify-content:space-between">
+          <span class="label">All Work Orders</span>
+          <span class="subtitle" id="order-count"></span>
+        </div>
+        <div class="customer-table-wrap">
+          <table class="customer-table" id="workorder-table">
+            <thead>
+              <tr>
+                <th data-sort="id">Order ID ↕</th>
+                <th data-sort="customer">Customer ↕</th>
+                <th data-sort="vehicle">Vehicle ↕</th>
+                <th data-sort="service">Service ↕</th>
+                <th data-sort="status">Status ↕</th>
+                <th data-sort="dateDue">Due Date ↕</th>
+                <th data-sort="estimatedAmount">Amount ↕</th>
+              </tr>
+            </thead>
+            <tbody id="workorder-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div><!-- end .page-content -->
+</div><!-- end .app-shell -->
+
+<!-- DETAIL PANEL -->
+<div class="history-panel" id="detail-panel">
+  <div class="history-panel-header">
+    <div>
+      <div id="detail-order-id" style="font-weight:600;font-size:15px"></div>
+      <div id="detail-customer" class="subtitle"></div>
     </div>
-    <div class="history-panel-body">
-      <div style="display:flex;gap:20px;margin-bottom:20px">
-        <div>
-          <div class="label">Status</div>
-          <div id="detail-status" style="font-size:14px;font-weight:600;margin-top:4px"></div>
-        </div>
-        <div>
-          <div class="label">Assigned To</div>
-          <div id="detail-tech" style="font-size:14px;margin-top:4px"></div>
-        </div>
-        <div>
-          <div class="label">Due Date</div>
-          <div id="detail-due" style="font-size:14px;margin-top:4px"></div>
-        </div>
-      </div>
-
-      <div style="margin-bottom:20px">
-        <div class="label" style="margin-bottom:10px">Service Details</div>
-        <div id="detail-service-desc" style="font-size:14px;line-height:1.6"></div>
-      </div>
-
-      <div style="margin-bottom:20px">
-        <div class="label" style="margin-bottom:10px">Parts Required</div>
-        <div id="detail-parts" style="font-size:13px"></div>
-      </div>
-
-      <div style="margin-bottom:20px">
-        <div class="label" style="margin-bottom:10px">Labor Breakdown</div>
-        <div id="detail-labor" style="font-size:13px"></div>
-      </div>
-
-      <div style="margin-bottom:20px">
-        <div class="label" style="margin-bottom:10px">Estimated Total</div>
-        <div id="detail-total" style="font-size:18px;font-weight:700;color:var(--green)"></div>
-      </div>
-
+    <button class="close-btn" onclick="closeDetail()">×</button>
+  </div>
+  <div class="history-panel-body">
+    <div style="display:flex;gap:20px;margin-bottom:20px">
       <div>
-        <div class="label" style="margin-bottom:10px">Notes</div>
-        <div id="detail-notes" style="font-size:13px;line-height:1.6;font-style:italic;color:var(--text-dim)"></div>
+        <div class="label">Status</div>
+        <div id="detail-status" style="font-size:14px;font-weight:600;margin-top:4px"></div>
       </div>
+      <div>
+        <div class="label">Assigned To</div>
+        <div id="detail-tech" style="font-size:14px;margin-top:4px"></div>
+      </div>
+      <div>
+        <div class="label">Due Date</div>
+        <div id="detail-due" style="font-size:14px;margin-top:4px"></div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:20px">
+      <div class="label" style="margin-bottom:10px">Service Details</div>
+      <div id="detail-service-desc" style="font-size:14px;line-height:1.6"></div>
+    </div>
+
+    <div style="margin-bottom:20px">
+      <div class="label" style="margin-bottom:10px">Parts Required</div>
+      <div id="detail-parts" style="font-size:13px"></div>
+    </div>
+
+    <div style="margin-bottom:20px">
+      <div class="label" style="margin-bottom:10px">Labor Breakdown</div>
+      <div id="detail-labor" style="font-size:13px"></div>
+    </div>
+
+    <div style="margin-bottom:20px">
+      <div class="label" style="margin-bottom:10px">Estimated Total</div>
+      <div id="detail-total" style="font-size:18px;font-weight:700;color:var(--green)"></div>
+    </div>
+
+    <div>
+      <div class="label" style="margin-bottom:10px">Notes</div>
+      <div id="detail-notes" style="font-size:13px;line-height:1.6;font-style:italic;color:var(--text-dim)"></div>
     </div>
   </div>
+</div>
 
-  <div class="toast" id="toast"></div>
-
-  <script src="js/workorders.js"></script>
+<div id="toast" class="toast"></div>
+<script src="js/add-customer-modal.js"></script>
+<script src="js/workorders.js"></script>
 </body>
 </html>
