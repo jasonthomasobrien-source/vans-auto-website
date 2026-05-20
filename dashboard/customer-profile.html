@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Profile — Van's Auto Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+  <div class="app-shell">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="sidebar-wordmark">VAN'S AUTO</div>
+        <div class="sidebar-tagline">Staff Dashboard</div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="index.html"             class="nav-item"><span class="nav-icon">🏠</span> Overview</a>
+        <a href="revenue-analytics.html" class="nav-item"><span class="nav-icon">📊</span> Revenue</a>
+        <a href="customers.html"         class="nav-item active"><span class="nav-icon">👥</span> Customers</a>
+        <a href="index.html"             class="nav-item"><span class="nav-icon">📅</span> Schedule</a>
+        <a href="workorders.html"        class="nav-item"><span class="nav-icon">🔧</span> Work Orders</a>
+        <a href="inventory.html"         class="nav-item"><span class="nav-icon">📦</span> Inventory</a>
+        <a href="technicians.html"       class="nav-item"><span class="nav-icon">👨‍🔧</span> Technicians</a>
+        <a href="settings.html"          class="nav-item"><span class="nav-icon">⚙️</span> Settings</a>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="sidebar-add-btn" id="open-add-customer">+ Add Customer</button>
+        <a href="/" class="sidebar-website-link">← Back to Website</a>
+      </div>
+    </aside>
+
+    <!-- PAGE CONTENT -->
+    <div class="page-content">
+      <header class="page-header">
+        <div>
+          <span class="breadcrumb" id="profile-breadcrumb"></span>
+          <h1 id="profile-title">Loading…</h1>
+          <div class="page-subtitle" id="profile-subtitle"></div>
+        </div>
+        <div class="page-header-actions">
+          <button class="btn-header-ghost">📞 Call</button>
+          <button class="btn-header-ghost">✉️ Email</button>
+          <button class="btn-header-primary">+ New Work Order</button>
+        </div>
+      </header>
+
+      <main class="page-body">
+        <div class="profile-grid">
+
+          <!-- LEFT COLUMN -->
+          <div class="profile-col">
+
+            <!-- Hero -->
+            <div class="profile-card">
+              <div class="profile-hero">
+                <div class="avatar-circle" id="profile-avatar"></div>
+                <div>
+                  <div class="profile-name" id="hero-name"></div>
+                  <div class="profile-since" id="hero-since"></div>
+                </div>
+                <span class="vip-badge" id="hero-vip">⭐ VIP Customer</span>
+                <div class="profile-stats">
+                  <div class="profile-stat">
+                    <div class="profile-stat-val red" id="stat-spent">—</div>
+                    <div class="profile-stat-lbl">Total Spent</div>
+                  </div>
+                  <div class="profile-stat">
+                    <div class="profile-stat-val" id="stat-visits">—</div>
+                    <div class="profile-stat-lbl">Visits</div>
+                  </div>
+                  <div class="profile-stat">
+                    <div class="profile-stat-val" id="stat-avg">—</div>
+                    <div class="profile-stat-lbl">Avg Job</div>
+                  </div>
+                  <div class="profile-stat">
+                    <div class="profile-stat-val" id="stat-last">—</div>
+                    <div class="profile-stat-lbl">Last Visit</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact -->
+            <div class="profile-card">
+              <div class="profile-card-header">
+                <span class="profile-card-title">Contact Info</span>
+                <span class="profile-card-action">Edit</span>
+              </div>
+              <div class="profile-card-body">
+                <div class="info-row">
+                  <div class="info-icon">📞</div>
+                  <div><div class="info-lbl">Phone</div><div class="info-val" id="info-phone">—</div></div>
+                </div>
+                <div class="info-row">
+                  <div class="info-icon">✉️</div>
+                  <div><div class="info-lbl">Email</div><div class="info-val" id="info-email">—</div></div>
+                </div>
+                <div class="info-row">
+                  <div class="info-icon">📍</div>
+                  <div><div class="info-lbl">Address</div><div class="info-val" id="info-address">—</div></div>
+                </div>
+                <div class="info-row">
+                  <div class="info-icon">💬</div>
+                  <div><div class="info-lbl">Preferred Contact</div><div class="info-val" id="info-contact">—</div></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Notes -->
+            <div class="profile-card">
+              <div class="profile-card-header">
+                <span class="profile-card-title">Staff Notes</span>
+                <span class="profile-card-action">Add Note</span>
+              </div>
+              <div class="profile-card-body">
+                <div id="notes-text" class="notes-text"></div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT COLUMN -->
+          <div class="profile-col">
+
+            <!-- Vehicles -->
+            <div class="profile-card">
+              <div class="profile-card-header">
+                <span class="profile-card-title">🚗 Vehicles</span>
+                <span class="profile-card-action">+ Add Vehicle</span>
+              </div>
+              <div class="profile-card-body" id="vehicles-list"></div>
+            </div>
+
+            <!-- Service History -->
+            <div class="profile-card">
+              <div class="profile-card-header">
+                <span class="profile-card-title">🔧 Service History</span>
+              </div>
+              <div class="profile-card-body" id="history-list"></div>
+            </div>
+
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="js/add-customer-modal.js"></script>
+  <script src="js/customer-profile.js"></script>
+</body>
+</html>
