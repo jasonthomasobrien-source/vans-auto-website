@@ -167,14 +167,20 @@ function renderServiceProfitability(data) {
     const jobs = serviceJobCount[svc];
     const pct = Math.round((revenue / totalRevenue) * 100);
     const avgJobValue = Math.round(revenue / jobs);
+    const revenueColor = pct >= 20 ? '#4ade80' : pct >= 10 ? '#60a5fa' : 'var(--text)';
 
     return `
-      <tr style="border-bottom:1px solid #f3f4f6">
-        <td style="padding:12px 15px;font-weight:500">${svc}</td>
-        <td style="padding:12px 15px;text-align:right">${formatCurrency(revenue)}</td>
-        <td style="padding:12px 15px;text-align:right;color:var(--text-muted)">${pct}%</td>
-        <td style="padding:12px 15px;text-align:right">${jobs}</td>
-        <td style="padding:12px 15px;text-align:right">${formatCurrency(avgJobValue)}</td>
+      <tr>
+        <td style="padding:16px 15px;font-weight:600;color:var(--text)">${svc}</td>
+        <td style="padding:16px 15px;text-align:right;color:${revenueColor};font-weight:600">${formatCurrency(revenue)}</td>
+        <td style="padding:16px 15px;text-align:right">
+          <div class="table-progress-cell">
+            <div class="table-progress-bar"><div class="table-progress-fill" style="width:${pct}%"></div></div>
+            <span style="color:var(--text-muted);font-size:12px;min-width:30px;text-align:right">${pct}%</span>
+          </div>
+        </td>
+        <td style="padding:16px 15px;text-align:right;color:var(--text);font-weight:500">${jobs}</td>
+        <td style="padding:16px 15px;text-align:right;color:#60a5fa;font-weight:500">${formatCurrency(avgJobValue)}</td>
       </tr>
     `;
   }).join('');
@@ -186,26 +192,26 @@ function renderCustomerMetrics(data) {
 
   const tbody = document.getElementById('customer-tbody');
   tbody.innerHTML = `
-    <tr style="border-bottom:1px solid #f3f4f6">
-      <td style="padding:12px 15px;font-weight:500">High Value (≥$2k)</td>
-      <td style="padding:12px 15px;text-align:right">${segments.highValue.count}</td>
-      <td style="padding:12px 15px;text-align:right">${formatCurrency(segments.highValue.totalRevenue)}</td>
-      <td style="padding:12px 15px;text-align:right">${formatCurrency(segments.highValue.avgSpend)}</td>
-      <td style="padding:12px 15px;text-align:right">${segments.highValue.avgFrequency}x</td>
+    <tr>
+      <td style="padding:16px 15px;font-weight:600">⭐ High Value (≥$2k)</td>
+      <td style="padding:16px 15px;text-align:right;color:#4ade80;font-weight:600">${segments.highValue.count}</td>
+      <td style="padding:16px 15px;text-align:right;color:#4ade80;font-weight:600">${formatCurrency(segments.highValue.totalRevenue)}</td>
+      <td style="padding:16px 15px;text-align:right;color:var(--text);font-weight:500">${formatCurrency(segments.highValue.avgSpend)}</td>
+      <td style="padding:16px 15px;text-align:right;color:var(--text-muted)">${segments.highValue.avgFrequency}x</td>
     </tr>
-    <tr style="border-bottom:1px solid #f3f4f6">
-      <td style="padding:12px 15px;font-weight:500">Mid Value ($1k–$2k)</td>
-      <td style="padding:12px 15px;text-align:right">${segments.midValue.count}</td>
-      <td style="padding:12px 15px;text-align:right">${formatCurrency(segments.midValue.totalRevenue)}</td>
-      <td style="padding:12px 15px;text-align:right">${formatCurrency(segments.midValue.avgSpend)}</td>
-      <td style="padding:12px 15px;text-align:right">${segments.midValue.avgFrequency}x</td>
+    <tr>
+      <td style="padding:16px 15px;font-weight:600">⭐ Mid Value ($1k–$2k)</td>
+      <td style="padding:16px 15px;text-align:right;color:#60a5fa;font-weight:600">${segments.midValue.count}</td>
+      <td style="padding:16px 15px;text-align:right;color:#60a5fa;font-weight:600">${formatCurrency(segments.midValue.totalRevenue)}</td>
+      <td style="padding:16px 15px;text-align:right;color:var(--text);font-weight:500">${formatCurrency(segments.midValue.avgSpend)}</td>
+      <td style="padding:16px 15px;text-align:right;color:var(--text-muted)">${segments.midValue.avgFrequency}x</td>
     </tr>
-    <tr style="border-bottom:1px solid #f3f4f6">
-      <td style="padding:12px 15px;font-weight:500">Low Value (<$1k)</td>
-      <td style="padding:12px 15px;text-align:right">${segments.lowValue.count}</td>
-      <td style="padding:12px 15px;text-align:right">${formatCurrency(segments.lowValue.totalRevenue)}</td>
-      <td style="padding:12px 15px;text-align:right">${formatCurrency(segments.lowValue.avgSpend)}</td>
-      <td style="padding:12px 15px;text-align:right">${segments.lowValue.avgFrequency}x</td>
+    <tr>
+      <td style="padding:16px 15px;font-weight:600">Low Value (<$1k)</td>
+      <td style="padding:16px 15px;text-align:right;color:var(--text-muted);font-weight:600">${segments.lowValue.count}</td>
+      <td style="padding:16px 15px;text-align:right;color:var(--text-muted);font-weight:600">${formatCurrency(segments.lowValue.totalRevenue)}</td>
+      <td style="padding:16px 15px;text-align:right;color:var(--text);font-weight:500">${formatCurrency(segments.lowValue.avgSpend)}</td>
+      <td style="padding:16px 15px;text-align:right;color:var(--text-muted)">${segments.lowValue.avgFrequency}x</td>
     </tr>
   `;
 }
@@ -213,19 +219,27 @@ function renderCustomerMetrics(data) {
 function renderMonthlyComparison(data) {
   const { revenueHistory } = data;
   const comparison = calculateMonthlyComparison(revenueHistory);
+  const maxRevenue = Math.max(...comparison.map(m => m.amount));
 
   const tbody = document.getElementById('monthly-tbody');
   tbody.innerHTML = comparison.map((m, i) => {
     const trend = getMonthGrowth(m.growth);
     const color = getTrendColor(m.growth);
     const growthDisplay = m.growth !== 0 ? `${m.growth > 0 ? '+' : ''}${m.growth}%` : '—';
+    const revenuePct = (m.amount / maxRevenue) * 100;
+    const bgColor = m.growth > 0 ? 'rgba(74, 222, 128, 0.08)' : m.growth < 0 ? 'rgba(239, 68, 68, 0.08)' : 'transparent';
 
     return `
-      <tr style="border-bottom:1px solid #f3f4f6">
-        <td style="padding:12px 15px;font-weight:500">${m.month}</td>
-        <td style="padding:12px 15px;text-align:right">${formatCurrency(m.amount)}</td>
-        <td style="padding:12px 15px;text-align:right;color:${color}">${growthDisplay}</td>
-        <td style="padding:12px 15px;text-align:right;color:${color};font-weight:600">${trend}</td>
+      <tr style="background:${bgColor}">
+        <td style="padding:16px 15px;font-weight:600;color:var(--text)">${m.month}</td>
+        <td style="padding:16px 15px;text-align:right;color:var(--text);font-weight:600">${formatCurrency(m.amount)}</td>
+        <td style="padding:16px 15px;text-align:right">
+          <div class="table-progress-cell">
+            <div class="table-progress-bar"><div class="table-progress-fill" style="width:${revenuePct}%;background:#e63946"></div></div>
+            <span style="color:var(--text-muted);font-size:12px;min-width:40px;text-align:right">${Math.round(revenuePct)}%</span>
+          </div>
+        </td>
+        <td style="padding:16px 15px;text-align:right;color:${color};font-weight:600;font-size:13px">${growthDisplay}</td>
       </tr>
     `;
   }).join('');

@@ -95,15 +95,15 @@ function renderAlerts(orders) {
         ${overdue.slice(0, 3).map(wo => `
           <div class="due-row">
             <div>
-              <span style="color:var(--text);font-weight:500">${wo.id} — ${wo.customer}</span>
-              <span class="subtitle" style="margin-left:8px">${wo.vehicle}</span>
+              <span style="color:#1f2937;font-weight:500">${wo.id} — ${wo.customer}</span>
+              <span class="subtitle" style="margin-left:8px;color:#1f2937">${wo.vehicle}</span>
             </div>
             <div style="display:flex;align-items:center;gap:10px">
-              <span class="subtitle">Due: ${formatDate(wo.dateDue)}</span>
+              <span class="subtitle" style="color:#1f2937">Due: ${formatDate(wo.dateDue)}</span>
             </div>
           </div>
         `).join('')}
-        ${overdue.length > 3 ? `<div class="subtitle" style="margin-top:8px">+ ${overdue.length - 3} more</div>` : ''}
+        ${overdue.length > 3 ? `<div class="subtitle" style="margin-top:8px;color:#1f2937">+ ${overdue.length - 3} more</div>` : ''}
       </div>
     `;
   }
@@ -115,15 +115,15 @@ function renderAlerts(orders) {
         ${waitingParts.slice(0, 3).map(wo => `
           <div class="due-row">
             <div>
-              <span style="color:var(--text);font-weight:500">${wo.id} — ${wo.customer}</span>
-              <span class="subtitle" style="margin-left:8px">${wo.vehicle}</span>
+              <span style="color:#1f2937;font-weight:500">${wo.id} — ${wo.customer}</span>
+              <span class="subtitle" style="margin-left:8px;color:#1f2937">${wo.vehicle}</span>
             </div>
             <div style="display:flex;align-items:center;gap:10px">
-              <span class="subtitle">Due: ${formatDate(wo.dateDue)}</span>
+              <span class="subtitle" style="color:#1f2937">Due: ${formatDate(wo.dateDue)}</span>
             </div>
           </div>
         `).join('')}
-        ${waitingParts.length > 3 ? `<div class="subtitle" style="margin-top:8px">+ ${waitingParts.length - 3} more</div>` : ''}
+        ${waitingParts.length > 3 ? `<div class="subtitle" style="margin-top:8px;color:#1f2937">+ ${waitingParts.length - 3} more</div>` : ''}
       </div>
     `;
   }

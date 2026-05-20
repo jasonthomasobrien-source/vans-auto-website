@@ -77,24 +77,26 @@ function renderTable(techs) {
   const tbody = document.getElementById('tech-tbody');
   document.getElementById('tech-count').textContent = `${techs.length} technicians`;
 
-  tbody.innerHTML = techs.map(tech => {
+  tbody.innerHTML = techs.map((tech, idx) => {
     const rating = calculateTechRating(tech, allCustomers);
     const statusColor = getStatusColor(tech.efficiency);
+    const statusBg = tech.efficiency >= 85 ? 'rgba(74,222,128,0.15)' : tech.efficiency >= 70 ? 'rgba(245,158,11,0.15)' : 'rgba(239,68,68,0.15)';
     const statusLabel = getStatusLabel(tech.efficiency);
+    const bgColor = idx % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent';
 
     return `
-      <tr onclick="openDetail('${tech.name}')" style="border-bottom:1px solid #f3f4f6;cursor:pointer;transition:background 150ms">
-        <td style="padding:12px 15px;font-weight:600">
+      <tr onclick="openDetail('${tech.name}')" style="background:${bgColor};border-bottom:1px solid var(--border);cursor:pointer;transition:background 150ms;hover:background:rgba(255,255,255,0.08)">
+        <td style="padding:16px 15px;font-weight:600">
           <div style="display:flex;align-items:center;gap:10px">
             <div style="width:32px;height:32px;background:${tech.color};border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:600;font-size:14px">${tech.initial}</div>
-            <span>${tech.name}</span>
+            <span style="color:var(--text)">${tech.name}</span>
           </div>
         </td>
-        <td style="padding:12px 15px">${tech.jobsToday} jobs</td>
-        <td style="padding:12px 15px">${tech.efficiency}%</td>
-        <td style="padding:12px 15px">${rating.toFixed(1)} ★</td>
-        <td style="padding:12px 15px">
-          <span style="background:${statusColor};color:white;padding:4px 8px;border-radius:4px;font-size:11px;font-weight:500">${statusLabel}</span>
+        <td style="padding:16px 15px;color:var(--text);font-weight:500">${tech.jobsToday} jobs</td>
+        <td style="padding:16px 15px;color:var(--text);font-weight:500">${tech.efficiency}%</td>
+        <td style="padding:16px 15px;color:#60a5fa;font-weight:600">${rating.toFixed(1)} ★</td>
+        <td style="padding:16px 15px">
+          <span style="background:${statusBg};color:${statusColor};padding:6px 12px;border-radius:6px;font-size:11px;font-weight:600">${statusLabel}</span>
         </td>
       </tr>
     `;

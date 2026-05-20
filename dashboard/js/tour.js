@@ -10,6 +10,9 @@ function startTour() {
   const driver = window.driver.js.driver;
 
   const tour = driver({
+    allowClose: true,
+    animate: true,
+    overlayOpacity: 0.5,
     steps: [
       {
         element: '#kpi-grid',
@@ -52,7 +55,7 @@ function startTour() {
         popover: {
           title: 'Today\'s Schedule',
           description: 'Keep track of today\'s appointments and service work. Schedule is updated in real-time.',
-          side: 'top',
+          side: 'bottom',
           align: 'start'
         }
       },
@@ -61,7 +64,7 @@ function startTour() {
         popover: {
           title: 'Inventory Alerts',
           description: 'Monitor parts inventory and get alerted when stock runs low. Click to manage inventory.',
-          side: 'top',
+          side: 'bottom',
           align: 'start'
         }
       },
@@ -70,7 +73,7 @@ function startTour() {
         popover: {
           title: 'Customer Database',
           description: 'Manage all your customers, their service history, and lifetime value. Click to view all.',
-          side: 'top',
+          side: 'bottom',
           align: 'start'
         }
       },
@@ -79,7 +82,7 @@ function startTour() {
         popover: {
           title: 'Work Orders',
           description: 'Create, track, and manage all work orders. Assign jobs to technicians and monitor progress.',
-          side: 'top',
+          side: 'bottom',
           align: 'start'
         }
       },
@@ -103,6 +106,10 @@ function startTour() {
       }
     ]
   });
+
+  // Reset scroll before starting tour
+  const pageBody = document.querySelector('.page-body');
+  if (pageBody) pageBody.scrollTop = 0;
 
   tour.drive();
 }

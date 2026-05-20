@@ -45,13 +45,14 @@ function renderTable(customers) {
 
   tbody.innerHTML = customers.map(c => {
     const due = isDueForService(c.lastVisit, now);
+    const dueIcon = due ? ' ⚠️' : '';
     return `
-      <tr class="${due ? 'overdue' : ''}" onclick="navigateToProfile(${c.id})" style="cursor:pointer">
-        <td class="name">${c.name} ${due ? '<span style="color:var(--yellow);font-size:11px">⚠ Due</span>' : ''}</td>
-        <td>${c.vehicle}</td>
-        <td>${formatDate(c.lastVisit)}</td>
+      <tr class="${due ? 'overdue' : ''}" onclick="navigateToProfile(${c.id})">
+        <td class="name">${c.name}${dueIcon}</td>
+        <td style="color:var(--text-muted);font-size:12px">${c.vehicle}</td>
+        <td style="color:var(--text-muted);font-size:12px">${formatDate(c.lastVisit)}</td>
         <td class="ltv">${formatCurrency(c.totalSpent)}</td>
-        <td style="font-size:12px">${c.phone}<br><span style="color:var(--text-dim)">${c.email}</span></td>
+        <td style="font-size:12px;color:var(--text-muted)"><div>${c.phone}</div><div style="color:var(--text-dim)">${c.email}</div></td>
       </tr>
     `;
   }).join('');

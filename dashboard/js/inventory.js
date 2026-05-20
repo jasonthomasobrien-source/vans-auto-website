@@ -82,19 +82,21 @@ function renderTable(items) {
   const tbody = document.getElementById('inventory-tbody');
   document.getElementById('item-count').textContent = `${items.length} items`;
 
-  tbody.innerHTML = items.map(item => {
+  tbody.innerHTML = items.map((item, idx) => {
     const statusColor = getStatusColor(item);
+    const statusBg = item.low ? 'rgba(249, 115, 22, 0.15)' : 'rgba(74, 222, 128, 0.15)';
     const statusLabel = getStatusLabel(item);
     const reorderLevel = getReorderLevel(item);
+    const bgColor = idx % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent';
 
     return `
-      <tr onclick="openDetail('${item.item}')" style="border-bottom:1px solid #f3f4f6;cursor:pointer;transition:background 150ms">
-        <td style="padding:12px 15px;font-weight:600">${item.item}</td>
-        <td style="padding:12px 15px">${item.qty} unit${item.qty !== 1 ? 's' : ''}</td>
-        <td style="padding:12px 15px">
-          <span style="background:${statusColor};color:white;padding:4px 8px;border-radius:4px;font-size:11px;font-weight:500">${statusLabel}</span>
+      <tr onclick="openDetail('${item.item}')" style="background:${bgColor};border-bottom:1px solid var(--border);cursor:pointer;transition:background 150ms">
+        <td style="padding:16px 15px;font-weight:600;color:var(--text)">${item.item}</td>
+        <td style="padding:16px 15px;color:var(--text);font-weight:500">${item.qty} unit${item.qty !== 1 ? 's' : ''}</td>
+        <td style="padding:16px 15px">
+          <span style="background:${statusBg};color:${statusColor};padding:6px 12px;border-radius:6px;font-size:11px;font-weight:600">${statusLabel}</span>
         </td>
-        <td style="padding:12px 15px;color:var(--text-muted)">${reorderLevel} units</td>
+        <td style="padding:16px 15px;color:var(--text-muted)">${reorderLevel} units</td>
       </tr>
     `;
   }).join('');

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dark Theme Mockup</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #1e2130;
+      color: #e5e7eb;
+    }
+
+    .header {
+      background: #1a1a2e;
+      border-bottom: 2px solid #e63946;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-left h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .header-subtitle {
+      color: #9ca3af;
+      font-size: 13px;
+    }
+
+    .header-actions { display: flex; gap: 12px; }
+    .btn {
+      padding: 8px 16px;
+      border-radius: 5px;
+      font-size: 12px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-ghost {
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.7);
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .btn-primary {
+      background: #e63946;
+      color: #fff;
+    }
+
+    .page-body {
+      padding: 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .page-title {
+      margin-bottom: 32px;
+    }
+
+    .page-title h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 28px;
+      margin-bottom: 4px;
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background: #2d3148;
+      border: 1px solid #3f4558;
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .kpi-card {
+      background: #2d3148;
+      border-left: 3px solid #e63946;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      border: 1px solid #3f4558;
+    }
+
+    .kpi-card.yellow { border-left-color: #facc15; }
+    .kpi-card.blue { border-left-color: #60a5fa; }
+    .kpi-card.green { border-left-color: #4ade80; }
+
+    .label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #9ca3af;
+      margin-bottom: 8px;
+    }
+
+    .value {
+      font-size: 22px;
+      font-weight: 700;
+      margin: 8px 0;
+    }
+
+    .delta {
+      font-size: 12px;
+      color: #4ade80;
+    }
+
+    .grid-2-1 {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .card-title {
+      margin-bottom: 16px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #9ca3af;
+    }
+
+    .chart-placeholder {
+      height: 200px;
+      background: linear-gradient(135deg, #e891a3 0%, #d97a8e 100%);
+      border-radius: 4px;
+      margin: 16px 0;
+    }
+
+    .schedule-item {
+      padding: 12px;
+      background: #1e2130;
+      border: 1px solid #3f4558;
+      border-radius: 4px;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .schedule-time {
+      font-size: 12px;
+      color: #9ca3af;
+    }
+
+    .schedule-name {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .status {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    .status-done {
+      background: #10b981;
+      color: #fff;
+    }
+
+    .status-progress {
+      background: #facc15;
+      color: #1a1a2e;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <h1>Overview</h1>
+    <div class="header-subtitle">Van's Auto Repair · Kalamazoo, MI</div>
+  </div>
+  <div class="header-actions">
+    <button class="btn btn-ghost">Connect POS ↗</button>
+    <button class="btn btn-primary">▶ Start Tour</button>
+  </div>
+</div>
+
+<div class="page-body">
+
+  <!-- KPI Grid -->
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="label">Revenue This Month</div>
+      <div class="value">$24,180</div>
+      <div class="delta">↑ 13% vs last month</div>
+    </div>
+    <div class="kpi-card yellow">
+      <div class="label">Open Work Orders</div>
+      <div class="value">7</div>
+      <div class="delta" style="color: #facc15;">⚠ 2 waiting on parts</div>
+    </div>
+    <div class="kpi-card blue">
+      <div class="label">Appointments Today</div>
+      <div class="value">9</div>
+      <div class="delta" style="color: #60a5fa;">✓ 2 days available</div>
+    </div>
+    <div class="kpi-card green">
+      <div class="label">Google Rating</div>
+      <div class="value">4.8 ★</div>
+      <div class="delta" style="color: #4ade80;">71 reviews • +3 this week</div>
+    </div>
+  </div>
+
+  <!-- Charts Row -->
+  <div class="grid-2-1">
+    <div class="card">
+      <div class="card-title">💰 Revenue — Last 6 Months</div>
+      <div class="chart-placeholder"></div>
+      <button class="btn btn-ghost" style="font-size: 11px;">View Analytics →</button>
+    </div>
+    <div class="card">
+      <div class="card-title">🔧 Top Services</div>
+      <div style="margin-top: 16px;">
+        <div style="margin-bottom: 12px;">Oil Change <strong>38%</strong></div>
+        <div style="margin-bottom: 12px;">Brake Service <strong>24%</strong></div>
+        <div style="margin-bottom: 12px;">Tire Rotation <strong>18%</strong></div>
+        <div>Other <strong>8%</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Operations Row -->
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-title">📅 Today's Schedule</div>
+      <div class="schedule-item">
+        <div>
+          <div class="schedule-time">8:00 AM</div>
+          <div class="schedule-name">Mike</div>
+        </div>
+        <span class="status status-done">Done</span>
+      </div>
+      <div class="schedule-item">
+        <div>
+          <div class="schedule-time">9:30 AM</div>
+          <div class="schedule-name">Sarah</div>
+        </div>
+        <span class="status status-done">Done</span>
+      </div>
+      <div class="schedule-item">
+        <div>
+          <div class="schedule-time">10:00 AM</div>
+          <div class="schedule-name">Dave</div>
+        </div>
+        <span class="status status-progress">In Progress</span>
+      </div>
+      <div class="schedule-item">
+        <div>
+          <div class="schedule-time">11:00 AM</div>
+          <div class="schedule-name">Mike</div>
+        </div>
+        <span class="status status-progress">In Progress</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">👨‍🔧 Technician Performance</div>
+      <div style="margin-top: 16px;">
+        <div style="margin-bottom: 16px;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+            <span>Mike</span>
+            <strong>85%</strong>
+          </div>
+          <div style="background: #3f4558; height: 4px; border-radius: 2px;">
+            <div style="background: #4ade80; height: 100%; width: 85%; border-radius: 2px;"></div>
+          </div>
+        </div>
+        <div style="margin-bottom: 16px;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+            <span>Dave</span>
+            <strong>70%</strong>
+          </div>
+          <div style="background: #3f4558; height: 4px; border-radius: 2px;">
+            <div style="background: #4ade80; height: 100%; width: 70%; border-radius: 2px;"></div>
+          </div>
+        </div>
+        <div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+            <span>Sarah</span>
+            <strong>60%</strong>
+          </div>
+          <div style="background: #3f4558; height: 4px; border-radius: 2px;">
+            <div style="background: #4ade80; height: 100%; width: 60%; border-radius: 2px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📦 Inventory Alerts</div>
+      <div style="margin-top: 16px;">
+        <div style="margin-bottom: 16px;">
+          <div style="color: #9ca3af; font-size: 12px; margin-bottom: 4px;">TOTAL ITEMS</div>
+          <div style="font-size: 20px; font-weight: 700;">6</div>
+        </div>
+        <div style="margin-bottom: 16px;">
+          <div style="color: #9ca3af; font-size: 12px; margin-bottom: 4px;">LOW STOCK ITEMS</div>
+          <div style="font-size: 20px; font-weight: 700; color: #ef4444;">3</div>
+        </div>
+        <div>
+          <div style="color: #9ca3af; font-size: 12px; margin-bottom: 4px;">TOTAL UNITS</div>
+          <div style="font-size: 20px; font-weight: 700;">50</div>
+        </div>
+      </div>
+      <button class="btn btn-ghost" style="margin-top: 16px; font-size: 11px;">Manage Inventory →</button>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

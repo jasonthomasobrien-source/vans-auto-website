@@ -23,7 +23,7 @@
       <a href="index.html"             class="nav-item"><span class="nav-icon">🏠</span> Overview</a>
       <a href="revenue-analytics.html" class="nav-item"><span class="nav-icon">📊</span> Revenue</a>
       <a href="customers.html"         class="nav-item"><span class="nav-icon">👥</span> Customers</a>
-      <a href="index.html"             class="nav-item"><span class="nav-icon">📅</span> Schedule</a>
+      <a href="schedule.html"             class="nav-item"><span class="nav-icon">📅</span> Schedule</a>
       <a href="workorders.html"        class="nav-item"><span class="nav-icon">🔧</span> Work Orders</a>
       <a href="inventory.html"         class="nav-item active"><span class="nav-icon">📦</span> Inventory</a>
       <a href="technicians.html"       class="nav-item"><span class="nav-icon">👨‍🔧</span> Technicians</a>
@@ -48,7 +48,7 @@
       <!-- SEARCH & FILTERS -->
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:15px">
         <div style="flex:1;min-width:250px">
-          <input type="text" id="search-input" placeholder="🔍 Search inventory items..." style="width:100%;padding:10px 15px;border:1px solid #e5e7eb;border-radius:6px;font-size:14px;background:#fff">
+          <input type="text" id="search-input" placeholder="🔍 Search inventory items..." class="search-input" style="width:100%">
         </div>
         <div style="display:flex;gap:10px">
           <button id="filter-all" class="filter-btn" style="background:#60a5fa;color:white;border:none;padding:8px 12px;border-radius:4px;cursor:pointer;font-size:13px;font-weight:500">All</button>
@@ -61,20 +61,20 @@
       <div id="alerts-section" style="margin-bottom:30px"></div>
 
       <!-- INVENTORY TABLE -->
-      <div style="background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.1)">
+      <div class="card" style="overflow:hidden">
         <table style="width:100%;border-collapse:collapse;font-size:14px">
-          <thead style="background:#f8f9fa;border-bottom:1px solid #e5e7eb">
+          <thead style="background:var(--surface-2);border-bottom:1px solid var(--border)">
             <tr>
-              <th style="padding:12px 15px;text-align:left;font-weight:600;color:var(--text-muted);cursor:pointer" data-sort="item">
+              <th style="padding:16px 15px;text-align:left;font-weight:600;color:var(--text-muted);cursor:pointer" data-sort="item">
                 Item <i class="fas fa-arrow-down" style="font-size:10px;margin-left:5px;opacity:0.5"></i>
               </th>
-              <th style="padding:12px 15px;text-align:left;font-weight:600;color:var(--text-muted);cursor:pointer" data-sort="qty">
+              <th style="padding:16px 15px;text-align:left;font-weight:600;color:var(--text-muted);cursor:pointer" data-sort="qty">
                 Quantity <i class="fas fa-arrow-down" style="font-size:10px;margin-left:5px;opacity:0.5"></i>
               </th>
-              <th style="padding:12px 15px;text-align:left;font-weight:600;color:var(--text-muted);cursor:pointer" data-sort="status">
+              <th style="padding:16px 15px;text-align:left;font-weight:600;color:var(--text-muted);cursor:pointer" data-sort="status">
                 Status <i class="fas fa-arrow-down" style="font-size:10px;margin-left:5px;opacity:0.5"></i>
               </th>
-              <th style="padding:12px 15px;text-align:left;font-weight:600;color:var(--text-muted)">Reorder Level</th>
+              <th style="padding:16px 15px;text-align:left;font-weight:600;color:var(--text-muted)">Reorder Level</th>
             </tr>
           </thead>
           <tbody id="inventory-tbody"></tbody>
