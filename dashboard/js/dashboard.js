@@ -133,6 +133,29 @@ function renderInventory(data) {
   `).join('');
 }
 
+function renderInventorySnapshot(data) {
+  const { inventory } = data;
+  const lowStock = inventory.filter(i => i.low).length;
+  const totalItems = inventory.length;
+  const totalQty = inventory.reduce((sum, i) => sum + i.qty, 0);
+  const el = document.getElementById('inventory-list');
+  el.innerHTML = `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px">
+      <div><div class="label">Total Items</div><div class="value">${totalItems}</div></div>
+      <div><div class="label">Total Units</div><div class="value">${totalQty}</div></div>
+      <div>
+        <div class="label">Low Stock Items</div>
+        <div class="value" style="color:#f97316">${lowStock}</div>
+      </div>
+      <div>
+        <div class="label">Stock Health</div>
+        <div class="value" style="color:${lowStock > 2 ? '#ef4444' : lowStock > 0 ? '#f59e0b' : '#10b981'}">${lowStock === 0 ? '✓ Good' : lowStock < 3 ? 'Fair' : 'Critical'}</div>
+        ${lowStock > 2 ? '<div class="delta-warn" style="font-size:11px">Order supplies</div>' : ''}
+      </div>
+    </div>
+  `;
+}
+
 /* === CUSTOMER SNAPSHOT === */
 
 function renderCustomerSnapshot(data) {
@@ -277,7 +300,7 @@ async function init() {
   renderServices(data);
   renderSchedule(data);
   renderTechnicians(data);
-  renderInventory(data);
+  renderInventorySnapshot(data);
   renderCustomerSnapshot(data);
   renderWorkOrderSnapshot(data);
   renderTechnicianSnapshot(data);

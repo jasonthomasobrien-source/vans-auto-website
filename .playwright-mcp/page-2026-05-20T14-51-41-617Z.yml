@@ -1,0 +1,104 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "← Dashboard" [ref=e5] [cursor=pointer]:
+        - /url: index.html
+      - heading "Inventory Management" [level=1] [ref=e6]
+  - main [ref=e7]:
+    - generic [ref=e8]:
+      - textbox "🔍 Search inventory items..." [ref=e10]
+      - generic [ref=e11]:
+        - button "All" [ref=e12] [cursor=pointer]
+        - button "Low Stock" [ref=e13] [cursor=pointer]
+      - generic [ref=e14]: 6 items
+    - generic [ref=e16]:
+      - generic [ref=e17]: ⚠ 3 Items Low in Stock
+      - generic [ref=e18]:
+        - generic [ref=e19]: Oil Filter 5W-30
+        - generic [ref=e20]: 2 units left — order within 0 days
+      - generic [ref=e21]:
+        - generic [ref=e22]: Brake Pads (Front)
+        - generic [ref=e23]: 1 units left — order within 0 days
+      - generic [ref=e24]:
+        - generic [ref=e25]: Air Filter (Standard)
+        - generic [ref=e26]: 3 units left — order within 0 days
+    - table [ref=e28]:
+      - rowgroup [ref=e29]:
+        - row "Item  Quantity  Status  Reorder Level" [ref=e30]:
+          - columnheader "Item " [ref=e31] [cursor=pointer]:
+            - text: Item
+            - generic [ref=e32]: 
+          - columnheader "Quantity " [ref=e33] [cursor=pointer]:
+            - text: Quantity
+            - generic [ref=e34]: 
+          - columnheader "Status " [ref=e35] [cursor=pointer]:
+            - text: Status
+            - generic [ref=e36]: 
+          - columnheader "Reorder Level" [ref=e37]
+      - rowgroup [ref=e38]:
+        - row "Air Filter (Standard) 3 units Low Stock 3 units" [ref=e39] [cursor=pointer]:
+          - cell "Air Filter (Standard)" [ref=e40]
+          - cell "3 units" [ref=e41]
+          - cell "Low Stock" [ref=e42]
+          - cell "3 units" [ref=e43]
+        - row "Brake Pads (Front) 1 unit Low Stock 3 units" [ref=e44] [cursor=pointer]:
+          - cell "Brake Pads (Front)" [ref=e45]
+          - cell "1 unit" [ref=e46]
+          - cell "Low Stock" [ref=e47]
+          - cell "3 units" [ref=e48]
+        - row "Oil Filter 5W-30 2 units Low Stock 3 units" [ref=e49] [cursor=pointer]:
+          - cell "Oil Filter 5W-30" [ref=e50]
+          - cell "2 units" [ref=e51]
+          - cell "Low Stock" [ref=e52]
+          - cell "3 units" [ref=e53]
+        - row "Spark Plugs (NGK) 24 units Adequate 2 units" [ref=e54] [cursor=pointer]:
+          - cell "Spark Plugs (NGK)" [ref=e55]
+          - cell "24 units" [ref=e56]
+          - cell "Adequate" [ref=e57]
+          - cell "2 units" [ref=e58]
+        - row "Transmission Fluid 8 units Adequate 5 units" [ref=e59] [cursor=pointer]:
+          - cell "Transmission Fluid" [ref=e60]
+          - cell "8 units" [ref=e61]
+          - cell "Adequate" [ref=e62]
+          - cell "5 units" [ref=e63]
+        - row "Wiper Blades (22\") 12 units Adequate 2 units" [ref=e64] [cursor=pointer]:
+          - cell "Wiper Blades (22\")" [ref=e65]
+          - cell "12 units" [ref=e66]
+          - cell "Adequate" [ref=e67]
+          - cell "2 units" [ref=e68]
+  - generic [ref=e69]:
+    - generic [ref=e70]:
+      - heading "Item Name" [level=2] [ref=e71]
+      - button "×" [ref=e72] [cursor=pointer]
+    - generic [ref=e73]:
+      - generic [ref=e74]:
+        - generic [ref=e75]:
+          - generic [ref=e76]: Current Quantity
+          - generic [ref=e77]: "0"
+        - generic [ref=e78]:
+          - generic [ref=e79]: Status
+          - generic [ref=e80]: —
+        - generic [ref=e81]:
+          - generic [ref=e82]: Reorder Level
+          - generic [ref=e83]: "0"
+        - generic [ref=e84]:
+          - generic [ref=e85]: Recommended Order Qty
+          - generic [ref=e86]: "0"
+      - generic [ref=e87]:
+        - heading "Supply Information" [level=3] [ref=e88]
+        - generic [ref=e89]:
+          - generic [ref=e90]:
+            - generic [ref=e91]: "Supplier:"
+            - generic [ref=e92]: —
+          - generic [ref=e93]:
+            - generic [ref=e94]: "Unit Cost:"
+            - generic [ref=e95]: —
+          - generic [ref=e96]:
+            - generic [ref=e97]: "Total Inventory Value:"
+            - generic [ref=e98]: $0
+          - generic [ref=e99]:
+            - generic [ref=e100]: "Last Order Date:"
+            - generic [ref=e101]: —
+      - generic [ref=e102]:
+        - button "Order This Item" [ref=e103] [cursor=pointer]
+        - button "Close" [ref=e104] [cursor=pointer]
