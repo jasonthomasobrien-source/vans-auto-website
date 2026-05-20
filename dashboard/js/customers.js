@@ -1,322 +1,159 @@
-/* === STATE === */
+/* === PURE FUNCTIONS === */
 
-let allCustomers = [];
-let filteredCustomers = [];
-let currentPage = 1;
-let itemsPerPage = 15;
-let activeFilter = 'all';
-let searchQuery = '';
-let sortColumn = null;
-let sortDirection = 'asc';
+function filterCustomers(customers, query) {
+  if (!query) return customers;
+  const q = query.toLowerCase();
+  return customers.filter(c =>
+    c.name.toLowerCase().includes(q) ||
+    c.vehicle.toLowerCase().includes(q) ||
+    c.email.toLowerCase().includes(q)
+  );
+}
 
-/* === UTILITY FUNCTIONS === */
+const SIX_MONTHS_MS = 1000 * 60 * 60 * 24 * 180;
+function isDueForService(lastVisit, referenceDate) {
+  return (referenceDate - new Date(lastVisit).getTime()) > SIX_MONTHS_MS;
+}
 
 function formatCurrency(n) {
   return '$' + Math.round(n).toLocaleString('en-US');
 }
 
-function formatDate(dateStr) {
-  const d = new Date(dateStr);
-  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+function formatDate(iso) {
+  return new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 }
 
-function getCustomerInitials(name) {
-  return name.split(' ').map(n => n[0]).join('').toUpperCase();
-}
+/* === STATE === */
 
-function getCustomerColor(id) {
-  const colors = ['#e63946', '#60a5fa', '#a78bfa', '#f59e0b', '#10b981', '#ec4899'];
-  return colors[id % colors.length];
-}
+let allCustomers = [];
+let sortKey = 'name';
+let sortAsc = true;
+const now = Date.now();
 
-function getCustomerStatus(customer) {
-  const lastVisitDate = new Date(customer.lastVisit);
-  const sixMonthsAgo = new Date();
-  sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
+/* === RENDER === */
 
-  if (lastVisitDate < sixMonthsAgo) return 'overdue';
-  if (customer.history.length === 1) return 'new';
-  return 'returning';
-}
+function renderTable(customers) {
+  const tbody = document.getElementById('customer-tbody');
+  document.getElementById('customer-count').textContent = `${customers.length} customers`;
 
-function meetsFilter(customer) {
-  if (activeFilter === 'all') return true;
-  return getCustomerStatus(customer) === activeFilter;
-}
-
-function matchesSearch(customer) {
-  if (!searchQuery) return true;
-  const q = searchQuery.toLowerCase();
-  return (
-    customer.name.toLowerCase().includes(q) ||
-    customer.phone.includes(q) ||
-    customer.email.toLowerCase().includes(q) ||
-    customer.vehicle.toLowerCase().includes(q)
-  );
-}
-
-/* === DATA LOADING === */
-
-async function loadData() {
-  const res = await fetch('data/demo.json');
-  return res.json();
-}
-
-/* === FILTERING & SORTING === */
-
-function applyFilters() {
-  filteredCustomers = allCustomers
-    .filter(meetsFilter)
-    .filter(matchesSearch);
-
-  if (sortColumn) {
-    filteredCustomers.sort((a, b) => {
-      let aVal, bVal;
-
-      switch (sortColumn) {
-        case 'name':
-          aVal = a.name;
-          bVal = b.name;
-          break;
-        case 'vehicle':
-          aVal = a.vehicle;
-          bVal = b.vehicle;
-          break;
-        case 'lastVisit':
-          aVal = new Date(a.lastVisit);
-          bVal = new Date(b.lastVisit);
-          break;
-        case 'totalSpent':
-          aVal = a.totalSpent;
-          bVal = b.totalSpent;
-          break;
-        case 'visits':
-          aVal = a.history.length;
-          bVal = b.history.length;
-          break;
-        default:
-          return 0;
-      }
-
-      if (aVal < bVal) return sortDirection === 'asc' ? -1 : 1;
-      if (aVal > bVal) return sortDirection === 'asc' ? 1 : -1;
-      return 0;
-    });
-  }
-
-  currentPage = 1;
-  render();
-}
-
-/* === RENDERING === */
-
-function render() {
-  renderTable();
-  renderPagination();
-}
-
-function renderTable() {
-  const tbody = document.getElementById('customers-tbody');
-  const empty = document.getElementById('empty-state');
-
-  if (filteredCustomers.length === 0) {
-    tbody.innerHTML = '';
-    empty.style.display = 'block';
-    return;
-  }
-
-  empty.style.display = 'none';
-
-  const start = (currentPage - 1) * itemsPerPage;
-  const end = start + itemsPerPage;
-  const pageCustomers = filteredCustomers.slice(start, end);
-
-  tbody.innerHTML = pageCustomers.map(c => {
-    const status = getCustomerStatus(c);
-    const statusLabel = status === 'overdue' ? 'Overdue' : status === 'new' ? 'New' : 'Returning';
-    const statusClass = `status-${status}`;
-
+  tbody.innerHTML = customers.map(c => {
+    const due = isDueForService(c.lastVisit, now);
     return `
-      <tr onclick="openModal(${c.id})">
-        <td>
-          <div class="customer-name">
-            <div class="customer-avatar" style="background:${getCustomerColor(c.id)}">${getCustomerInitials(c.name)}</div>
-            <span>${c.name}</span>
-          </div>
-        </td>
+      <tr class="${due ? 'overdue' : ''}" onclick="openHistory(${c.id})">
+        <td class="name">${c.name} ${due ? '<span style="color:var(--yellow);font-size:11px">⚠ Due</span>' : ''}</td>
         <td>${c.vehicle}</td>
         <td>${formatDate(c.lastVisit)}</td>
-        <td><span class="currency">${formatCurrency(c.totalSpent)}</span></td>
-        <td>${c.history.length}</td>
-        <td><span class="customer-status ${statusClass}">${statusLabel}</span></td>
+        <td class="ltv">${formatCurrency(c.totalSpent)}</td>
+        <td style="font-size:12px">${c.phone}<br><span style="color:var(--text-dim)">${c.email}</span></td>
       </tr>
     `;
   }).join('');
 }
 
-function renderPagination() {
-  const container = document.getElementById('pagination');
-  const totalPages = Math.ceil(filteredCustomers.length / itemsPerPage);
-
-  if (totalPages <= 1) {
-    container.innerHTML = '';
-    return;
-  }
-
-  let html = '';
-
-  // Previous button
-  html += `<button class="pagination-btn" ${currentPage === 1 ? 'disabled' : ''} onclick="previousPage()">← Prev</button>`;
-
-  // Page numbers
-  for (let i = 1; i <= totalPages; i++) {
-    if (i === 1 || i === totalPages || (i >= currentPage - 1 && i <= currentPage + 1)) {
-      html += `<button class="pagination-btn ${i === currentPage ? 'active' : ''}" onclick="goToPage(${i})">${i}</button>`;
-    } else if (i === currentPage - 2 || i === currentPage + 2) {
-      html += `<span class="pagination-info">...</span>`;
-    }
-  }
-
-  // Next button
-  html += `<button class="pagination-btn" ${currentPage === totalPages ? 'disabled' : ''} onclick="nextPage()">Next →</button>`;
-
-  container.innerHTML = html;
-}
-
-/* === PAGINATION HANDLERS === */
-
-function goToPage(page) {
-  currentPage = page;
-  render();
-  document.querySelector('.customers-table').scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-function previousPage() {
-  if (currentPage > 1) goToPage(currentPage - 1);
-}
-
-function nextPage() {
-  const totalPages = Math.ceil(filteredCustomers.length / itemsPerPage);
-  if (currentPage < totalPages) goToPage(currentPage + 1);
-}
-
-/* === MODAL === */
-
-function openModal(customerId) {
-  const customer = allCustomers.find(c => c.id === customerId);
-  if (!customer) return;
-
-  const modalTitle = document.getElementById('modal-title');
-  const modalBody = document.getElementById('modal-body');
-  const overlay = document.getElementById('modal-overlay');
-
-  modalTitle.textContent = customer.name;
-
-  const status = getCustomerStatus(customer);
-  const statusLabel = status === 'overdue' ? 'Overdue for Service' : status === 'new' ? 'New Customer' : 'Returning Customer';
-
-  modalBody.innerHTML = `
-    <div class="detail-section">
-      <div class="detail-section-title">Contact Information</div>
-      <div class="detail-row">
-        <div class="detail-label">Phone</div>
-        <div class="detail-value"><a href="tel:${customer.phone}" style="color:var(--red)">${customer.phone}</a></div>
-      </div>
-      <div class="detail-row">
-        <div class="detail-label">Email</div>
-        <div class="detail-value"><a href="mailto:${customer.email}" style="color:var(--red)">${customer.email}</a></div>
-      </div>
-    </div>
-
-    <div class="detail-section">
-      <div class="detail-section-title">Vehicle & History</div>
-      <div class="detail-row">
-        <div class="detail-label">Vehicle</div>
-        <div class="detail-value">${customer.vehicle}</div>
-      </div>
-      <div class="detail-row">
-        <div class="detail-label">Total Visits</div>
-        <div class="detail-value">${customer.history.length}</div>
-      </div>
-      <div class="detail-row">
-        <div class="detail-label">Total Spent</div>
-        <div class="detail-value"><span class="currency">${formatCurrency(customer.totalSpent)}</span></div>
-      </div>
-      <div class="detail-row">
-        <div class="detail-label">Last Visit</div>
-        <div class="detail-value">${formatDate(customer.lastVisit)}</div>
-      </div>
-      <div class="detail-row">
-        <div class="detail-label">Status</div>
-        <div class="detail-value"><span class="customer-status status-${status}" style="display:inline-block">${statusLabel}</span></div>
-      </div>
-    </div>
-
-    <div class="detail-section">
-      <div class="detail-section-title">Service History</div>
-      <div class="service-history">
-        ${customer.history.map(h => `
-          <div class="history-item">
-            <div class="history-date">${formatDate(h.date)}</div>
-            <div class="history-service">${h.service}</div>
-            <div class="history-details">
-              <span style="color:var(--green)">${formatCurrency(h.cost)}</span> · Tech: <span style="color:var(--text-muted)">${h.tech}</span>
-              ${h.notes ? `<div style="margin-top:4px;color:var(--text-dim);font-style:italic">"${h.notes}"</div>` : ''}
-            </div>
+function renderDueSection(customers) {
+  const due = customers.filter(c => isDueForService(c.lastVisit, now));
+  if (due.length === 0) return;
+  const el = document.getElementById('due-section');
+  el.innerHTML = `
+    <div class="due-banner">
+      <div class="label" style="color:var(--yellow);margin-bottom:10px">⚠ ${due.length} Customers Overdue for Service</div>
+      ${due.slice(0, 5).map(c => `
+        <div class="due-row">
+          <div>
+            <span style="color:var(--text);font-weight:500">${c.name}</span>
+            <span class="subtitle" style="margin-left:8px">${c.vehicle}</span>
           </div>
-        `).join('')}
-      </div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <span class="subtitle">Last visit: ${formatDate(c.lastVisit)}</span>
+            <button class="btn btn-ghost" style="font-size:11px;padding:4px 10px"
+              onclick="event.stopPropagation(); showToast('Demo: Reminder SMS sent to ${c.name}')">
+              Send Reminder
+            </button>
+          </div>
+        </div>
+      `).join('')}
+      ${due.length > 5 ? `<div class="subtitle" style="margin-top:8px">+ ${due.length - 5} more — search to find them</div>` : ''}
     </div>
   `;
-
-  overlay.classList.add('show');
 }
 
-function closeModal() {
-  document.getElementById('modal-overlay').classList.remove('show');
+/* === HISTORY PANEL === */
+
+function openHistory(id) {
+  const customer = allCustomers.find(c => c.id === id);
+  if (!customer) return;
+  document.getElementById('history-name').textContent = customer.name;
+  document.getElementById('history-vehicle').textContent = customer.vehicle;
+  document.getElementById('history-ltv').innerHTML = `
+    <div style="display:flex;gap:20px">
+      <div><div class="label">Lifetime Value</div><div style="font-size:20px;font-weight:700;color:var(--green)">${formatCurrency(customer.totalSpent)}</div></div>
+      <div><div class="label">Visits</div><div style="font-size:20px;font-weight:700">${customer.history.length}</div></div>
+    </div>
+  `;
+  document.getElementById('history-list').innerHTML = customer.history.map(h => `
+    <div class="history-row">
+      <div style="display:flex;justify-content:space-between;align-items:baseline">
+        <span class="history-service">${h.service}</span>
+        <span class="history-cost">${formatCurrency(h.cost)}</span>
+      </div>
+      <div class="history-meta">${formatDate(h.date)} · ${h.tech}${h.notes ? ' · ' + h.notes : ''}</div>
+    </div>
+  `).join('');
+  document.getElementById('history-panel').classList.add('open');
 }
 
-/* === EVENT LISTENERS === */
+function closeHistory() {
+  document.getElementById('history-panel').classList.remove('open');
+}
 
-document.addEventListener('DOMContentLoaded', async () => {
-  const data = await loadData();
-  allCustomers = data.customers;
+/* === SORT === */
 
-  // Search
-  document.getElementById('search-input').addEventListener('input', (e) => {
-    searchQuery = e.target.value;
-    applyFilters();
+function sortCustomers(customers) {
+  return [...customers].sort((a, b) => {
+    let av = a[sortKey], bv = b[sortKey];
+    if (typeof av === 'string') av = av.toLowerCase();
+    if (typeof bv === 'string') bv = bv.toLowerCase();
+    if (av < bv) return sortAsc ? -1 : 1;
+    if (av > bv) return sortAsc ? 1 : -1;
+    return 0;
   });
+}
 
-  // Filters
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      e.target.classList.add('active');
-      activeFilter = e.target.dataset.filter;
-      applyFilters();
-    });
+document.querySelectorAll('[data-sort]').forEach(th => {
+  th.addEventListener('click', () => {
+    const key = th.dataset.sort;
+    if (sortKey === key) sortAsc = !sortAsc;
+    else { sortKey = key; sortAsc = true; }
+    const query = document.getElementById('search-input').value;
+    const filtered = filterCustomers(allCustomers, query);
+    renderTable(sortCustomers(filtered));
   });
-
-  // Sorting
-  document.querySelectorAll('.customers-table th[data-sort]').forEach(th => {
-    th.addEventListener('click', () => {
-      const col = th.dataset.sort;
-      if (sortColumn === col) {
-        sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
-      } else {
-        sortColumn = col;
-        sortDirection = 'asc';
-      }
-      applyFilters();
-    });
-  });
-
-  // Close modal on overlay click
-  document.getElementById('modal-overlay').addEventListener('click', (e) => {
-    if (e.target.id === 'modal-overlay') closeModal();
-  });
-
-  // Initial render
-  applyFilters();
 });
+
+/* === SEARCH === */
+
+document.getElementById('search-input').addEventListener('input', e => {
+  const filtered = filterCustomers(allCustomers, e.target.value);
+  renderTable(sortCustomers(filtered));
+});
+
+/* === TOAST === */
+
+function showToast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 3000);
+}
+
+/* === INIT === */
+
+async function init() {
+  const res = await fetch('data/demo.json');
+  const data = await res.json();
+  allCustomers = data.customers;
+  renderDueSection(allCustomers);
+  renderTable(sortCustomers(allCustomers));
+}
+
+document.addEventListener('DOMContentLoaded', init);
