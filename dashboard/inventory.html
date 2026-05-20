@@ -4,30 +4,49 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inventory Management — Van's Auto Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/dashboard.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 40px;
-    }
-  </style>
 </head>
 <body>
-  <div class="page-wrapper">
-    <!-- HEADER -->
-    <header class="sticky-header">
-      <div class="header-content">
-        <a href="index.html" class="back-button">← Dashboard</a>
-        <h1>Inventory Management</h1>
+<div class="app-shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-wordmark">VAN'S AUTO</div>
+      <div class="sidebar-tagline">Staff Dashboard</div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html"             class="nav-item"><span class="nav-icon">🏠</span> Overview</a>
+      <a href="revenue-analytics.html" class="nav-item"><span class="nav-icon">📊</span> Revenue</a>
+      <a href="customers.html"         class="nav-item"><span class="nav-icon">👥</span> Customers</a>
+      <a href="index.html"             class="nav-item"><span class="nav-icon">📅</span> Schedule</a>
+      <a href="workorders.html"        class="nav-item"><span class="nav-icon">🔧</span> Work Orders</a>
+      <a href="inventory.html"         class="nav-item active"><span class="nav-icon">📦</span> Inventory</a>
+      <a href="technicians.html"       class="nav-item"><span class="nav-icon">👨‍🔧</span> Technicians</a>
+      <a href="settings.html"          class="nav-item"><span class="nav-icon">⚙️</span> Settings</a>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="sidebar-add-btn" id="open-add-customer">+ Add Customer</button>
+      <a href="/" class="sidebar-website-link">← Back to Website</a>
+    </div>
+  </aside>
+
+  <!-- PAGE CONTENT -->
+  <div class="page-content">
+    <header class="page-header">
+      <div>
+        <h1>Inventory</h1>
+        <div class="page-subtitle">Parts and supplies stock levels</div>
       </div>
     </header>
 
-    <!-- MAIN CONTENT -->
-    <main class="container">
+    <main class="page-body">
       <!-- SEARCH & FILTERS -->
-      <div style="display:flex;justify-content:space-between;align-items:center;margin:30px 0 20px;flex-wrap:wrap;gap:15px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:15px">
         <div style="flex:1;min-width:250px">
           <input type="text" id="search-input" placeholder="🔍 Search inventory items..." style="width:100%;padding:10px 15px;border:1px solid #e5e7eb;border-radius:6px;font-size:14px;background:#fff">
         </div>
@@ -62,70 +81,72 @@
         </table>
       </div>
     </main>
+  </div><!-- end .page-content -->
+</div><!-- end .app-shell -->
 
-    <!-- DETAIL PANEL -->
-    <div id="detail-panel" class="history-panel">
-      <div class="panel-header">
-        <h2 id="detail-item-name" style="margin:0">Item Name</h2>
-        <button onclick="closeDetail()" style="background:none;border:none;font-size:20px;cursor:pointer;color:var(--text-muted)">&times;</button>
+<!-- DETAIL PANEL -->
+<div id="detail-panel" class="history-panel">
+  <div class="panel-header">
+    <h2 id="detail-item-name" style="margin:0">Item Name</h2>
+    <button onclick="closeDetail()" style="background:none;border:none;font-size:20px;cursor:pointer;color:var(--text-muted)">&times;</button>
+  </div>
+
+  <div class="panel-content">
+    <!-- QUANTITY & STATUS -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-bottom:25px">
+      <div>
+        <div class="label">Current Quantity</div>
+        <div class="value" id="detail-qty">0</div>
       </div>
+      <div>
+        <div class="label">Status</div>
+        <div class="value" id="detail-status">—</div>
+      </div>
+      <div>
+        <div class="label">Reorder Level</div>
+        <div class="value" id="detail-reorder-level">0</div>
+      </div>
+      <div>
+        <div class="label">Recommended Order Qty</div>
+        <div class="value" id="detail-order-qty">0</div>
+      </div>
+    </div>
 
-      <div class="panel-content">
-        <!-- QUANTITY & STATUS -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-bottom:25px">
-          <div>
-            <div class="label">Current Quantity</div>
-            <div class="value" id="detail-qty">0</div>
-          </div>
-          <div>
-            <div class="label">Status</div>
-            <div class="value" id="detail-status">—</div>
-          </div>
-          <div>
-            <div class="label">Reorder Level</div>
-            <div class="value" id="detail-reorder-level">0</div>
-          </div>
-          <div>
-            <div class="label">Recommended Order Qty</div>
-            <div class="value" id="detail-order-qty">0</div>
-          </div>
+    <!-- SUPPLY INFO -->
+    <div style="margin-bottom:25px">
+      <h3 style="margin:0 0 12px;font-size:13px;text-transform:uppercase;color:var(--text-muted);letter-spacing:0.5px">Supply Information</h3>
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:13px">
+        <div style="display:flex;justify-content:space-between;padding:8px;background:#f8f9fa;border-radius:4px">
+          <span style="color:var(--text-muted)">Supplier:</span>
+          <span style="font-weight:500" id="detail-supplier">—</span>
         </div>
-
-        <!-- SUPPLY INFO -->
-        <div style="margin-bottom:25px">
-          <h3 style="margin:0 0 12px;font-size:13px;text-transform:uppercase;color:var(--text-muted);letter-spacing:0.5px">Supply Information</h3>
-          <div style="display:flex;flex-direction:column;gap:8px;font-size:13px">
-            <div style="display:flex;justify-content:space-between;padding:8px;background:#f8f9fa;border-radius:4px">
-              <span style="color:var(--text-muted)">Supplier:</span>
-              <span style="font-weight:500" id="detail-supplier">—</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;padding:8px;background:#f8f9fa;border-radius:4px">
-              <span style="color:var(--text-muted)">Unit Cost:</span>
-              <span style="font-weight:500" id="detail-cost">—</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;padding:8px;background:#f8f9fa;border-radius:4px">
-              <span style="color:var(--text-muted)">Total Inventory Value:</span>
-              <span style="font-weight:500;color:var(--green)" id="detail-total-value">$0</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;padding:8px;background:#f8f9fa;border-radius:4px">
-              <span style="color:var(--text-muted)">Last Order Date:</span>
-              <span style="font-weight:500" id="detail-last-order">—</span>
-            </div>
-          </div>
+        <div style="display:flex;justify-content:space-between;padding:8px;background:#f8f9fa;border-radius:4px">
+          <span style="color:var(--text-muted)">Unit Cost:</span>
+          <span style="font-weight:500" id="detail-cost">—</span>
         </div>
-
-        <!-- ACTION -->
-        <div>
-          <button onclick="markForReorder()" style="width:100%;background:#60a5fa;color:white;border:none;padding:10px;border-radius:4px;cursor:pointer;font-weight:500;font-size:14px;transition:background 150ms;margin-bottom:8px">Order This Item</button>
-          <button onclick="closeDetail()" style="width:100%;background:transparent;color:#6b7280;border:1px solid #e5e7eb;padding:10px;border-radius:4px;cursor:pointer;font-weight:500;font-size:14px">Close</button>
+        <div style="display:flex;justify-content:space-between;padding:8px;background:#f8f9fa;border-radius:4px">
+          <span style="color:var(--text-muted)">Total Inventory Value:</span>
+          <span style="font-weight:500;color:var(--green)" id="detail-total-value">$0</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:8px;background:#f8f9fa;border-radius:4px">
+          <span style="color:var(--text-muted)">Last Order Date:</span>
+          <span style="font-weight:500" id="detail-last-order">—</span>
         </div>
       </div>
     </div>
 
-    <!-- TOAST NOTIFICATION -->
-    <div id="toast" class="toast"></div>
+    <!-- ACTION -->
+    <div>
+      <button onclick="markForReorder()" style="width:100%;background:#60a5fa;color:white;border:none;padding:10px;border-radius:4px;cursor:pointer;font-weight:500;font-size:14px;transition:background 150ms;margin-bottom:8px">Order This Item</button>
+      <button onclick="closeDetail()" style="width:100%;background:transparent;color:#6b7280;border:1px solid #e5e7eb;padding:10px;border-radius:4px;cursor:pointer;font-weight:500;font-size:14px">Close</button>
+    </div>
   </div>
+</div>
 
-  <script src="js/inventory.js"></script>
+<!-- TOAST NOTIFICATION -->
+<div id="toast" class="toast"></div>
+
+<script src="js/add-customer-modal.js"></script>
+<script src="js/inventory.js"></script>
 </body>
 </html>
