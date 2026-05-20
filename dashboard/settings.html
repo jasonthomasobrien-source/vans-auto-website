@@ -4,251 +4,198 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Settings — Van's Auto Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/dashboard.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    .sticky-header {
-      background: linear-gradient(135deg, #1a1a2e 0%, #0d0d1a 100%);
-      padding: 0;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-    .header-content {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      padding: 24px 40px;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    .back-button {
-      color: rgba(255,255,255,0.8);
-      font-size: 14px;
-      font-weight: 500;
-      text-decoration: none;
-      padding: 8px 12px;
-      border-radius: 6px;
-      transition: all 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .back-button:hover {
-      background: rgba(255,255,255,0.1);
-      color: #fff;
-    }
-    .header-content h1 {
-      color: #fff;
-      font-size: 28px;
-      font-weight: 600;
-      margin: 0;
-    }
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 40px;
-    }
-    .container > div[style*="display:flex;gap:0"] {
-      margin-left: -40px;
-      margin-right: -40px;
-      padding-left: 40px;
-      padding-right: 40px;
-    }
-    .settings-tab-content {
-      padding-left: 0;
-      padding-right: 0;
-    }
-    #tab-hours table, #tab-services table, #tab-notifications, #tab-permissions {
-      color: #000 !important;
-    }
-    #tab-hours tbody td, #tab-services tbody td, #tab-notifications *, #tab-permissions * {
-      color: #000 !important;
-    }
-    #tab-hours thead th, #tab-services thead th {
-      color: #000 !important;
-    }
-    #tab-notifications div, #tab-permissions div, #tab-notifications tbody td, #tab-permissions tbody td {
-      color: #000 !important;
-    }
-    .settings-tab-content h3, .settings-tab-content h4 {
-      margin: 0 0 24px 0;
-      font-size: 18px;
-      font-weight: 600;
-      color: #212529;
-    }
-    .settings-tab {
-      transition: all 0.2s ease;
-    }
-    .settings-tab:not(.active):hover {
-      border-bottom-color: #e63946 !important;
-      color: #212529 !important;
-    }
-    .settings-tab.active {
-      background: #e63946 !important;
-      color: #fff !important;
-      border-radius: 6px 6px 0 0;
-    }
-  </style>
 </head>
 <body>
-  <div class="page-wrapper">
-    <!-- HEADER -->
-    <header class="sticky-header">
-      <div class="header-content">
-        <a href="index.html" class="back-button">← Dashboard</a>
-        <h1>Settings & Configuration</h1>
+<div class="app-shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-wordmark">VAN'S AUTO</div>
+      <div class="sidebar-tagline">Staff Dashboard</div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html"             class="nav-item"><span class="nav-icon">🏠</span> Overview</a>
+      <a href="revenue-analytics.html" class="nav-item"><span class="nav-icon">📊</span> Revenue</a>
+      <a href="customers.html"         class="nav-item"><span class="nav-icon">👥</span> Customers</a>
+      <a href="index.html"             class="nav-item"><span class="nav-icon">📅</span> Schedule</a>
+      <a href="workorders.html"        class="nav-item"><span class="nav-icon">🔧</span> Work Orders</a>
+      <a href="inventory.html"         class="nav-item"><span class="nav-icon">📦</span> Inventory</a>
+      <a href="technicians.html"       class="nav-item"><span class="nav-icon">👨‍🔧</span> Technicians</a>
+      <a href="settings.html"          class="nav-item active"><span class="nav-icon">⚙️</span> Settings</a>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="sidebar-add-btn" id="open-add-customer">+ Add Customer</button>
+      <a href="/" class="sidebar-website-link">← Back to Website</a>
+    </div>
+  </aside>
+
+  <!-- PAGE CONTENT -->
+  <div class="page-content">
+    <header class="page-header">
+      <div>
+        <h1>Settings &amp; Configuration</h1>
+        <div class="page-subtitle">Business hours, team, services, and permissions</div>
       </div>
     </header>
 
-    <!-- MAIN CONTENT -->
-    <main class="container">
-      <!-- TABS -->
-      <div style="display:flex;gap:0;border-bottom:1px solid #e5e7eb;margin:0 0 32px 0;padding-bottom:0">
-        <button class="settings-tab active" data-tab="shop" style="padding:16px 24px;border:none;outline:none;background:#e63946;cursor:pointer;font-weight:600;color:#fff;font-size:14px;text-transform:uppercase;letter-spacing:0.5px;transition:all 0.2s ease;border-radius:6px 6px 0 0">🏪 Shop Info</button>
-        <button class="settings-tab" data-tab="hours" style="padding:16px 24px;border:none;outline:none;background:none;cursor:pointer;font-weight:600;color:#9ca3af;font-size:14px;text-transform:uppercase;letter-spacing:0.5px;transition:all 0.2s ease;border-bottom:3px solid transparent">⏰ Hours</button>
-        <button class="settings-tab" data-tab="team" style="padding:16px 24px;border:none;outline:none;background:none;cursor:pointer;font-weight:600;color:#9ca3af;font-size:14px;text-transform:uppercase;letter-spacing:0.5px;transition:all 0.2s ease;border-bottom:3px solid transparent">👥 Team Members</button>
-        <button class="settings-tab" data-tab="services" style="padding:16px 24px;border:none;outline:none;background:none;cursor:pointer;font-weight:600;color:#9ca3af;font-size:14px;text-transform:uppercase;letter-spacing:0.5px;transition:all 0.2s ease;border-bottom:3px solid transparent">🔧 Services</button>
-        <button class="settings-tab" data-tab="notifications" style="padding:16px 24px;border:none;outline:none;background:none;cursor:pointer;font-weight:600;color:#9ca3af;font-size:14px;text-transform:uppercase;letter-spacing:0.5px;transition:all 0.2s ease;border-bottom:3px solid transparent">🔔 Notifications</button>
-        <button class="settings-tab" data-tab="permissions" style="padding:16px 24px;border:none;outline:none;background:none;cursor:pointer;font-weight:600;color:#9ca3af;font-size:14px;text-transform:uppercase;letter-spacing:0.5px;transition:all 0.2s ease;border-bottom:3px solid transparent">🔐 Permissions</button>
-      </div>
+    <main class="page-body">
+      <div class="container">
 
-      <!-- SHOP INFO TAB -->
-      <div id="tab-shop" class="settings-tab-content">
-        <div style="max-width:600px">
-          <h3 style="margin:0 0 20px;font-size:16px;font-weight:600">Shop Information</h3>
-          <div style="display:flex;flex-direction:column;gap:20px">
-            <div>
-              <label style="display:block;font-size:12px;font-weight:600;color:var(--text);margin-bottom:10px">Shop Name</label>
-              <input type="text" value="Van's Auto Repair" style="width:100%;padding:12px;border:1px solid #e5e7eb;border-radius:6px;font-size:14px;background:#fff;color:#000" readonly>
-            </div>
-            <div>
-              <label style="display:block;font-size:12px;font-weight:600;color:var(--text);margin-bottom:10px">Address</label>
-              <input type="text" value="5716 D Ave W, Kalamazoo, MI 49009" style="width:100%;padding:12px;border:1px solid #e5e7eb;border-radius:6px;font-size:14px;background:#fff;color:#000" readonly>
-            </div>
-            <div>
-              <label style="display:block;font-size:12px;font-weight:600;color:var(--text);margin-bottom:10px">Phone Number</label>
-              <input type="tel" value="(269) 349-4544" style="width:100%;padding:12px;border:1px solid #e5e7eb;border-radius:6px;font-size:14px;background:#fff;color:#000" readonly>
-            </div>
-            <div>
-              <label style="display:block;font-size:12px;font-weight:600;color:var(--text);margin-bottom:10px">Email</label>
-              <input type="email" value="vansautorepair@yahoo.com" style="width:100%;padding:12px;border:1px solid #e5e7eb;border-radius:6px;font-size:14px;background:#fff;color:#000" readonly>
-            </div>
-            <div style="margin-top:15px">
-              <button style="background:#60a5fa;color:white;border:none;padding:10px 15px;border-radius:4px;cursor:pointer;font-weight:500;font-size:14px;transition:background 150ms" onmouseover="this.style.background='#3b82f6'" onmouseout="this.style.background='#60a5fa'">Edit Shop Info</button>
+        <!-- TABS -->
+        <div style="display:flex;gap:0;border-bottom:1px solid #e5e7eb;margin:0 0 32px 0;padding-bottom:0">
+          <button class="settings-tab active" data-tab="shop" style="padding:16px 24px;border:none;outline:none;background:#e63946;cursor:pointer;font-weight:600;color:#fff;font-size:14px;text-transform:uppercase;letter-spacing:0.5px;transition:all 0.2s ease;border-radius:6px 6px 0 0">🏪 Shop Info</button>
+          <button class="settings-tab" data-tab="hours" style="padding:16px 24px;border:none;outline:none;background:none;cursor:pointer;font-weight:600;color:#9ca3af;font-size:14px;text-transform:uppercase;letter-spacing:0.5px;transition:all 0.2s ease;border-bottom:3px solid transparent">⏰ Hours</button>
+          <button class="settings-tab" data-tab="team" style="padding:16px 24px;border:none;outline:none;background:none;cursor:pointer;font-weight:600;color:#9ca3af;font-size:14px;text-transform:uppercase;letter-spacing:0.5px;transition:all 0.2s ease;border-bottom:3px solid transparent">👥 Team Members</button>
+          <button class="settings-tab" data-tab="services" style="padding:16px 24px;border:none;outline:none;background:none;cursor:pointer;font-weight:600;color:#9ca3af;font-size:14px;text-transform:uppercase;letter-spacing:0.5px;transition:all 0.2s ease;border-bottom:3px solid transparent">🔧 Services</button>
+          <button class="settings-tab" data-tab="notifications" style="padding:16px 24px;border:none;outline:none;background:none;cursor:pointer;font-weight:600;color:#9ca3af;font-size:14px;text-transform:uppercase;letter-spacing:0.5px;transition:all 0.2s ease;border-bottom:3px solid transparent">🔔 Notifications</button>
+          <button class="settings-tab" data-tab="permissions" style="padding:16px 24px;border:none;outline:none;background:none;cursor:pointer;font-weight:600;color:#9ca3af;font-size:14px;text-transform:uppercase;letter-spacing:0.5px;transition:all 0.2s ease;border-bottom:3px solid transparent">🔐 Permissions</button>
+        </div>
+
+        <!-- SHOP INFO TAB -->
+        <div id="tab-shop" class="settings-tab-content">
+          <div style="max-width:600px">
+            <h3 style="margin:0 0 20px;font-size:16px;font-weight:600">Shop Information</h3>
+            <div style="display:flex;flex-direction:column;gap:20px">
+              <div>
+                <label style="display:block;font-size:12px;font-weight:600;color:var(--text);margin-bottom:10px">Shop Name</label>
+                <input type="text" value="Van's Auto Repair" style="width:100%;padding:12px;border:1px solid #e5e7eb;border-radius:6px;font-size:14px;background:#fff;color:#000" readonly>
+              </div>
+              <div>
+                <label style="display:block;font-size:12px;font-weight:600;color:var(--text);margin-bottom:10px">Address</label>
+                <input type="text" value="5716 D Ave W, Kalamazoo, MI 49009" style="width:100%;padding:12px;border:1px solid #e5e7eb;border-radius:6px;font-size:14px;background:#fff;color:#000" readonly>
+              </div>
+              <div>
+                <label style="display:block;font-size:12px;font-weight:600;color:var(--text);margin-bottom:10px">Phone Number</label>
+                <input type="tel" value="(269) 349-4544" style="width:100%;padding:12px;border:1px solid #e5e7eb;border-radius:6px;font-size:14px;background:#fff;color:#000" readonly>
+              </div>
+              <div>
+                <label style="display:block;font-size:12px;font-weight:600;color:var(--text);margin-bottom:10px">Email</label>
+                <input type="email" value="vansautorepair@yahoo.com" style="width:100%;padding:12px;border:1px solid #e5e7eb;border-radius:6px;font-size:14px;background:#fff;color:#000" readonly>
+              </div>
+              <div style="margin-top:15px">
+                <button style="background:#60a5fa;color:white;border:none;padding:10px 15px;border-radius:4px;cursor:pointer;font-weight:500;font-size:14px;transition:background 150ms" onmouseover="this.style.background='#3b82f6'" onmouseout="this.style.background='#60a5fa'">Edit Shop Info</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- HOURS TAB -->
-      <div id="tab-hours" class="settings-tab-content" style="display:none">
-        <h3 style="margin:0 0 20px;font-size:16px;font-weight:600">Operating Hours</h3>
-        <div style="background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.1)">
-          <table style="width:100%;border-collapse:collapse;font-size:14px">
-            <tbody id="hours-tbody"></tbody>
-          </table>
+        <!-- HOURS TAB -->
+        <div id="tab-hours" class="settings-tab-content" style="display:none">
+          <h3 style="margin:0 0 20px;font-size:16px;font-weight:600">Operating Hours</h3>
+          <div style="background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.1)">
+            <table style="width:100%;border-collapse:collapse;font-size:14px">
+              <tbody id="hours-tbody"></tbody>
+            </table>
+          </div>
+          <div style="margin-top:15px">
+            <button style="background:#60a5fa;color:white;border:none;padding:10px 15px;border-radius:4px;cursor:pointer;font-weight:500;font-size:14px;transition:background 150ms" onmouseover="this.style.background='#3b82f6'" onmouseout="this.style.background='#60a5fa'">Update Hours</button>
+          </div>
         </div>
-        <div style="margin-top:15px">
-          <button style="background:#60a5fa;color:white;border:none;padding:10px 15px;border-radius:4px;cursor:pointer;font-weight:500;font-size:14px;transition:background 150ms" onmouseover="this.style.background='#3b82f6'" onmouseout="this.style.background='#60a5fa'">Update Hours</button>
-        </div>
-      </div>
 
-      <!-- TEAM MEMBERS TAB -->
-      <div id="tab-team" class="settings-tab-content" style="display:none">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
-          <h3 style="margin:0;font-size:16px;font-weight:600">Team Members</h3>
-          <button style="background:#e63946;color:white;border:none;padding:8px 12px;border-radius:4px;cursor:pointer;font-weight:500;font-size:12px;transition:background 150ms" onmouseover="this.style.background='#c1121f'" onmouseout="this.style.background='#e63946'">+ Add Member</button>
+        <!-- TEAM MEMBERS TAB -->
+        <div id="tab-team" class="settings-tab-content" style="display:none">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+            <h3 style="margin:0;font-size:16px;font-weight:600">Team Members</h3>
+            <button style="background:#e63946;color:white;border:none;padding:8px 12px;border-radius:4px;cursor:pointer;font-weight:500;font-size:12px;transition:background 150ms" onmouseover="this.style.background='#c1121f'" onmouseout="this.style.background='#e63946'">+ Add Member</button>
+          </div>
+          <div id="team-members" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:15px"></div>
         </div>
-        <div id="team-members" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:15px"></div>
-      </div>
 
-      <!-- SERVICES TAB -->
-      <div id="tab-services" class="settings-tab-content" style="display:none">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
-          <h3 style="margin:0;font-size:16px;font-weight:600">Service Categories & Pricing</h3>
-          <button style="background:#e63946;color:white;border:none;padding:8px 12px;border-radius:4px;cursor:pointer;font-weight:500;font-size:12px;transition:background 150ms" onmouseover="this.style.background='#c1121f'" onmouseout="this.style.background='#e63946'">+ Add Service</button>
+        <!-- SERVICES TAB -->
+        <div id="tab-services" class="settings-tab-content" style="display:none">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+            <h3 style="margin:0;font-size:16px;font-weight:600">Service Categories &amp; Pricing</h3>
+            <button style="background:#e63946;color:white;border:none;padding:8px 12px;border-radius:4px;cursor:pointer;font-weight:500;font-size:12px;transition:background 150ms" onmouseover="this.style.background='#c1121f'" onmouseout="this.style.background='#e63946'">+ Add Service</button>
+          </div>
+          <div style="background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.1)">
+            <table style="width:100%;border-collapse:collapse;font-size:14px">
+              <thead style="background:#f8f9fa;border-bottom:1px solid #e5e7eb">
+                <tr>
+                  <th style="padding:12px 15px;text-align:left;font-weight:600;color:var(--text-muted)">Service</th>
+                  <th style="padding:12px 15px;text-align:right;font-weight:600;color:var(--text-muted)">Price Range</th>
+                  <th style="padding:12px 15px;text-align:right;font-weight:600;color:var(--text-muted)">Duration</th>
+                  <th style="padding:12px 15px;text-align:center;font-weight:600;color:var(--text-muted)">Active</th>
+                </tr>
+              </thead>
+              <tbody id="services-tbody"></tbody>
+            </table>
+          </div>
         </div>
-        <div style="background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.1)">
-          <table style="width:100%;border-collapse:collapse;font-size:14px">
-            <thead style="background:#f8f9fa;border-bottom:1px solid #e5e7eb">
-              <tr>
-                <th style="padding:12px 15px;text-align:left;font-weight:600;color:var(--text-muted)">Service</th>
-                <th style="padding:12px 15px;text-align:right;font-weight:600;color:var(--text-muted)">Price Range</th>
-                <th style="padding:12px 15px;text-align:right;font-weight:600;color:var(--text-muted)">Duration</th>
-                <th style="padding:12px 15px;text-align:center;font-weight:600;color:var(--text-muted)">Active</th>
-              </tr>
-            </thead>
-            <tbody id="services-tbody"></tbody>
-          </table>
-        </div>
-      </div>
 
-      <!-- NOTIFICATIONS TAB -->
-      <div id="tab-notifications" class="settings-tab-content" style="display:none">
-        <h3 style="margin:0 0 20px;font-size:16px;font-weight:600">Notification Preferences</h3>
-        <div style="display:flex;flex-direction:column;gap:15px;max-width:600px">
-          <div style="background:#fff;padding:15px;border-radius:6px;border:1px solid #e5e7eb;display:flex;justify-content:space-between;align-items:center">
-            <div>
-              <div style="font-weight:500;margin-bottom:4px">Low Inventory Alerts</div>
-              <div style="font-size:12px;color:var(--text-muted)">Get notified when stock is low</div>
+        <!-- NOTIFICATIONS TAB -->
+        <div id="tab-notifications" class="settings-tab-content" style="display:none">
+          <h3 style="margin:0 0 20px;font-size:16px;font-weight:600">Notification Preferences</h3>
+          <div style="display:flex;flex-direction:column;gap:15px;max-width:600px">
+            <div style="background:#fff;padding:15px;border-radius:6px;border:1px solid #e5e7eb;display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <div style="font-weight:500;margin-bottom:4px">Low Inventory Alerts</div>
+                <div style="font-size:12px;color:var(--text-muted)">Get notified when stock is low</div>
+              </div>
+              <input type="checkbox" checked style="width:20px;height:20px;cursor:pointer">
             </div>
-            <input type="checkbox" checked style="width:20px;height:20px;cursor:pointer">
-          </div>
-          <div style="background:#fff;padding:15px;border-radius:6px;border:1px solid #e5e7eb;display:flex;justify-content:space-between;align-items:center">
-            <div>
-              <div style="font-weight:500;margin-bottom:4px">Appointment Reminders</div>
-              <div style="font-size:12px;color:var(--text-muted)">Daily reminder of upcoming appointments</div>
+            <div style="background:#fff;padding:15px;border-radius:6px;border:1px solid #e5e7eb;display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <div style="font-weight:500;margin-bottom:4px">Appointment Reminders</div>
+                <div style="font-size:12px;color:var(--text-muted)">Daily reminder of upcoming appointments</div>
+              </div>
+              <input type="checkbox" checked style="width:20px;height:20px;cursor:pointer">
             </div>
-            <input type="checkbox" checked style="width:20px;height:20px;cursor:pointer">
-          </div>
-          <div style="background:#fff;padding:15px;border-radius:6px;border:1px solid #e5e7eb;display:flex;justify-content:space-between;align-items:center">
-            <div>
-              <div style="font-weight:500;margin-bottom:4px">Overdue Work Order Alerts</div>
-              <div style="font-size:12px;color:var(--text-muted)">Alert when work orders exceed deadline</div>
+            <div style="background:#fff;padding:15px;border-radius:6px;border:1px solid #e5e7eb;display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <div style="font-weight:500;margin-bottom:4px">Overdue Work Order Alerts</div>
+                <div style="font-size:12px;color:var(--text-muted)">Alert when work orders exceed deadline</div>
+              </div>
+              <input type="checkbox" checked style="width:20px;height:20px;cursor:pointer">
             </div>
-            <input type="checkbox" checked style="width:20px;height:20px;cursor:pointer">
-          </div>
-          <div style="background:#fff;padding:15px;border-radius:6px;border:1px solid #e5e7eb;display:flex;justify-content:space-between;align-items:center">
-            <div>
-              <div style="font-weight:500;margin-bottom:4px">Revenue Notifications</div>
-              <div style="font-size:12px;color:var(--text-muted)">Weekly revenue summaries</div>
+            <div style="background:#fff;padding:15px;border-radius:6px;border:1px solid #e5e7eb;display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <div style="font-weight:500;margin-bottom:4px">Revenue Notifications</div>
+                <div style="font-size:12px;color:var(--text-muted)">Weekly revenue summaries</div>
+              </div>
+              <input type="checkbox" style="width:20px;height:20px;cursor:pointer">
             </div>
-            <input type="checkbox" style="width:20px;height:20px;cursor:pointer">
           </div>
         </div>
-      </div>
 
-      <!-- PERMISSIONS TAB -->
-      <div id="tab-permissions" class="settings-tab-content" style="display:none">
-        <h3 style="margin:0 0 20px;font-size:16px;font-weight:600">User Roles & Permissions</h3>
-        <div style="background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.1)">
-          <table style="width:100%;border-collapse:collapse;font-size:14px">
-            <thead style="background:#f8f9fa;border-bottom:1px solid #e5e7eb">
-              <tr>
-                <th style="padding:12px 15px;text-align:left;font-weight:600;color:var(--text-muted)">Role</th>
-                <th style="padding:12px 15px;text-align:center;font-weight:600;color:var(--text-muted)">View Dashboard</th>
-                <th style="padding:12px 15px;text-align:center;font-weight:600;color:var(--text-muted)">Manage Jobs</th>
-                <th style="padding:12px 15px;text-align:center;font-weight:600;color:var(--text-muted)">Edit Pricing</th>
-                <th style="padding:12px 15px;text-align:center;font-weight:600;color:var(--text-muted)">Manage Users</th>
-              </tr>
-            </thead>
-            <tbody id="permissions-tbody"></tbody>
-          </table>
-        </div>
-        <div style="margin-top:20px;padding:15px;background:#f3f4f6;border-radius:6px;border-left:4px solid #60a5fa">
-          <div style="font-size:12px;color:var(--text)">
-            <strong>Admin:</strong> Full access to all features<br>
-            <strong>Manager:</strong> View reports, manage jobs, cannot edit users<br>
-            <strong>Technician:</strong> View assigned jobs and schedule only<br>
-            <strong>Receptionist:</strong> View calendar, manage appointments
+        <!-- PERMISSIONS TAB -->
+        <div id="tab-permissions" class="settings-tab-content" style="display:none">
+          <h3 style="margin:0 0 20px;font-size:16px;font-weight:600">User Roles &amp; Permissions</h3>
+          <div style="background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.1)">
+            <table style="width:100%;border-collapse:collapse;font-size:14px">
+              <thead style="background:#f8f9fa;border-bottom:1px solid #e5e7eb">
+                <tr>
+                  <th style="padding:12px 15px;text-align:left;font-weight:600;color:var(--text-muted)">Role</th>
+                  <th style="padding:12px 15px;text-align:center;font-weight:600;color:var(--text-muted)">View Dashboard</th>
+                  <th style="padding:12px 15px;text-align:center;font-weight:600;color:var(--text-muted)">Manage Jobs</th>
+                  <th style="padding:12px 15px;text-align:center;font-weight:600;color:var(--text-muted)">Edit Pricing</th>
+                  <th style="padding:12px 15px;text-align:center;font-weight:600;color:var(--text-muted)">Manage Users</th>
+                </tr>
+              </thead>
+              <tbody id="permissions-tbody"></tbody>
+            </table>
+          </div>
+          <div style="margin-top:20px;padding:15px;background:#f3f4f6;border-radius:6px;border-left:4px solid #60a5fa">
+            <div style="font-size:12px;color:var(--text)">
+              <strong>Admin:</strong> Full access to all features<br>
+              <strong>Manager:</strong> View reports, manage jobs, cannot edit users<br>
+              <strong>Technician:</strong> View assigned jobs and schedule only<br>
+              <strong>Receptionist:</strong> View calendar, manage appointments
+            </div>
           </div>
         </div>
-      </div>
+
+      </div><!-- end .container -->
     </main>
+  </div><!-- end .page-content -->
+</div><!-- end .app-shell -->
 
-    <!-- TOAST NOTIFICATION -->
-    <div id="toast" class="toast"></div>
-  </div>
-
-  <script src="js/settings.js"></script>
+<div id="toast" class="toast"></div>
+<script src="js/add-customer-modal.js"></script>
+<script src="js/settings.js"></script>
 </body>
 </html>
