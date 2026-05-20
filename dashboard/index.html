@@ -82,7 +82,7 @@
       </div>
     </div>
 
-    <!-- ROW 4: CUSTOMERS + POS -->
+    <!-- ROW 4: CUSTOMERS + WORK ORDERS -->
     <div class="grid-2">
       <div class="card" id="card-customers" style="cursor:pointer" onclick="window.location='customers.html'">
         <div class="card-title"><span class="label">👥 Customer Database</span></div>
@@ -91,7 +91,17 @@
           <span class="btn btn-ghost" style="font-size:12px">View All Customers →</span>
         </div>
       </div>
-      <div class="card" id="card-pos">
+      <div class="card" id="card-workorders" style="cursor:pointer" onclick="window.location='workorders.html'">
+        <div class="card-title"><span class="label">📋 Work Orders</span></div>
+        <div id="workorder-snapshot"></div>
+        <div style="margin-top:12px">
+          <span class="btn btn-ghost" style="font-size:12px">View All Work Orders →</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 5: POS -->
+    <div class="card" id="card-pos">
         <div class="card-title"><span class="label">💳 Connect Your POS</span></div>
         <div id="pos-grid" class="pos-grid"></div>
         <p class="subtitle" style="margin-top:8px">Connect your existing system to auto-import sales, invoices &amp; customer data.</p>

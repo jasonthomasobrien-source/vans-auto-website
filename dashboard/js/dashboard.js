@@ -152,6 +152,30 @@ function renderCustomerSnapshot(data) {
   `;
 }
 
+/* === WORK ORDER SNAPSHOT === */
+
+function renderWorkOrderSnapshot(data) {
+  const { kpis, workOrders } = data;
+  const overdue = workOrders.filter(wo => wo.status === 'overdue').length;
+  const waitingParts = workOrders.filter(wo => wo.status === 'waiting-parts').length;
+  const el = document.getElementById('workorder-snapshot');
+  el.innerHTML = `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px">
+      <div><div class="label">Open Work Orders</div><div class="value">${kpis.openWorkOrders}</div></div>
+      <div><div class="label">In Progress</div><div class="value">${workOrders.filter(wo => wo.status === 'in-progress').length}</div></div>
+      <div>
+        <div class="label">Waiting for Parts</div>
+        <div class="value" style="color:#f97316">${waitingParts}</div>
+      </div>
+      <div>
+        <div class="label">Overdue</div>
+        <div class="value" style="color:var(--red)">${overdue}</div>
+        <div class="delta-warn" style="font-size:11px">Needs attention</div>
+      </div>
+    </div>
+  `;
+}
+
 /* === POS PANEL === */
 
 function renderPOS(data) {
@@ -230,6 +254,7 @@ async function init() {
   renderTechnicians(data);
   renderInventory(data);
   renderCustomerSnapshot(data);
+  renderWorkOrderSnapshot(data);
   renderPOS(data);
   renderReviews(data);
 }
