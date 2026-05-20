@@ -1,0 +1,8 @@
+{"type":"click","text":"💰\n    \n      Revenue & Sales\n      Daily / weekly / monthly revenue, top services by income, average ticket size, comparison to last month","choice":"revenue","id":null,"timestamp":1779275787606}
+{"type":"click","text":"🔧\n    \n      Work Orders\n      Open tickets, completed jobs today, avg repair time, jobs waiting on parts, technician assignments","choice":"workorders","id":null,"timestamp":1779275788393}
+{"type":"click","text":"👥\n    \n      Customer Insights\n      New vs returning customers, customer lifetime value, vehicles serviced, overdue for service, review tracking","choice":"customers","id":null,"timestamp":1779275791002}
+{"type":"click","text":"📅\n    \n      Appointments & Scheduling\n      Today's schedule, upcoming week, no-shows, avg booking lead time, bay utilization","choice":"appointments","id":null,"timestamp":1779275792959}
+{"type":"click","text":"📦\n    \n      Parts & Inventory\n      Low stock alerts, most-used parts, reorder suggestions, parts cost vs labor cost breakdown","choice":"inventory","id":null,"timestamp":1779275793598}
+{"type":"click","text":"👨‍🔧\n    \n      Technician Performance\n      Jobs completed per tech, billable hours, efficiency rate, top performers this month","choice":"technicians","id":null,"timestamp":1779275794498}
+{"type":"click","text":"💳\n    \n      POS / Payment Integration\n      Show logos + \"connect\" buttons for Stripe, Square, Mitchell 1, Tekmetric, Shopmonkey — demo what importing looks like","choice":"pos","id":null,"timestamp":1779275795504}
+{"type":"click","text":"📣\n    \n      Marketing & Reviews\n      Google review score trend, review count over time, response rate, new reviews this week","choice":"marketing","id":null,"timestamp":1779275796087}

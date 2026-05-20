@@ -1,0 +1,78 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "← Dashboard" [ref=e5] [cursor=pointer]:
+        - /url: index.html
+      - heading "Technician Management" [level=1] [ref=e6]
+  - main [ref=e7]:
+    - generic [ref=e8]:
+      - textbox "🔍 Search technicians by name..." [ref=e10]
+      - generic [ref=e11]: 3 technicians
+    - generic [ref=e13]:
+      - generic [ref=e14]: 📈 1 Tech Need Support
+      - generic [ref=e15]:
+        - generic [ref=e16]: Sarah
+        - generic [ref=e17]: 60% efficiency — consider mentoring
+    - table [ref=e19]:
+      - rowgroup [ref=e20]:
+        - row "Technician  Jobs Today  Efficiency  Avg Rating Status" [ref=e21]:
+          - columnheader "Technician " [ref=e22] [cursor=pointer]:
+            - text: Technician
+            - generic [ref=e23]: 
+          - columnheader "Jobs Today " [ref=e24] [cursor=pointer]:
+            - text: Jobs Today
+            - generic [ref=e25]: 
+          - columnheader "Efficiency " [ref=e26] [cursor=pointer]:
+            - text: Efficiency
+            - generic [ref=e27]: 
+          - columnheader "Avg Rating" [ref=e28]
+          - columnheader "Status" [ref=e29]
+      - rowgroup [ref=e30]:
+        - row "M Mike 5 jobs 85% 5.0 ★ Top Performer" [ref=e31] [cursor=pointer]:
+          - cell "M Mike" [ref=e32]:
+            - generic [ref=e33]:
+              - generic [ref=e34]: M
+              - generic [ref=e35]: Mike
+          - cell "5 jobs" [ref=e36]
+          - cell "85%" [ref=e37]
+          - cell "5.0 ★" [ref=e38]
+          - cell "Top Performer" [ref=e39]
+        - row "D Dave 4 jobs 70% 5.0 ★ On Track" [ref=e40] [cursor=pointer]:
+          - cell "D Dave" [ref=e41]:
+            - generic [ref=e42]:
+              - generic [ref=e43]: D
+              - generic [ref=e44]: Dave
+          - cell "4 jobs" [ref=e45]
+          - cell "70%" [ref=e46]
+          - cell "5.0 ★" [ref=e47]
+          - cell "On Track" [ref=e48]
+        - row "S Sarah 3 jobs 60% 5.0 ★ Needs Support" [ref=e49] [cursor=pointer]:
+          - cell "S Sarah" [ref=e50]:
+            - generic [ref=e51]:
+              - generic [ref=e52]: S
+              - generic [ref=e53]: Sarah
+          - cell "3 jobs" [ref=e54]
+          - cell "60%" [ref=e55]
+          - cell "5.0 ★" [ref=e56]
+          - cell "Needs Support" [ref=e57]
+  - generic [ref=e58]:
+    - generic [ref=e59]:
+      - heading "Technician Name" [level=2] [ref=e60]
+      - button "×" [ref=e61] [cursor=pointer]
+    - generic [ref=e62]:
+      - generic [ref=e63]:
+        - generic [ref=e64]:
+          - generic [ref=e65]: Jobs Today
+          - generic [ref=e66]: "0"
+        - generic [ref=e67]:
+          - generic [ref=e68]: Efficiency
+          - generic [ref=e69]: 0%
+        - generic [ref=e70]:
+          - generic [ref=e71]: Avg Rating
+          - generic [ref=e72]: —
+        - generic [ref=e73]:
+          - generic [ref=e74]: Total Revenue (30d)
+          - generic [ref=e75]: $0
+      - heading "Today's Schedule" [level=3] [ref=e77]
+      - heading "Last 6 Months" [level=3] [ref=e79]
+      - heading "Recent Feedback" [level=3] [ref=e81]

@@ -1,0 +1,95 @@
+<h2>What should the dashboard look like?</h2>
+<p class="subtitle">Pick the visual direction that would impress Van's Auto most.</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="dark" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0f1117;padding:16px;min-height:160px;border-radius:8px 8px 0 0">
+      <div style="display:flex;gap:8px;margin-bottom:12px">
+        <div style="background:#e63946;color:#fff;padding:4px 10px;border-radius:4px;font-size:11px;font-weight:700">VAN'S AUTO</div>
+        <div style="background:#1e2130;color:#aaa;padding:4px 10px;border-radius:4px;font-size:11px">Dashboard</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+        <div style="background:#1e2130;border-radius:6px;padding:10px">
+          <div style="color:#aaa;font-size:10px">Revenue</div>
+          <div style="color:#fff;font-size:18px;font-weight:700">$24,180</div>
+          <div style="color:#4ade80;font-size:10px">↑ 12%</div>
+        </div>
+        <div style="background:#1e2130;border-radius:6px;padding:10px">
+          <div style="color:#aaa;font-size:10px">Open Jobs</div>
+          <div style="color:#fff;font-size:18px;font-weight:700">7</div>
+          <div style="color:#facc15;font-size:10px">2 urgent</div>
+        </div>
+        <div style="background:#1e2130;border-radius:6px;padding:10px">
+          <div style="color:#aaa;font-size:10px">Reviews</div>
+          <div style="color:#fff;font-size:18px;font-weight:700">4.8★</div>
+          <div style="color:#4ade80;font-size:10px">71 total</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Dark Pro Dashboard</h3>
+      <p>Dark charcoal + Van's red accent. Feels premium, modern, techy. Great on a screen share or TV presentation.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="light" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#f0f2f5;padding:16px;min-height:160px;border-radius:8px 8px 0 0">
+      <div style="display:flex;gap:8px;margin-bottom:12px">
+        <div style="background:#1a1a2e;color:#fff;padding:4px 10px;border-radius:4px;font-size:11px;font-weight:700">VAN'S AUTO</div>
+        <div style="background:#fff;color:#555;padding:4px 10px;border-radius:4px;font-size:11px;border:1px solid #ddd">Dashboard</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+        <div style="background:#fff;border-radius:6px;padding:10px;box-shadow:0 1px 4px rgba(0,0,0,0.08)">
+          <div style="color:#888;font-size:10px">Revenue</div>
+          <div style="color:#1a1a2e;font-size:18px;font-weight:700">$24,180</div>
+          <div style="color:#16a34a;font-size:10px">↑ 12%</div>
+        </div>
+        <div style="background:#fff;border-radius:6px;padding:10px;box-shadow:0 1px 4px rgba(0,0,0,0.08)">
+          <div style="color:#888;font-size:10px">Open Jobs</div>
+          <div style="color:#1a1a2e;font-size:18px;font-weight:700">7</div>
+          <div style="color:#d97706;font-size:10px">2 urgent</div>
+        </div>
+        <div style="background:#fff;border-radius:6px;padding:10px;box-shadow:0 1px 4px rgba(0,0,0,0.08)">
+          <div style="color:#888;font-size:10px">Reviews</div>
+          <div style="color:#1a1a2e;font-size:18px;font-weight:700">4.8★</div>
+          <div style="color:#16a34a;font-size:10px">71 total</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Clean Light Dashboard</h3>
+      <p>White + navy. Professional, familiar, easy to read. Feels like QuickBooks or a polished SaaS tool. Approachable for a non-techy shop owner.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="branded" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#1a1a2e;padding:16px;min-height:160px;border-radius:8px 8px 0 0">
+      <div style="display:flex;gap:8px;margin-bottom:12px;align-items:center">
+        <div style="background:#e63946;color:#fff;padding:4px 12px;border-radius:4px;font-size:11px;font-weight:700;letter-spacing:1px">VAN'S AUTO REPAIR</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+        <div style="background:rgba(230,57,70,0.15);border:1px solid rgba(230,57,70,0.3);border-radius:6px;padding:10px">
+          <div style="color:#e63946;font-size:10px;font-weight:600">REVENUE</div>
+          <div style="color:#fff;font-size:18px;font-weight:700">$24,180</div>
+          <div style="color:#4ade80;font-size:10px">↑ 12%</div>
+        </div>
+        <div style="background:rgba(230,57,70,0.15);border:1px solid rgba(230,57,70,0.3);border-radius:6px;padding:10px">
+          <div style="color:#e63946;font-size:10px;font-weight:600">OPEN JOBS</div>
+          <div style="color:#fff;font-size:18px;font-weight:700">7</div>
+          <div style="color:#facc15;font-size:10px">2 urgent</div>
+        </div>
+        <div style="background:rgba(230,57,70,0.15);border:1px solid rgba(230,57,70,0.3);border-radius:6px;padding:10px">
+          <div style="color:#e63946;font-size:10px;font-weight:600">REVIEWS</div>
+          <div style="color:#fff;font-size:18px;font-weight:700">4.8★</div>
+          <div style="color:#4ade80;font-size:10px">71 total</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Full Van's Auto Branding</h3>
+      <p>Navy + red exactly matching the website. Feels custom-built for them specifically — not a generic tool. Strong "wow this was made for us" impression.</p>
+    </div>
+  </div>
+
+</div>

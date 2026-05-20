@@ -1,0 +1,37 @@
+<h2>How should the guided tour work?</h2>
+<p class="subtitle">This is the "presentation mode" that walks Van's Auto through the dashboard. Pick the style that feels right.</p>
+
+<div class="options">
+  <div class="option" data-choice="tooltip" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Spotlight + Tooltip Tour</h3>
+      <p>A "Next →" button in the corner starts the tour. Each step dims the rest of the screen and highlights one section with a tooltip bubble explaining what it does. Like a product onboarding tutorial. Feels polished and interactive.</p>
+      <div style="margin-top:12px;padding:10px;background:#1a1a2e;border-radius:8px;color:#fff;font-size:13px">
+        <div style="display:flex;gap:8px;align-items:center">
+          <div style="width:8px;height:8px;background:#e63946;border-radius:50%"></div>
+          <strong>Revenue This Month</strong>
+        </div>
+        <p style="margin:6px 0 0;color:#ccc;font-size:12px">"This card shows total revenue collected. You'd see this update live when connected to your POS." → <u>Next</u></p>
+      </div>
+    </div>
+  </div>
+  <div class="option" data-choice="sidebar" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Side Panel Narration</h3>
+      <p>A slide-out panel on the right narrates each section as you scroll or click through. The dashboard stays fully visible. The panel acts like a script — "Here's your appointments view. Notice the bay utilization bar…" Great for a screen share presentation.</p>
+      <div style="margin-top:12px;padding:10px;background:#f8f9fa;border-radius:8px;font-size:13px;border-left:3px solid #e63946">
+        <strong style="color:#1a1a2e">📍 Step 3 of 8 — Appointments</strong>
+        <p style="margin:4px 0 0;color:#555;font-size:12px">Your schedule view shows today's bookings and bay availability at a glance. Click any appointment to see the full work order.</p>
+      </div>
+    </div>
+  </div>
+  <div class="option" data-choice="both" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Both — Auto Tour + Free Explore</h3>
+      <p>A "Start Tour" button triggers the spotlight walkthrough. When the tour ends (or they skip it), the full dashboard is freely explorable. Best of both — structured pitch first, then they can poke around on their own.</p>
+    </div>
+  </div>
+</div>

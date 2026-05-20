@@ -1,0 +1,38 @@
+{"type":"server-started","port":53762,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:53762","screen_dir":"/Users/jasonobrien/Documents/Vans Auto/.superpowers/brainstorm/66945-1779275598/content","state_dir":"/Users/jasonobrien/Documents/Vans Auto/.superpowers/brainstorm/66945-1779275598/state"}
+{"type":"screen-added","file":"/Users/jasonobrien/Documents/Vans Auto/.superpowers/brainstorm/66945-1779275598/content/demo-format.html"}
+{"type":"screen-updated","file":"/Users/jasonobrien/Documents/Vans Auto/.superpowers/brainstorm/66945-1779275598/content/demo-format.html"}
+{"type":"screen-updated","file":"/Users/jasonobrien/Documents/Vans Auto/.superpowers/brainstorm/66945-1779275598/content/demo-format.html"}
+{"type":"screen-updated","file":"/Users/jasonobrien/Documents/Vans Auto/.superpowers/brainstorm/66945-1779275598/content/demo-format.html"}
+{"source":"user-event","type":"click","text":"C\n    \n      Hybrid: Static Shell + Live Feeling\n      HTML/CSS dashboard that looks fully real but is powered by a local JSON file of demo data. Has animated charts, interactive elements, and a guided tour button. Feels like a real app but can be opened as a file — no server needed. Sweet spot between speed and polish.","choice":"c","id":null,"timestamp":1779275677378}
+{"type":"screen-added","file":"/Users/jasonobrien/Documents/Vans Auto/.superpowers/brainstorm/66945-1779275598/content/dashboard-modules.html"}
+{"type":"screen-updated","file":"/Users/jasonobrien/Documents/Vans Auto/.superpowers/brainstorm/66945-1779275598/content/dashboard-modules.html"}
+{"type":"screen-updated","file":"/Users/jasonobrien/Documents/Vans Auto/.superpowers/brainstorm/66945-1779275598/content/dashboard-modules.html"}
+{"source":"user-event","type":"click","text":"💰\n    \n      Revenue & Sales\n      Daily / weekly / monthly revenue, top services by income, average ticket size, comparison to last month","choice":"revenue","id":null,"timestamp":1779275787606}
+{"source":"user-event","type":"click","text":"🔧\n    \n      Work Orders\n      Open tickets, completed jobs today, avg repair time, jobs waiting on parts, technician assignments","choice":"workorders","id":null,"timestamp":1779275788393}
+{"source":"user-event","type":"click","text":"👥\n    \n      Customer Insights\n      New vs returning customers, customer lifetime value, vehicles serviced, overdue for service, review tracking","choice":"customers","id":null,"timestamp":1779275791002}
+{"source":"user-event","type":"click","text":"📅\n    \n      Appointments & Scheduling\n      Today's schedule, upcoming week, no-shows, avg booking lead time, bay utilization","choice":"appointments","id":null,"timestamp":1779275792959}
+{"source":"user-event","type":"click","text":"📦\n    \n      Parts & Inventory\n      Low stock alerts, most-used parts, reorder suggestions, parts cost vs labor cost breakdown","choice":"inventory","id":null,"timestamp":1779275793598}
+{"source":"user-event","type":"click","text":"👨‍🔧\n    \n      Technician Performance\n      Jobs completed per tech, billable hours, efficiency rate, top performers this month","choice":"technicians","id":null,"timestamp":1779275794498}
+{"source":"user-event","type":"click","text":"💳\n    \n      POS / Payment Integration\n      Show logos + \"connect\" buttons for Stripe, Square, Mitchell 1, Tekmetric, Shopmonkey — demo what importing looks like","choice":"pos","id":null,"timestamp":1779275795504}
+{"source":"user-event","type":"click","text":"📣\n    \n      Marketing & Reviews\n      Google review score trend, review count over time, response rate, new reviews this week","choice":"marketing","id":null,"timestamp":1779275796087}
+{"type":"screen-updated","file":"/Users/jasonobrien/Documents/Vans Auto/.superpowers/brainstorm/66945-1779275598/content/dashboard-modules.html"}
+{"type":"screen-added","file":"/Users/jasonobrien/Documents/Vans Auto/.superpowers/brainstorm/66945-1779275598/content/tour-style.html"}
+{"type":"screen-updated","file":"/Users/jasonobrien/Documents/Vans Auto/.superpowers/brainstorm/66945-1779275598/content/tour-style.html"}
+{"source":"user-event","type":"click","text":"C\n    \n      Both — Auto Tour + Free Explore\n      A \"Start Tour\" button triggers the spotlight walkthrough. When the tour ends (or they skip it), the full dashboard is freely explorable. Best of both — structured pitch first, then they can poke around on their own.","choice":"both","id":null,"timestamp":1779275885718}
+{"type":"screen-added","file":"/Users/jasonobrien/Documents/Vans Auto/.superpowers/brainstorm/66945-1779275598/content/visual-style.html"}
+{"type":"screen-updated","file":"/Users/jasonobrien/Documents/Vans Auto/.superpowers/brainstorm/66945-1779275598/content/visual-style.html"}
+{"type":"screen-updated","file":"/Users/jasonobrien/Documents/Vans Auto/.superpowers/brainstorm/66945-1779275598/content/visual-style.html"}
+{"source":"user-event","type":"click","text":"VAN'S AUTO REPAIR\n      \n      \n        \n          REVENUE\n          $24,180\n          ↑ 12%\n        \n        \n          OPEN JOBS\n          7\n          2 urgent\n        \n        \n          REVIEWS\n          4.8★\n          71 total\n        \n      \n    \n    \n      Full Van's Auto Branding\n      Navy + red exactly matching the website. Feels custom-built for them specifically — not a generic tool. Strong \"wow this was made for us\" impression.","choice":"branded","id":null,"timestamp":1779276103637}
+{"type":"screen-added","file":"/Users/jasonobrien/Documents/Vans Auto/.superpowers/brainstorm/66945-1779275598/content/waiting-1.html"}
+{"type":"screen-updated","file":"/Users/jasonobrien/Documents/Vans Auto/.superpowers/brainstorm/66945-1779275598/content/waiting-1.html"}
+{"type":"screen-updated","file":"/Users/jasonobrien/Documents/Vans Auto/.superpowers/brainstorm/66945-1779275598/content/waiting-1.html"}
+{"type":"screen-added","file":"/Users/jasonobrien/Documents/Vans Auto/.superpowers/brainstorm/66945-1779275598/content/dashboard-mockup.html"}
+{"type":"screen-updated","file":"/Users/jasonobrien/Documents/Vans Auto/.superpowers/brainstorm/66945-1779275598/content/dashboard-mockup.html"}
+{"type":"screen-updated","file":"/Users/jasonobrien/Documents/Vans Auto/.superpowers/brainstorm/66945-1779275598/content/dashboard-mockup.html"}
+{"type":"screen-updated","file":"/Users/jasonobrien/Documents/Vans Auto/.superpowers/brainstorm/66945-1779275598/content/dashboard-mockup.html"}
+{"type":"screen-added","file":"/Users/jasonobrien/Documents/Vans Auto/.superpowers/brainstorm/66945-1779275598/content/waiting-2.html"}
+{"type":"screen-updated","file":"/Users/jasonobrien/Documents/Vans Auto/.superpowers/brainstorm/66945-1779275598/content/waiting-2.html"}
+{"type":"screen-updated","file":"/Users/jasonobrien/Documents/Vans Auto/.superpowers/brainstorm/66945-1779275598/content/waiting-2.html"}
+{"type":"screen-updated","file":"/Users/jasonobrien/Documents/Vans Auto/.superpowers/brainstorm/66945-1779275598/content/waiting-2.html"}
+{"type":"screen-updated","file":"/Users/jasonobrien/Documents/Vans Auto/.superpowers/brainstorm/66945-1779275598/content/waiting-2.html"}
+{"type":"server-stopped","reason":"idle timeout"}

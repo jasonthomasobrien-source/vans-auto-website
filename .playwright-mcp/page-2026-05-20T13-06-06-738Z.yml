@@ -1,0 +1,235 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: VAN'S AUTO
+      - generic [ref=e5]: Customer Database
+    - button "← Back to Dashboard" [ref=e7] [cursor=pointer]
+  - main [ref=e8]:
+    - generic [ref=e9]:
+      - textbox "Search by name, phone, email, or vehicle..." [ref=e10]
+      - generic [ref=e11]:
+        - button "All" [ref=e12] [cursor=pointer]
+        - button "Returning" [ref=e13] [cursor=pointer]
+        - button "New" [ref=e14] [cursor=pointer]
+        - button "Overdue for Service" [ref=e15] [cursor=pointer]
+    - table [ref=e17]:
+      - rowgroup [ref=e18]:
+        - row "Customer Name Vehicle Last Visit Total Spent Visits Status" [ref=e19]:
+          - columnheader "Customer Name" [ref=e20] [cursor=pointer]
+          - columnheader "Vehicle" [ref=e21] [cursor=pointer]
+          - columnheader "Last Visit" [ref=e22] [cursor=pointer]
+          - columnheader "Total Spent" [ref=e23] [cursor=pointer]
+          - columnheader "Visits" [ref=e24] [cursor=pointer]
+          - columnheader "Status" [ref=e25] [cursor=pointer]
+      - rowgroup [ref=e26]:
+        - row "RK Randy Kowalski 2019 Chevy Silverado May 17, 2026 $1,840 5 Returning" [ref=e27] [cursor=pointer]:
+          - cell "RK Randy Kowalski" [ref=e28]:
+            - generic [ref=e29]:
+              - generic [ref=e30]: RK
+              - generic [ref=e31]: Randy Kowalski
+          - cell "2019 Chevy Silverado" [ref=e32]
+          - cell "May 17, 2026" [ref=e33]
+          - cell "$1,840" [ref=e34]
+          - cell "5" [ref=e35]
+          - cell "Returning" [ref=e36]
+        - row "LP Linda Perkins 2021 Chevy Tahoe May 14, 2026 $2,210 4 Returning" [ref=e37] [cursor=pointer]:
+          - cell "LP Linda Perkins" [ref=e38]:
+            - generic [ref=e39]:
+              - generic [ref=e40]: LP
+              - generic [ref=e41]: Linda Perkins
+          - cell "2021 Chevy Tahoe" [ref=e42]
+          - cell "May 14, 2026" [ref=e43]
+          - cell "$2,210" [ref=e44]
+          - cell "4" [ref=e45]
+          - cell "Returning" [ref=e46]
+        - row "TH Tom Harrington 2018 Ford F-150 May 9, 2026 $3,450 4 Returning" [ref=e47] [cursor=pointer]:
+          - cell "TH Tom Harrington" [ref=e48]:
+            - generic [ref=e49]:
+              - generic [ref=e50]: TH
+              - generic [ref=e51]: Tom Harrington
+          - cell "2018 Ford F-150" [ref=e52]
+          - cell "May 9, 2026" [ref=e53]
+          - cell "$3,450" [ref=e54]
+          - cell "4" [ref=e55]
+          - cell "Returning" [ref=e56]
+        - row "GV Greta Vandenberg 2020 Honda CR-V May 10, 2026 $890 3 Returning" [ref=e57] [cursor=pointer]:
+          - cell "GV Greta Vandenberg" [ref=e58]:
+            - generic [ref=e59]:
+              - generic [ref=e60]: GV
+              - generic [ref=e61]: Greta Vandenberg
+          - cell "2020 Honda CR-V" [ref=e62]
+          - cell "May 10, 2026" [ref=e63]
+          - cell "$890" [ref=e64]
+          - cell "3" [ref=e65]
+          - cell "Returning" [ref=e66]
+        - row "BN Bill Nowak 2016 Dodge Ram 1500 Oct 29, 2025 $1,540 3 Overdue" [ref=e67] [cursor=pointer]:
+          - cell "BN Bill Nowak" [ref=e68]:
+            - generic [ref=e69]:
+              - generic [ref=e70]: BN
+              - generic [ref=e71]: Bill Nowak
+          - cell "2016 Dodge Ram 1500" [ref=e72]
+          - cell "Oct 29, 2025" [ref=e73]
+          - cell "$1,540" [ref=e74]
+          - cell "3" [ref=e75]
+          - cell "Overdue" [ref=e76]
+        - row "CM Cindy Morrow 2022 Toyota Camry Nov 4, 2025 $410 2 Overdue" [ref=e77] [cursor=pointer]:
+          - cell "CM Cindy Morrow" [ref=e78]:
+            - generic [ref=e79]:
+              - generic [ref=e80]: CM
+              - generic [ref=e81]: Cindy Morrow
+          - cell "2022 Toyota Camry" [ref=e82]
+          - cell "Nov 4, 2025" [ref=e83]
+          - cell "$410" [ref=e84]
+          - cell "2" [ref=e85]
+          - cell "Overdue" [ref=e86]
+        - row "PS Pete Szabo 2017 Ford Escape Sep 18, 2025 $720 3 Overdue" [ref=e87] [cursor=pointer]:
+          - cell "PS Pete Szabo" [ref=e88]:
+            - generic [ref=e89]:
+              - generic [ref=e90]: PS
+              - generic [ref=e91]: Pete Szabo
+          - cell "2017 Ford Escape" [ref=e92]
+          - cell "Sep 18, 2025" [ref=e93]
+          - cell "$720" [ref=e94]
+          - cell "3" [ref=e95]
+          - cell "Overdue" [ref=e96]
+        - row "JF Janet Fox 2020 Subaru Outback Aug 26, 2025 $650 2 Overdue" [ref=e97] [cursor=pointer]:
+          - cell "JF Janet Fox" [ref=e98]:
+            - generic [ref=e99]:
+              - generic [ref=e100]: JF
+              - generic [ref=e101]: Janet Fox
+          - cell "2020 Subaru Outback" [ref=e102]
+          - cell "Aug 26, 2025" [ref=e103]
+          - cell "$650" [ref=e104]
+          - cell "2" [ref=e105]
+          - cell "Overdue" [ref=e106]
+        - row "MW Marcus Webb 2019 GMC Sierra Jul 2, 2025 $1,180 3 Overdue" [ref=e107] [cursor=pointer]:
+          - cell "MW Marcus Webb" [ref=e108]:
+            - generic [ref=e109]:
+              - generic [ref=e110]: MW
+              - generic [ref=e111]: Marcus Webb
+          - cell "2019 GMC Sierra" [ref=e112]
+          - cell "Jul 2, 2025" [ref=e113]
+          - cell "$1,180" [ref=e114]
+          - cell "3" [ref=e115]
+          - cell "Overdue" [ref=e116]
+        - row "DC Donna Craft 2018 Jeep Grand Cherokee Jun 14, 2025 $980 3 Overdue" [ref=e117] [cursor=pointer]:
+          - cell "DC Donna Craft" [ref=e118]:
+            - generic [ref=e119]:
+              - generic [ref=e120]: DC
+              - generic [ref=e121]: Donna Craft
+          - cell "2018 Jeep Grand Cherokee" [ref=e122]
+          - cell "Jun 14, 2025" [ref=e123]
+          - cell "$980" [ref=e124]
+          - cell "3" [ref=e125]
+          - cell "Overdue" [ref=e126]
+        - row "SH Steve Holton 2015 Ford Mustang May 21, 2025 $2,890 3 Overdue" [ref=e127] [cursor=pointer]:
+          - cell "SH Steve Holton" [ref=e128]:
+            - generic [ref=e129]:
+              - generic [ref=e130]: SH
+              - generic [ref=e131]: Steve Holton
+          - cell "2015 Ford Mustang" [ref=e132]
+          - cell "May 21, 2025" [ref=e133]
+          - cell "$2,890" [ref=e134]
+          - cell "3" [ref=e135]
+          - cell "Overdue" [ref=e136]
+        - row "RD Rosa Delgado 2023 Toyota RAV4 Apr 29, 2026 $330 2 Returning" [ref=e137] [cursor=pointer]:
+          - cell "RD Rosa Delgado" [ref=e138]:
+            - generic [ref=e139]:
+              - generic [ref=e140]: RD
+              - generic [ref=e141]: Rosa Delgado
+          - cell "2023 Toyota RAV4" [ref=e142]
+          - cell "Apr 29, 2026" [ref=e143]
+          - cell "$330" [ref=e144]
+          - cell "2" [ref=e145]
+          - cell "Returning" [ref=e146]
+        - row "GT Greg Tuttle 2014 Chevy Impala Oct 31, 2024 $1,650 3 Overdue" [ref=e147] [cursor=pointer]:
+          - cell "GT Greg Tuttle" [ref=e148]:
+            - generic [ref=e149]:
+              - generic [ref=e150]: GT
+              - generic [ref=e151]: Greg Tuttle
+          - cell "2014 Chevy Impala" [ref=e152]
+          - cell "Oct 31, 2024" [ref=e153]
+          - cell "$1,650" [ref=e154]
+          - cell "3" [ref=e155]
+          - cell "Overdue" [ref=e156]
+        - row "AS Amy Strickland 2021 Kia Sorento Oct 13, 2024 $540 2 Overdue" [ref=e157] [cursor=pointer]:
+          - cell "AS Amy Strickland" [ref=e158]:
+            - generic [ref=e159]:
+              - generic [ref=e160]: AS
+              - generic [ref=e161]: Amy Strickland
+          - cell "2021 Kia Sorento" [ref=e162]
+          - cell "Oct 13, 2024" [ref=e163]
+          - cell "$540" [ref=e164]
+          - cell "2" [ref=e165]
+          - cell "Overdue" [ref=e166]
+        - row "DH Dale Hutchins 2016 Ford Explorer Sep 4, 2024 $1,920 3 Overdue" [ref=e167] [cursor=pointer]:
+          - cell "DH Dale Hutchins" [ref=e168]:
+            - generic [ref=e169]:
+              - generic [ref=e170]: DH
+              - generic [ref=e171]: Dale Hutchins
+          - cell "2016 Ford Explorer" [ref=e172]
+          - cell "Sep 4, 2024" [ref=e173]
+          - cell "$1,920" [ref=e174]
+          - cell "3" [ref=e175]
+          - cell "Overdue" [ref=e176]
+  - generic [ref=e178]:
+    - generic [ref=e179]:
+      - generic [ref=e180]: Randy Kowalski
+      - button "×" [ref=e181] [cursor=pointer]
+    - generic [ref=e182]:
+      - generic [ref=e183]:
+        - generic [ref=e184]: Contact Information
+        - generic [ref=e185]:
+          - generic [ref=e186]: Phone
+          - link "(269) 555-0201" [ref=e188] [cursor=pointer]:
+            - /url: tel:(269) 555-0201
+        - generic [ref=e189]:
+          - generic [ref=e190]: Email
+          - link "randy.k@email.com" [ref=e192] [cursor=pointer]:
+            - /url: mailto:randy.k@email.com
+      - generic [ref=e193]:
+        - generic [ref=e194]: Vehicle & History
+        - generic [ref=e195]:
+          - generic [ref=e196]: Vehicle
+          - generic [ref=e197]: 2019 Chevy Silverado
+        - generic [ref=e198]:
+          - generic [ref=e199]: Total Visits
+          - generic [ref=e200]: "5"
+        - generic [ref=e201]:
+          - generic [ref=e202]: Total Spent
+          - generic [ref=e203]: $1,840
+        - generic [ref=e204]:
+          - generic [ref=e205]: Last Visit
+          - generic [ref=e206]: May 17, 2026
+        - generic [ref=e207]:
+          - generic [ref=e208]: Status
+          - generic [ref=e210]: Returning Customer
+      - generic [ref=e211]:
+        - generic [ref=e212]: Service History
+        - generic [ref=e213]:
+          - generic [ref=e214]:
+            - generic [ref=e215]: May 17, 2026
+            - generic [ref=e216]: Oil Change
+            - generic [ref=e217]:
+              - text: "$65 · Tech: Mike"
+              - generic [ref=e218]: "\"Topped off washer fluid\""
+          - generic [ref=e219]:
+            - generic [ref=e220]: Feb 9, 2026
+            - generic [ref=e221]: Tire Rotation
+            - generic [ref=e222]: "$45 · Tech: Sarah"
+          - generic [ref=e223]:
+            - generic [ref=e224]: Nov 2, 2025
+            - generic [ref=e225]: Brake Service (Front)
+            - generic [ref=e226]:
+              - text: "$320 · Tech: Dave"
+              - generic [ref=e227]: "\"Replaced rotors and pads\""
+          - generic [ref=e228]:
+            - generic [ref=e229]: Jul 19, 2025
+            - generic [ref=e230]: Oil Change
+            - generic [ref=e231]: "$65 · Tech: Mike"
+          - generic [ref=e232]:
+            - generic [ref=e233]: Mar 14, 2025
+            - generic [ref=e234]: AC Recharge
+            - generic [ref=e235]:
+              - text: "$140 · Tech: Sarah"
+              - generic [ref=e236]: "\"System was low, no leak found\""

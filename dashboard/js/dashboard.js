@@ -176,6 +176,31 @@ function renderWorkOrderSnapshot(data) {
   `;
 }
 
+/* === TECHNICIAN SNAPSHOT === */
+
+function renderTechnicianSnapshot(data) {
+  const { technicians } = data;
+  const topPerformers = technicians.filter(t => t.efficiency >= 85).length;
+  const needsSupport = technicians.filter(t => t.efficiency < 70).length;
+  const totalJobs = technicians.reduce((sum, t) => sum + t.jobsToday, 0);
+  const el = document.getElementById('technician-snapshot');
+  el.innerHTML = `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px">
+      <div><div class="label">Team Size</div><div class="value">${technicians.length}</div></div>
+      <div><div class="label">Jobs Today</div><div class="value">${totalJobs}</div></div>
+      <div>
+        <div class="label">Top Performers</div>
+        <div class="value" style="color:var(--green)">${topPerformers}</div>
+      </div>
+      <div>
+        <div class="label">Needs Support</div>
+        <div class="value" style="color:var(--red)">${needsSupport}</div>
+        ${needsSupport > 0 ? '<div class="delta-warn" style="font-size:11px">Consider training</div>' : ''}
+      </div>
+    </div>
+  `;
+}
+
 /* === POS PANEL === */
 
 function renderPOS(data) {
@@ -255,6 +280,7 @@ async function init() {
   renderInventory(data);
   renderCustomerSnapshot(data);
   renderWorkOrderSnapshot(data);
+  renderTechnicianSnapshot(data);
   renderPOS(data);
   renderReviews(data);
 }

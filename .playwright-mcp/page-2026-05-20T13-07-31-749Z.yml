@@ -1,0 +1,34 @@
+- generic [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: VAN'S AUTO
+      - generic [ref=e5]: Customer Database
+    - button "← Back to Dashboard" [ref=e7] [cursor=pointer]
+  - main [ref=e8]:
+    - generic [ref=e9]:
+      - textbox "Search by name, phone, email, or vehicle..." [ref=e10]: ord F-150
+      - generic [ref=e11]:
+        - button "All" [active] [ref=e12] [cursor=pointer]
+        - button "Returning" [ref=e13] [cursor=pointer]
+        - button "New" [ref=e14] [cursor=pointer]
+        - button "Overdue for Service" [ref=e15] [cursor=pointer]
+    - table [ref=e17]:
+      - rowgroup [ref=e18]:
+        - row "Customer Name Vehicle Last Visit Total Spent Visits Status" [ref=e19]:
+          - columnheader "Customer Name" [ref=e20] [cursor=pointer]
+          - columnheader "Vehicle" [ref=e21] [cursor=pointer]
+          - columnheader "Last Visit" [ref=e22] [cursor=pointer]
+          - columnheader "Total Spent" [ref=e23] [cursor=pointer]
+          - columnheader "Visits" [ref=e24] [cursor=pointer]
+          - columnheader "Status" [ref=e25] [cursor=pointer]
+      - rowgroup [ref=e26]:
+        - row "TH Tom Harrington 2018 Ford F-150 May 9, 2026 $3,450 4 Returning" [ref=e260] [cursor=pointer]:
+          - cell "TH Tom Harrington" [ref=e261]:
+            - generic [ref=e262]:
+              - generic [ref=e263]: TH
+              - generic [ref=e264]: Tom Harrington
+          - cell "2018 Ford F-150" [ref=e265]
+          - cell "May 9, 2026" [ref=e266]
+          - cell "$3,450" [ref=e267]
+          - cell "4" [ref=e268]
+          - cell "Returning" [ref=e269]

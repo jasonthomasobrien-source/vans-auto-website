@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technician Management — Van's Auto Dashboard</title>
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- HEADER -->
+    <header class="sticky-header">
+      <div class="header-content">
+        <a href="index.html" class="back-button">← Dashboard</a>
+        <h1>Technician Management</h1>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="container">
+      <!-- SEARCH & CONTROLS -->
+      <div style="display:flex;justify-content:space-between;align-items:center;margin:30px 0 20px;flex-wrap:wrap;gap:15px">
+        <div style="flex:1;min-width:250px">
+          <input type="text" id="search-input" placeholder="🔍 Search technicians by name..." style="width:100%;padding:10px 15px;border:1px solid #e5e7eb;border-radius:6px;font-size:14px;background:#fff">
+        </div>
+        <div id="tech-count" style="color:var(--text-muted);font-size:14px">0 technicians</div>
+      </div>
+
+      <!-- ALERTS SECTION -->
+      <div id="alerts-section" style="margin-bottom:30px"></div>
+
+      <!-- TECHNICIANS TABLE -->
+      <div style="background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.1)">
+        <table style="width:100%;border-collapse:collapse;font-size:14px">
+          <thead style="background:#f8f9fa;border-bottom:1px solid #e5e7eb">
+            <tr>
+              <th style="padding:12px 15px;text-align:left;font-weight:600;color:var(--text-muted);cursor:pointer" data-sort="name">
+                Technician <i class="fas fa-arrow-down" style="font-size:10px;margin-left:5px;opacity:0.5"></i>
+              </th>
+              <th style="padding:12px 15px;text-align:left;font-weight:600;color:var(--text-muted);cursor:pointer" data-sort="jobsToday">
+                Jobs Today <i class="fas fa-arrow-down" style="font-size:10px;margin-left:5px;opacity:0.5"></i>
+              </th>
+              <th style="padding:12px 15px;text-align:left;font-weight:600;color:var(--text-muted);cursor:pointer" data-sort="efficiency">
+                Efficiency <i class="fas fa-arrow-down" style="font-size:10px;margin-left:5px;opacity:0.5"></i>
+              </th>
+              <th style="padding:12px 15px;text-align:left;font-weight:600;color:var(--text-muted)">Avg Rating</th>
+              <th style="padding:12px 15px;text-align:left;font-weight:600;color:var(--text-muted)">Status</th>
+            </tr>
+          </thead>
+          <tbody id="tech-tbody"></tbody>
+        </table>
+      </div>
+    </main>
+
+    <!-- DETAIL PANEL -->
+    <div id="detail-panel" class="history-panel">
+      <div class="panel-header">
+        <h2 id="detail-name" style="margin:0">Technician Name</h2>
+        <button onclick="closeDetail()" style="background:none;border:none;font-size:20px;cursor:pointer;color:var(--text-muted)">&times;</button>
+      </div>
+
+      <div class="panel-content">
+        <!-- STATS ROW -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-bottom:25px">
+          <div>
+            <div class="label">Jobs Today</div>
+            <div class="value" id="detail-jobs">0</div>
+          </div>
+          <div>
+            <div class="label">Efficiency</div>
+            <div class="value" id="detail-efficiency">0%</div>
+          </div>
+          <div>
+            <div class="label">Avg Rating</div>
+            <div class="value" id="detail-rating">—</div>
+          </div>
+          <div>
+            <div class="label">Total Revenue (30d)</div>
+            <div class="value" id="detail-revenue">$0</div>
+          </div>
+        </div>
+
+        <!-- TODAY'S SCHEDULE -->
+        <div style="margin-bottom:25px">
+          <h3 style="margin:0 0 12px;font-size:13px;text-transform:uppercase;color:var(--text-muted);letter-spacing:0.5px">Today's Schedule</h3>
+          <div id="detail-schedule" style="display:flex;flex-direction:column;gap:8px"></div>
+        </div>
+
+        <!-- PERFORMANCE TREND -->
+        <div style="margin-bottom:25px">
+          <h3 style="margin:0 0 12px;font-size:13px;text-transform:uppercase;color:var(--text-muted);letter-spacing:0.5px">Last 6 Months</h3>
+          <div id="detail-trend" style="display:grid;grid-template-columns:repeat(6,1fr);gap:6px"></div>
+        </div>
+
+        <!-- CUSTOMER FEEDBACK -->
+        <div>
+          <h3 style="margin:0 0 12px;font-size:13px;text-transform:uppercase;color:var(--text-muted);letter-spacing:0.5px">Recent Feedback</h3>
+          <div id="detail-feedback" style="font-size:13px;color:var(--text);line-height:1.6"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="toast"></div>
+  </div>
+
+  <script src="js/technicians.js"></script>
+</body>
+</html>
