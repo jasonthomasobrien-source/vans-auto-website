@@ -4,45 +4,51 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Revenue Analytics — Van's Auto Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/dashboard.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    main {
-      padding-left: 40px;
-      padding-right: 40px;
-    }
-    table {
-      color: #000 !important;
-    }
-    table thead th {
-      color: #000 !important;
-    }
-    table tbody td {
-      color: #000 !important;
-    }
-    div[style*="color:var(--text-muted)"] {
-      color: #000 !important;
-    }
-  </style>
 </head>
 <body>
-  <div class="page-wrapper">
-    <!-- HEADER -->
-    <header class="sticky-header">
-      <div class="header-content">
-        <a href="index.html" class="back-button">← Dashboard</a>
+<div class="app-shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-wordmark">VAN'S AUTO</div>
+      <div class="sidebar-tagline">Staff Dashboard</div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html"             class="nav-item"><span class="nav-icon">🏠</span> Overview</a>
+      <a href="revenue-analytics.html" class="nav-item active"><span class="nav-icon">📊</span> Revenue</a>
+      <a href="customers.html"         class="nav-item"><span class="nav-icon">👥</span> Customers</a>
+      <a href="index.html"             class="nav-item"><span class="nav-icon">📅</span> Schedule</a>
+      <a href="workorders.html"        class="nav-item"><span class="nav-icon">🔧</span> Work Orders</a>
+      <a href="inventory.html"         class="nav-item"><span class="nav-icon">📦</span> Inventory</a>
+      <a href="technicians.html"       class="nav-item"><span class="nav-icon">👨‍🔧</span> Technicians</a>
+      <a href="settings.html"          class="nav-item"><span class="nav-icon">⚙️</span> Settings</a>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="sidebar-add-btn" id="open-add-customer">+ Add Customer</button>
+      <a href="/" class="sidebar-website-link">← Back to Website</a>
+    </div>
+  </aside>
+
+  <!-- PAGE CONTENT -->
+  <div class="page-content">
+    <header class="page-header">
+      <div>
         <h1>Revenue Analytics</h1>
+        <div class="page-subtitle">6-month performance overview</div>
+      </div>
+      <div class="page-header-actions">
+        <button class="btn-header-ghost">Export CSV</button>
       </div>
     </header>
 
-    <!-- MAIN CONTENT -->
-    <main class="container">
+    <main class="page-body">
       <!-- KPI CARDS -->
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin:30px 0;margin-bottom:30px">
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-bottom:30px">
         <div style="background:#fff;padding:20px;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,0.1)">
           <div style="color:var(--text-muted);font-size:12px;margin-bottom:8px">This Month</div>
           <div id="kpi-this-month" style="font-size:24px;font-weight:700;color:var(--red)">$0</div>
@@ -141,11 +147,11 @@
         </table>
       </div>
     </main>
+  </div><!-- end .page-content -->
+</div><!-- end .app-shell -->
 
-    <!-- TOAST NOTIFICATION -->
-    <div id="toast" class="toast"></div>
-  </div>
-
-  <script src="js/revenue-analytics.js"></script>
+<div id="toast" class="toast"></div>
+<script src="js/add-customer-modal.js"></script>
+<script src="js/revenue-analytics.js"></script>
 </body>
 </html>
