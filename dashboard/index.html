@@ -52,11 +52,14 @@
 
     <!-- ROW 2: CHARTS -->
     <div class="grid-2-1">
-      <div class="card" id="card-revenue-chart">
+      <div class="card" id="card-revenue-chart" style="cursor:pointer" onclick="window.location='revenue-analytics.html'">
         <div class="card-title">
           <span class="label">💰 Revenue — Last 6 Months</span>
         </div>
         <canvas id="chart-revenue" height="90"></canvas>
+        <div style="margin-top:12px">
+          <span class="btn btn-ghost" style="font-size:12px">View Analytics →</span>
+        </div>
       </div>
       <div class="card" id="card-services">
         <div class="card-title">
