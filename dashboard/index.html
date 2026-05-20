@@ -12,21 +12,43 @@
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header class="header">
-    <div class="header-logo">
-      <span class="logo-badge">VAN'S AUTO</span>
-      <span class="header-subtitle">Demo Dashboard</span>
-    </div>
-    <div class="header-actions">
-      <a href="/" style="text-decoration:none"><button class="btn btn-ghost" style="cursor:pointer">← Website</button></a>
-      <a href="settings.html" style="text-decoration:none"><button class="btn btn-ghost" style="cursor:pointer">⚙ Settings</button></a>
-      <button class="btn btn-ghost" id="btn-connect-pos">Connect POS ↗</button>
-      <button class="btn btn-primary" id="btn-start-tour">▶ Start Tour</button>
-    </div>
-  </header>
+  <div class="app-shell">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="sidebar-wordmark">VAN'S AUTO</div>
+        <div class="sidebar-tagline">Staff Dashboard</div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="index.html"             class="nav-item active"><span class="nav-icon">🏠</span> Overview</a>
+        <a href="revenue-analytics.html" class="nav-item"><span class="nav-icon">📊</span> Revenue</a>
+        <a href="customers.html"         class="nav-item"><span class="nav-icon">👥</span> Customers</a>
+        <a href="index.html"             class="nav-item"><span class="nav-icon">📅</span> Schedule</a>
+        <a href="workorders.html"        class="nav-item"><span class="nav-icon">🔧</span> Work Orders</a>
+        <a href="inventory.html"         class="nav-item"><span class="nav-icon">📦</span> Inventory</a>
+        <a href="technicians.html"       class="nav-item"><span class="nav-icon">👨‍🔧</span> Technicians</a>
+        <a href="settings.html"          class="nav-item"><span class="nav-icon">⚙️</span> Settings</a>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="sidebar-add-btn" id="open-add-customer">+ Add Customer</button>
+        <a href="/" class="sidebar-website-link">← Back to Website</a>
+      </div>
+    </aside>
 
-  <main class="main">
+    <div class="page-content">
+      <!-- HEADER -->
+      <header class="page-header">
+        <div class="page-header-left">
+          <h1>Overview</h1>
+          <p>Van's Auto Repair · Kalamazoo, MI</p>
+        </div>
+        <div class="page-header-actions">
+          <button class="btn btn-ghost" id="btn-connect-pos">Connect POS ↗</button>
+          <button class="btn btn-primary" id="btn-start-tour">▶ Start Tour</button>
+        </div>
+      </header>
+
+      <main class="page-body">
 
     <!-- ROW 1: KPI CARDS -->
     <div class="kpi-grid" id="kpi-grid">
@@ -129,14 +151,17 @@
       <div id="reviews-section"></div>
     </div>
 
-  </main>
+      </main>
 
-  <div class="toast" id="toast"></div>
+      <div class="toast" id="toast"></div>
+    </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/driver.js@1.3.1/dist/driver.js.iife.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
   <script src="js/dashboard.js"></script>
   <script src="js/tour.js"></script>
+  <script src="js/add-customer-modal.js"></script>
 </body>
 </html>
