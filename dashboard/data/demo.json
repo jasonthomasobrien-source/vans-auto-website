@@ -1,0 +1,159 @@
+{
+  "shop": {
+    "name": "Van's Auto Repair",
+    "tagline": "Kalamazoo's Most Trusted Mechanic",
+    "location": "1842 Portage St, Kalamazoo, MI 49001",
+    "phone": "(269) 555-0147",
+    "rating": 4.8,
+    "reviewCount": 71
+  },
+  "kpis": {
+    "revenueThisMonth": 24180,
+    "revenueLastMonth": 21450,
+    "openWorkOrders": 7,
+    "workOrdersWaitingParts": 2,
+    "appointmentsToday": 9,
+    "baysAvailable": 2,
+    "newReviewsThisWeek": 3,
+    "totalCustomers": 312,
+    "newCustomersThisMonth": 14,
+    "returningRate": 78,
+    "overdueForService": 47
+  },
+  "revenueHistory": [
+    { "month": "Dec", "amount": 19400 },
+    { "month": "Jan", "amount": 21800 },
+    { "month": "Feb", "amount": 18900 },
+    { "month": "Mar", "amount": 22500 },
+    { "month": "Apr", "amount": 20100 },
+    { "month": "May", "amount": 24180 }
+  ],
+  "topServices": [
+    { "name": "Oil Change", "pct": 38 },
+    { "name": "Brake Service", "pct": 24 },
+    { "name": "Tire Rotation", "pct": 18 },
+    { "name": "Diagnostics", "pct": 12 },
+    { "name": "Other", "pct": 8 }
+  ],
+  "schedule": [
+    { "time": "8:00 AM", "service": "Oil Change", "tech": "Mike", "customer": "Randy Kowalski", "status": "done" },
+    { "time": "9:30 AM", "service": "Tire Rotation", "tech": "Sarah", "customer": "Linda Perkins", "status": "done" },
+    { "time": "10:00 AM", "service": "Brake Service", "tech": "Dave", "customer": "Tom Harrington", "status": "in-progress" },
+    { "time": "11:00 AM", "service": "Oil Change", "tech": "Mike", "customer": "Greta Vandenberg", "status": "in-progress" },
+    { "time": "12:30 PM", "service": "Diagnostics", "tech": "Sarah", "customer": "Bill Nowak", "status": "upcoming" },
+    { "time": "1:00 PM", "service": "Oil Change", "tech": "Dave", "customer": "Cindy Morrow", "status": "upcoming" },
+    { "time": "2:00 PM", "service": "Alignment", "tech": "Mike", "customer": "Pete Szabo", "status": "upcoming" },
+    { "time": "3:00 PM", "service": "Battery Replace", "tech": "Sarah", "customer": "Janet Fox", "status": "upcoming" },
+    { "time": "4:00 PM", "service": "AC Recharge", "tech": "Dave", "customer": "Marcus Webb", "status": "upcoming" }
+  ],
+  "technicians": [
+    { "name": "Mike", "initial": "M", "color": "#e63946", "jobsToday": 5, "efficiency": 85 },
+    { "name": "Dave", "initial": "D", "color": "#60a5fa", "jobsToday": 4, "efficiency": 70 },
+    { "name": "Sarah", "initial": "S", "color": "#a78bfa", "jobsToday": 3, "efficiency": 60 }
+  ],
+  "inventory": [
+    { "item": "Oil Filter 5W-30", "qty": 2, "low": true },
+    { "item": "Brake Pads (Front)", "qty": 1, "low": true },
+    { "item": "Air Filter (Standard)", "qty": 3, "low": true },
+    { "item": "Spark Plugs (NGK)", "qty": 24, "low": false },
+    { "item": "Wiper Blades (22\")", "qty": 12, "low": false },
+    { "item": "Transmission Fluid", "qty": 8, "low": false }
+  ],
+  "pos": [
+    { "name": "Stripe", "color": "#635bff", "connected": false },
+    { "name": "Square", "color": "#3e9c45", "connected": false },
+    { "name": "Mitchell 1", "color": "#0055a5", "connected": false },
+    { "name": "Tekmetric", "color": "#ff6b35", "connected": false },
+    { "name": "Shopmonkey", "color": "#444", "connected": false },
+    { "name": "NAPA TRACS", "color": "#444", "connected": false }
+  ],
+  "reviews": {
+    "average": 4.8,
+    "total": 71,
+    "distribution": [55, 11, 3, 1, 1],
+    "responseRate": 100,
+    "newThisWeek": 3,
+    "recent": [
+      { "author": "Randy K.", "rating": 5, "date": "May 18, 2026", "text": "Van's is the only shop I trust. Fair prices, honest work, done right the first time." },
+      { "author": "Linda P.", "rating": 5, "date": "May 15, 2026", "text": "Brought my Tahoe in for brakes — in and out in 2 hours. Couldn't be happier." },
+      { "author": "Tom H.", "rating": 5, "date": "May 12, 2026", "text": "Great communication throughout. Called me with an update before doing any extra work." }
+    ]
+  },
+  "customers": [
+    { "id": 1, "name": "Randy Kowalski", "phone": "(269) 555-0201", "email": "randy.k@email.com", "vehicle": "2019 Chevy Silverado", "lastVisit": "2026-05-18", "totalSpent": 1840, "history": [
+      { "date": "2026-05-18", "service": "Oil Change", "cost": 65, "tech": "Mike", "notes": "Topped off washer fluid" },
+      { "date": "2026-02-10", "service": "Tire Rotation", "cost": 45, "tech": "Sarah", "notes": "" },
+      { "date": "2025-11-03", "service": "Brake Service (Front)", "cost": 320, "tech": "Dave", "notes": "Replaced rotors and pads" },
+      { "date": "2025-07-20", "service": "Oil Change", "cost": 65, "tech": "Mike", "notes": "" },
+      { "date": "2025-03-15", "service": "AC Recharge", "cost": 140, "tech": "Sarah", "notes": "System was low, no leak found" }
+    ] },
+    { "id": 2, "name": "Linda Perkins", "phone": "(269) 555-0342", "email": "lindap@webmail.net", "vehicle": "2021 Chevy Tahoe", "lastVisit": "2026-05-15", "totalSpent": 2210, "history": [
+      { "date": "2026-05-15", "service": "Tire Rotation", "cost": 45, "tech": "Sarah", "notes": "" },
+      { "date": "2026-01-08", "service": "Oil Change", "cost": 65, "tech": "Mike", "notes": "" },
+      { "date": "2025-09-22", "service": "Brake Service (All 4)", "cost": 580, "tech": "Dave", "notes": "Full brake job, all corners" },
+      { "date": "2025-05-11", "service": "Battery Replacement", "cost": 185, "tech": "Mike", "notes": "OEM battery, 3yr warranty" }
+    ] },
+    { "id": 3, "name": "Tom Harrington", "phone": "(269) 555-0118", "email": "tharrington@gmail.com", "vehicle": "2018 Ford F-150", "lastVisit": "2026-05-10", "totalSpent": 3450, "history": [
+      { "date": "2026-05-10", "service": "Brake Service (Front)", "cost": 310, "tech": "Dave", "notes": "" },
+      { "date": "2025-12-02", "service": "Oil Change", "cost": 75, "tech": "Mike", "notes": "Full synthetic 5W-30" },
+      { "date": "2025-08-14", "service": "Transmission Service", "cost": 220, "tech": "Dave", "notes": "Flush and fill" },
+      { "date": "2025-04-29", "service": "Alignment", "cost": 95, "tech": "Sarah", "notes": "Front end only" }
+    ] },
+    { "id": 4, "name": "Greta Vandenberg", "phone": "(269) 555-0477", "email": "greta.v@outlook.com", "vehicle": "2020 Honda CR-V", "lastVisit": "2026-05-11", "totalSpent": 890, "history": [
+      { "date": "2026-05-11", "service": "Oil Change", "cost": 65, "tech": "Mike", "notes": "" },
+      { "date": "2025-11-18", "service": "Tire Rotation", "cost": 45, "tech": "Sarah", "notes": "" },
+      { "date": "2025-06-07", "service": "Air Filter Replacement", "cost": 35, "tech": "Mike", "notes": "" }
+    ] },
+    { "id": 5, "name": "Bill Nowak", "phone": "(269) 555-0589", "email": "billnowak@yahoo.com", "vehicle": "2016 Dodge Ram 1500", "lastVisit": "2025-10-30", "totalSpent": 1540, "history": [
+      { "date": "2025-10-30", "service": "Diagnostics", "cost": 95, "tech": "Sarah", "notes": "Check engine light — O2 sensor" },
+      { "date": "2025-07-14", "service": "O2 Sensor Replacement", "cost": 185, "tech": "Dave", "notes": "" },
+      { "date": "2025-03-05", "service": "Oil Change", "cost": 65, "tech": "Mike", "notes": "" }
+    ] },
+    { "id": 6, "name": "Cindy Morrow", "phone": "(269) 555-0623", "email": "cindym@gmail.com", "vehicle": "2022 Toyota Camry", "lastVisit": "2025-11-05", "totalSpent": 410, "history": [
+      { "date": "2025-11-05", "service": "Oil Change", "cost": 65, "tech": "Mike", "notes": "" },
+      { "date": "2025-05-22", "service": "Tire Rotation", "cost": 45, "tech": "Sarah", "notes": "" }
+    ] },
+    { "id": 7, "name": "Pete Szabo", "phone": "(269) 555-0731", "email": "pszabo@hotmail.com", "vehicle": "2017 Ford Escape", "lastVisit": "2025-09-19", "totalSpent": 720, "history": [
+      { "date": "2025-09-19", "service": "Alignment", "cost": 95, "tech": "Sarah", "notes": "" },
+      { "date": "2025-05-01", "service": "Brake Service (Rear)", "cost": 265, "tech": "Dave", "notes": "" },
+      { "date": "2025-01-12", "service": "Oil Change", "cost": 65, "tech": "Mike", "notes": "" }
+    ] },
+    { "id": 8, "name": "Janet Fox", "phone": "(269) 555-0844", "email": "janetfox@email.com", "vehicle": "2020 Subaru Outback", "lastVisit": "2025-08-27", "totalSpent": 650, "history": [
+      { "date": "2025-08-27", "service": "Battery Replacement", "cost": 185, "tech": "Mike", "notes": "" },
+      { "date": "2025-04-14", "service": "Oil Change", "cost": 65, "tech": "Mike", "notes": "" }
+    ] },
+    { "id": 9, "name": "Marcus Webb", "phone": "(269) 555-0966", "email": "marcus.webb@gmail.com", "vehicle": "2019 GMC Sierra", "lastVisit": "2025-07-03", "totalSpent": 1180, "history": [
+      { "date": "2025-07-03", "service": "AC Recharge", "cost": 140, "tech": "Sarah", "notes": "Refrigerant only, no leak" },
+      { "date": "2025-02-18", "service": "Brake Service (Front)", "cost": 310, "tech": "Dave", "notes": "" },
+      { "date": "2024-10-09", "service": "Oil Change", "cost": 75, "tech": "Mike", "notes": "Full synthetic" }
+    ] },
+    { "id": 10, "name": "Donna Craft", "phone": "(269) 555-1012", "email": "donnac@outlook.com", "vehicle": "2018 Jeep Grand Cherokee", "lastVisit": "2025-06-15", "totalSpent": 980, "history": [
+      { "date": "2025-06-15", "service": "Diagnostics", "cost": 95, "tech": "Sarah", "notes": "Rough idle — found vacuum leak" },
+      { "date": "2025-01-28", "service": "Oil Change", "cost": 65, "tech": "Mike", "notes": "" },
+      { "date": "2024-08-20", "service": "Tire Rotation", "cost": 45, "tech": "Sarah", "notes": "" }
+    ] },
+    { "id": 11, "name": "Steve Holton", "phone": "(269) 555-1133", "email": "s.holton@gmail.com", "vehicle": "2015 Ford Mustang", "lastVisit": "2025-05-22", "totalSpent": 2890, "history": [
+      { "date": "2025-05-22", "service": "Exhaust Repair", "cost": 420, "tech": "Dave", "notes": "Welded mid-pipe" },
+      { "date": "2024-12-10", "service": "Oil Change", "cost": 75, "tech": "Mike", "notes": "Full synthetic, 5W-20" },
+      { "date": "2024-07-04", "service": "Brake Service (All 4)", "cost": 590, "tech": "Dave", "notes": "Performance pads" }
+    ] },
+    { "id": 12, "name": "Rosa Delgado", "phone": "(269) 555-1244", "email": "rosa.delgado@email.com", "vehicle": "2023 Toyota RAV4", "lastVisit": "2026-04-30", "totalSpent": 330, "history": [
+      { "date": "2026-04-30", "service": "Oil Change", "cost": 65, "tech": "Mike", "notes": "New customer" },
+      { "date": "2026-02-14", "service": "Tire Rotation", "cost": 45, "tech": "Sarah", "notes": "" }
+    ] },
+    { "id": 13, "name": "Greg Tuttle", "phone": "(269) 555-1358", "email": "gregtuttle@yahoo.com", "vehicle": "2014 Chevy Impala", "lastVisit": "2024-11-01", "totalSpent": 1650, "history": [
+      { "date": "2024-11-01", "service": "Transmission Service", "cost": 220, "tech": "Dave", "notes": "Slipping between 2nd and 3rd" },
+      { "date": "2024-06-19", "service": "Oil Change", "cost": 65, "tech": "Mike", "notes": "" },
+      { "date": "2023-12-05", "service": "Brake Service (Rear)", "cost": 265, "tech": "Dave", "notes": "" }
+    ] },
+    { "id": 14, "name": "Amy Strickland", "phone": "(269) 555-1471", "email": "amystrick@gmail.com", "vehicle": "2021 Kia Sorento", "lastVisit": "2024-10-14", "totalSpent": 540, "history": [
+      { "date": "2024-10-14", "service": "Oil Change", "cost": 65, "tech": "Mike", "notes": "" },
+      { "date": "2024-04-09", "service": "Air Filter Replacement", "cost": 35, "tech": "Mike", "notes": "" }
+    ] },
+    { "id": 15, "name": "Dale Hutchins", "phone": "(269) 555-1583", "email": "dale.h@hotmail.com", "vehicle": "2016 Ford Explorer", "lastVisit": "2024-09-05", "totalSpent": 1920, "history": [
+      { "date": "2024-09-05", "service": "Brake Service (All 4)", "cost": 580, "tech": "Dave", "notes": "" },
+      { "date": "2024-03-18", "service": "Alignment", "cost": 95, "tech": "Sarah", "notes": "All 4 corners" },
+      { "date": "2023-10-22", "service": "Oil Change", "cost": 65, "tech": "Mike", "notes": "" }
+    ] }
+  ]
+}
