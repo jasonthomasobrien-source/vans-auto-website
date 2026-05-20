@@ -1,0 +1,5 @@
+[     246ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8000/dashboard/js/tour.js:0
+[     925ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8000/favicon.ico:0
+[   97356ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8000/dashboard/js/tour.js:0
+[   97717ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8000/favicon.ico:0
+[  102958ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8000/dashboard/js/tour.js:0

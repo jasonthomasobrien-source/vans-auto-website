@@ -6,6 +6,88 @@
   <title>Settings — Van's Auto Dashboard</title>
   <link rel="stylesheet" href="css/dashboard.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .sticky-header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #0d0d1a 100%);
+      padding: 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .header-content {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding: 24px 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .back-button {
+      color: rgba(255,255,255,0.8);
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .back-button:hover {
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+    }
+    .header-content h1 {
+      color: #fff;
+      font-size: 28px;
+      font-weight: 600;
+      margin: 0;
+    }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px;
+    }
+    .container > div[style*="display:flex;gap:0"] {
+      margin-left: -40px;
+      margin-right: -40px;
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+    .settings-tab-content {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    #tab-hours table, #tab-services table, #tab-notifications, #tab-permissions {
+      color: #000 !important;
+    }
+    #tab-hours tbody td, #tab-services tbody td, #tab-notifications *, #tab-permissions * {
+      color: #000 !important;
+    }
+    #tab-hours thead th, #tab-services thead th {
+      color: #000 !important;
+    }
+    #tab-notifications div, #tab-permissions div, #tab-notifications tbody td, #tab-permissions tbody td {
+      color: #000 !important;
+    }
+    .settings-tab-content h3, .settings-tab-content h4 {
+      margin: 0 0 24px 0;
+      font-size: 18px;
+      font-weight: 600;
+      color: #212529;
+    }
+    .settings-tab {
+      transition: all 0.2s ease;
+    }
+    .settings-tab:not(.active):hover {
+      border-bottom-color: #e63946 !important;
+      color: #212529 !important;
+    }
+    .settings-tab.active {
+      background: #e63946 !important;
+      color: #fff !important;
+      border-radius: 6px 6px 0 0;
+    }
+  </style>
 </head>
 <body>
   <div class="page-wrapper">
@@ -20,35 +102,35 @@
     <!-- MAIN CONTENT -->
     <main class="container">
       <!-- TABS -->
-      <div style="display:flex;gap:0;border-bottom:1px solid #e5e7eb;margin:30px 0 30px">
-        <button class="settings-tab active" data-tab="shop" style="padding:12px 20px;border:none;background:none;cursor:pointer;font-weight:500;border-bottom:2px solid #e63946;color:var(--text)">🏪 Shop Info</button>
-        <button class="settings-tab" data-tab="hours" style="padding:12px 20px;border:none;background:none;cursor:pointer;font-weight:500;border-bottom:2px solid transparent;color:var(--text-muted)">⏰ Hours</button>
-        <button class="settings-tab" data-tab="team" style="padding:12px 20px;border:none;background:none;cursor:pointer;font-weight:500;border-bottom:2px solid transparent;color:var(--text-muted)">👥 Team Members</button>
-        <button class="settings-tab" data-tab="services" style="padding:12px 20px;border:none;background:none;cursor:pointer;font-weight:500;border-bottom:2px solid transparent;color:var(--text-muted)">🔧 Services</button>
-        <button class="settings-tab" data-tab="notifications" style="padding:12px 20px;border:none;background:none;cursor:pointer;font-weight:500;border-bottom:2px solid transparent;color:var(--text-muted)">🔔 Notifications</button>
-        <button class="settings-tab" data-tab="permissions" style="padding:12px 20px;border:none;background:none;cursor:pointer;font-weight:500;border-bottom:2px solid transparent;color:var(--text-muted)">🔐 Permissions</button>
+      <div style="display:flex;gap:0;border-bottom:1px solid #e5e7eb;margin:0 0 32px 0;padding-bottom:0">
+        <button class="settings-tab active" data-tab="shop" style="padding:16px 24px;border:none;outline:none;background:#e63946;cursor:pointer;font-weight:600;color:#fff;font-size:14px;text-transform:uppercase;letter-spacing:0.5px;transition:all 0.2s ease;border-radius:6px 6px 0 0">🏪 Shop Info</button>
+        <button class="settings-tab" data-tab="hours" style="padding:16px 24px;border:none;outline:none;background:none;cursor:pointer;font-weight:600;color:#9ca3af;font-size:14px;text-transform:uppercase;letter-spacing:0.5px;transition:all 0.2s ease;border-bottom:3px solid transparent">⏰ Hours</button>
+        <button class="settings-tab" data-tab="team" style="padding:16px 24px;border:none;outline:none;background:none;cursor:pointer;font-weight:600;color:#9ca3af;font-size:14px;text-transform:uppercase;letter-spacing:0.5px;transition:all 0.2s ease;border-bottom:3px solid transparent">👥 Team Members</button>
+        <button class="settings-tab" data-tab="services" style="padding:16px 24px;border:none;outline:none;background:none;cursor:pointer;font-weight:600;color:#9ca3af;font-size:14px;text-transform:uppercase;letter-spacing:0.5px;transition:all 0.2s ease;border-bottom:3px solid transparent">🔧 Services</button>
+        <button class="settings-tab" data-tab="notifications" style="padding:16px 24px;border:none;outline:none;background:none;cursor:pointer;font-weight:600;color:#9ca3af;font-size:14px;text-transform:uppercase;letter-spacing:0.5px;transition:all 0.2s ease;border-bottom:3px solid transparent">🔔 Notifications</button>
+        <button class="settings-tab" data-tab="permissions" style="padding:16px 24px;border:none;outline:none;background:none;cursor:pointer;font-weight:600;color:#9ca3af;font-size:14px;text-transform:uppercase;letter-spacing:0.5px;transition:all 0.2s ease;border-bottom:3px solid transparent">🔐 Permissions</button>
       </div>
 
       <!-- SHOP INFO TAB -->
       <div id="tab-shop" class="settings-tab-content">
         <div style="max-width:600px">
           <h3 style="margin:0 0 20px;font-size:16px;font-weight:600">Shop Information</h3>
-          <div style="display:flex;flex-direction:column;gap:15px">
+          <div style="display:flex;flex-direction:column;gap:20px">
             <div>
-              <label style="display:block;font-size:12px;font-weight:500;color:var(--text-muted);margin-bottom:6px">Shop Name</label>
-              <input type="text" value="Van's Auto Repair" style="width:100%;padding:10px;border:1px solid #e5e7eb;border-radius:6px;font-size:14px;background:#fff" readonly>
+              <label style="display:block;font-size:12px;font-weight:600;color:var(--text);margin-bottom:10px">Shop Name</label>
+              <input type="text" value="Van's Auto Repair" style="width:100%;padding:12px;border:1px solid #e5e7eb;border-radius:6px;font-size:14px;background:#fff;color:#000" readonly>
             </div>
             <div>
-              <label style="display:block;font-size:12px;font-weight:500;color:var(--text-muted);margin-bottom:6px">Address</label>
-              <input type="text" value="1842 Portage St, Kalamazoo, MI 49001" style="width:100%;padding:10px;border:1px solid #e5e7eb;border-radius:6px;font-size:14px;background:#fff" readonly>
+              <label style="display:block;font-size:12px;font-weight:600;color:var(--text);margin-bottom:10px">Address</label>
+              <input type="text" value="5716 D Ave W, Kalamazoo, MI 49009" style="width:100%;padding:12px;border:1px solid #e5e7eb;border-radius:6px;font-size:14px;background:#fff;color:#000" readonly>
             </div>
             <div>
-              <label style="display:block;font-size:12px;font-weight:500;color:var(--text-muted);margin-bottom:6px">Phone Number</label>
-              <input type="tel" value="(269) 555-0147" style="width:100%;padding:10px;border:1px solid #e5e7eb;border-radius:6px;font-size:14px;background:#fff" readonly>
+              <label style="display:block;font-size:12px;font-weight:600;color:var(--text);margin-bottom:10px">Phone Number</label>
+              <input type="tel" value="(269) 349-4544" style="width:100%;padding:12px;border:1px solid #e5e7eb;border-radius:6px;font-size:14px;background:#fff;color:#000" readonly>
             </div>
             <div>
-              <label style="display:block;font-size:12px;font-weight:500;color:var(--text-muted);margin-bottom:6px">Email</label>
-              <input type="email" value="contact@vansauto.local" style="width:100%;padding:10px;border:1px solid #e5e7eb;border-radius:6px;font-size:14px;background:#fff" readonly>
+              <label style="display:block;font-size:12px;font-weight:600;color:var(--text);margin-bottom:10px">Email</label>
+              <input type="email" value="vansautorepair@yahoo.com" style="width:100%;padding:12px;border:1px solid #e5e7eb;border-radius:6px;font-size:14px;background:#fff;color:#000" readonly>
             </div>
             <div style="margin-top:15px">
               <button style="background:#60a5fa;color:white;border:none;padding:10px 15px;border-radius:4px;cursor:pointer;font-weight:500;font-size:14px;transition:background 150ms" onmouseover="this.style.background='#3b82f6'" onmouseout="this.style.background='#60a5fa'">Edit Shop Info</button>

@@ -1,0 +1,62 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "← Dashboard" [ref=e5] [cursor=pointer]:
+        - /url: index.html
+      - heading "Settings & Configuration" [level=1] [ref=e6]
+  - main [ref=e7]:
+    - generic [ref=e8]:
+      - button "🏪 Shop Info" [ref=e9] [cursor=pointer]
+      - button "⏰ Hours" [ref=e10] [cursor=pointer]
+      - button "👥 Team Members" [ref=e11] [cursor=pointer]
+      - button "🔧 Services" [active] [ref=e12] [cursor=pointer]
+      - button "🔔 Notifications" [ref=e13] [cursor=pointer]
+      - button "🔐 Permissions" [ref=e14] [cursor=pointer]
+    - generic [ref=e69]:
+      - generic [ref=e70]:
+        - heading "Service Categories & Pricing" [level=3] [ref=e71]
+        - button "+ Add Service" [ref=e72] [cursor=pointer]
+      - table [ref=e74]:
+        - rowgroup [ref=e75]:
+          - row "Service Price Range Duration Active" [ref=e76]:
+            - columnheader "Service" [ref=e77]
+            - columnheader "Price Range" [ref=e78]
+            - columnheader "Duration" [ref=e79]
+            - columnheader "Active" [ref=e80]
+        - rowgroup [ref=e81]:
+          - row "Oil Change $45–$85 30 min" [ref=e82]:
+            - cell "Oil Change" [ref=e83]
+            - cell "$45–$85" [ref=e84]
+            - cell "30 min" [ref=e85]
+            - cell [ref=e86]:
+              - checkbox [checked] [ref=e87] [cursor=pointer]
+          - row "Brake Service $200–$600 1–2 hrs" [ref=e88]:
+            - cell "Brake Service" [ref=e89]
+            - cell "$200–$600" [ref=e90]
+            - cell "1–2 hrs" [ref=e91]
+            - cell [ref=e92]:
+              - checkbox [checked] [ref=e93] [cursor=pointer]
+          - row "Tire Rotation $30–$60 30 min" [ref=e94]:
+            - cell "Tire Rotation" [ref=e95]
+            - cell "$30–$60" [ref=e96]
+            - cell "30 min" [ref=e97]
+            - cell [ref=e98]:
+              - checkbox [checked] [ref=e99] [cursor=pointer]
+          - row "Diagnostics $75–$150 1 hr" [ref=e100]:
+            - cell "Diagnostics" [ref=e101]
+            - cell "$75–$150" [ref=e102]
+            - cell "1 hr" [ref=e103]
+            - cell [ref=e104]:
+              - checkbox [checked] [ref=e105] [cursor=pointer]
+          - row "Battery Replace $120–$200 30 min" [ref=e106]:
+            - cell "Battery Replace" [ref=e107]
+            - cell "$120–$200" [ref=e108]
+            - cell "30 min" [ref=e109]
+            - cell [ref=e110]:
+              - checkbox [checked] [ref=e111] [cursor=pointer]
+          - row "AC Recharge $100–$200 1 hr" [ref=e112]:
+            - cell "AC Recharge" [ref=e113]
+            - cell "$100–$200" [ref=e114]
+            - cell "1 hr" [ref=e115]
+            - cell [ref=e116]:
+              - checkbox [checked] [ref=e117] [cursor=pointer]

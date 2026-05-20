@@ -1,0 +1,30 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "← Dashboard" [ref=e5] [cursor=pointer]:
+        - /url: index.html
+      - heading "Settings & Configuration" [level=1] [ref=e6]
+  - main [ref=e7]:
+    - generic [ref=e8]:
+      - button "🏪 Shop Info" [active] [ref=e9] [cursor=pointer]
+      - button "⏰ Hours" [ref=e10] [cursor=pointer]
+      - button "👥 Team Members" [ref=e11] [cursor=pointer]
+      - button "🔧 Services" [ref=e12] [cursor=pointer]
+      - button "🔔 Notifications" [ref=e13] [cursor=pointer]
+      - button "🔐 Permissions" [ref=e14] [cursor=pointer]
+    - generic [ref=e16]:
+      - heading "Shop Information" [level=3] [ref=e17]
+      - generic [ref=e18]:
+        - generic [ref=e19]:
+          - generic [ref=e20]: Shop Name
+          - textbox [ref=e21]: Van's Auto Repair
+        - generic [ref=e22]:
+          - generic [ref=e23]: Address
+          - textbox [ref=e24]: 5716 D Ave W, Kalamazoo, MI 49009
+        - generic [ref=e25]:
+          - generic [ref=e26]: Phone Number
+          - textbox [ref=e27]: (269) 349-4544
+        - generic [ref=e28]:
+          - generic [ref=e29]: Email
+          - textbox [ref=e30]: vansautorepair@yahoo.com
+        - button "Edit Shop Info" [ref=e32] [cursor=pointer]

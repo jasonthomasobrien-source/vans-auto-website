@@ -1,0 +1,58 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "← Dashboard" [ref=e5] [cursor=pointer]:
+        - /url: index.html
+      - heading "Settings & Configuration" [level=1] [ref=e6]
+  - main [ref=e7]:
+    - generic [ref=e8]:
+      - button "🏪 Shop Info" [ref=e9] [cursor=pointer]
+      - button "⏰ Hours" [ref=e10] [cursor=pointer]
+      - button "👥 Team Members" [ref=e11] [cursor=pointer]
+      - button "🔧 Services" [ref=e12] [cursor=pointer]
+      - button "🔔 Notifications" [ref=e13] [cursor=pointer]
+      - button "🔐 Permissions" [active] [ref=e14] [cursor=pointer]
+    - generic [ref=e57]:
+      - heading "User Roles & Permissions" [level=3] [ref=e58]
+      - table [ref=e60]:
+        - rowgroup [ref=e61]:
+          - row "Role View Dashboard Manage Jobs Edit Pricing Manage Users" [ref=e62]:
+            - columnheader "Role" [ref=e63]
+            - columnheader "View Dashboard" [ref=e64]
+            - columnheader "Manage Jobs" [ref=e65]
+            - columnheader "Edit Pricing" [ref=e66]
+            - columnheader "Manage Users" [ref=e67]
+        - rowgroup [ref=e68]:
+          - row "Admin ✓ ✓ ✓ ✓" [ref=e69]:
+            - cell "Admin" [ref=e70]
+            - cell "✓" [ref=e71]
+            - cell "✓" [ref=e72]
+            - cell "✓" [ref=e73]
+            - cell "✓" [ref=e74]
+          - row "Manager ✓ ✓ ✓ —" [ref=e75]:
+            - cell "Manager" [ref=e76]
+            - cell "✓" [ref=e77]
+            - cell "✓" [ref=e78]
+            - cell "✓" [ref=e79]
+            - cell "—" [ref=e80]
+          - row "Technician ✓ ✓ — —" [ref=e81]:
+            - cell "Technician" [ref=e82]
+            - cell "✓" [ref=e83]
+            - cell "✓" [ref=e84]
+            - cell "—" [ref=e85]
+            - cell "—" [ref=e86]
+          - row "Receptionist ✓ — — —" [ref=e87]:
+            - cell "Receptionist" [ref=e88]
+            - cell "✓" [ref=e89]
+            - cell "—" [ref=e90]
+            - cell "—" [ref=e91]
+            - cell "—" [ref=e92]
+      - generic [ref=e94]:
+        - strong [ref=e95]: "Admin:"
+        - text: Full access to all features
+        - strong [ref=e96]: "Manager:"
+        - text: View reports, manage jobs, cannot edit users
+        - strong [ref=e97]: "Technician:"
+        - text: View assigned jobs and schedule only
+        - strong [ref=e98]: "Receptionist:"
+        - text: View calendar, manage appointments

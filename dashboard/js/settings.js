@@ -96,14 +96,24 @@ document.querySelectorAll('.settings-tab').forEach(btn => {
   btn.addEventListener('click', () => {
     const tabName = btn.dataset.tab;
 
+    // Remove active class from all tabs
     document.querySelectorAll('.settings-tab').forEach(b => {
+      b.classList.remove('active');
+      b.style.background = 'none';
+      b.style.color = '#9ca3af';
       b.style.borderBottomColor = 'transparent';
-      b.style.color = 'var(--text-muted)';
     });
-    btn.style.borderBottomColor = '#e63946';
-    btn.style.color = 'var(--text)';
 
+    // Add active class to clicked tab
+    btn.classList.add('active');
+    btn.style.background = '#e63946';
+    btn.style.color = '#fff';
+    btn.style.borderRadius = '6px 6px 0 0';
+
+    // Hide all tab content
     document.querySelectorAll('.settings-tab-content').forEach(c => c.style.display = 'none');
+
+    // Show selected tab content
     document.getElementById(`tab-${tabName}`).style.display = 'block';
   });
 });

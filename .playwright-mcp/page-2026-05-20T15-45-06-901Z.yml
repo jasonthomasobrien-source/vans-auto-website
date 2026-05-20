@@ -1,0 +1,47 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "← Dashboard" [ref=e5] [cursor=pointer]:
+        - /url: index.html
+      - heading "Settings & Configuration" [level=1] [ref=e6]
+  - main [ref=e7]:
+    - generic [ref=e8]:
+      - button "🏪 Shop Info" [ref=e9] [cursor=pointer]
+      - button "⏰ Hours" [active] [ref=e10] [cursor=pointer]
+      - button "👥 Team Members" [ref=e11] [cursor=pointer]
+      - button "🔧 Services" [ref=e12] [cursor=pointer]
+      - button "🔔 Notifications" [ref=e13] [cursor=pointer]
+      - button "🔐 Permissions" [ref=e14] [cursor=pointer]
+    - generic [ref=e34]:
+      - heading "Operating Hours" [level=3] [ref=e35]
+      - table [ref=e37]:
+        - rowgroup [ref=e38]:
+          - row "Monday 8:00 AM 5:00 PM" [ref=e39]:
+            - cell "Monday" [ref=e40]
+            - cell "8:00 AM" [ref=e41]
+            - cell "5:00 PM" [ref=e42]
+          - row "Tuesday 8:00 AM 5:00 PM" [ref=e43]:
+            - cell "Tuesday" [ref=e44]
+            - cell "8:00 AM" [ref=e45]
+            - cell "5:00 PM" [ref=e46]
+          - row "Wednesday 8:00 AM 5:00 PM" [ref=e47]:
+            - cell "Wednesday" [ref=e48]
+            - cell "8:00 AM" [ref=e49]
+            - cell "5:00 PM" [ref=e50]
+          - row "Thursday 8:00 AM 5:00 PM" [ref=e51]:
+            - cell "Thursday" [ref=e52]
+            - cell "8:00 AM" [ref=e53]
+            - cell "5:00 PM" [ref=e54]
+          - row "Friday 8:00 AM 5:00 PM" [ref=e55]:
+            - cell "Friday" [ref=e56]
+            - cell "8:00 AM" [ref=e57]
+            - cell "5:00 PM" [ref=e58]
+          - row "Saturday 9:00 AM 3:00 PM" [ref=e59]:
+            - cell "Saturday" [ref=e60]
+            - cell "9:00 AM" [ref=e61]
+            - cell "3:00 PM" [ref=e62]
+          - row "Sunday Closed" [ref=e63]:
+            - cell "Sunday" [ref=e64]
+            - cell "Closed" [ref=e65]
+            - cell [ref=e66]
+      - button "Update Hours" [ref=e68] [cursor=pointer]
