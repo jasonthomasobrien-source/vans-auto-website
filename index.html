@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Van's Auto Repair | Auto Repair in Kalamazoo, MI</title>
+  <meta name="description" content="Trusted auto repair in Kalamazoo, MI. ASE certified mechanics, fair pricing, same-day appointments available. 4.8★ rated. Call for an estimate." />
+  <meta property="og:title" content="Van's Auto Repair | Kalamazoo, MI" />
+  <meta property="og:description" content="Trusted auto repair in Kalamazoo. 4.8★ rated by 71 customers. ASE certified, fair pricing, expert service." />
+  <meta property="og:type" content="website" />
+
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AutoRepair",
+    "name": "Van's Auto Repair",
+    "telephone": "(269) 555-0147",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "5716 D Ave W",
+      "addressLocality": "Kalamazoo",
+      "addressRegion": "MI",
+      "postalCode": "49009",
+      "addressCountry": "US"
+    },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "17:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday"], "opens": "09:00", "closes": "13:00" }
+    ],
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "71" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    /* ============================================
+       CSS VARIABLES — Edit here to rebrand
+    ============================================ */
+    :root {
+      --color-primary:     #1a1a2e;
+      --color-primary-mid: #16213e;
+      --color-accent:      #e63946;
+      --color-accent-dark: #c1121f;
+      --color-surface:     #f8f9fa;
+      --color-white:       #ffffff;
+      --color-text:        #212529;
+      --color-muted:       #6c757d;
+      --color-border:      #dee2e6;
+      --color-star:        #ffc107;
+      --font-heading:      'Oswald', sans-serif;
+      --font-body:         'Inter', sans-serif;
+      --radius:            8px;
+      --shadow:            0 2px 12px rgba(0,0,0,0.10);
+      --shadow-lg:         0 8px 32px rgba(0,0,0,0.14);
+      --transition:        0.2s ease;
+    }
+
+    /* ============================================
+       RESET & BASE
+    ============================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      color: var(--color-text);
+      background: var(--color-white);
+      line-height: 1.6;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ============================================
+       UTILITY
+    ============================================ */
+    .container {
+      width: 100%;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--color-primary);
+      margin-bottom: 0.4rem;
+    }
+    .section-subtitle {
+      color: var(--color-muted);
+      font-size: 1.05rem;
+      margin-bottom: 2.5rem;
+    }
+    .section-header { text-align: center; margin-bottom: 0.5rem; }
+    .accent-line {
+      display: inline-block;
+      width: 60px;
+      height: 4px;
+      background: var(--color-accent);
+      border-radius: 2px;
+      margin-bottom: 1.2rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 28px;
+      border-radius: var(--radius);
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: var(--color-accent);
+      color: var(--color-white);
+      border-color: var(--color-accent);
+    }
+    .btn-primary:hover { background: var(--color-accent-dark); border-color: var(--color-accent-dark); }
+    .btn-outline {
+      background: transparent;
+      color: var(--color-white);
+      border-color: var(--color-white);
+    }
+    .btn-outline:hover { background: var(--color-white); color: var(--color-primary); }
+    .btn-dark {
+      background: var(--color-primary);
+      color: var(--color-white);
+    }
+    .btn-dark:hover { background: var(--color-primary-mid); }
+
+    /* ============================================
+       STICKY HEADER / NAV
+    ============================================ */
+    #site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--color-primary);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      gap: 20px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--color-white);
+    }
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--color-accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+    .logo-text {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      line-height: 1.2;
+    }
+    .logo-text span {
+      display: block;
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 1.5px;
+      color: rgba(255,255,255,0.6);
+      text-transform: uppercase;
+    }
+    nav { display: flex; align-items: center; gap: 4px; }
+    nav a {
+      color: rgba(255,255,255,0.85);
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 8px 14px;
+      border-radius: var(--radius);
+      transition: color var(--transition), background var(--transition);
+    }
+    nav a:hover { color: var(--color-white); background: rgba(255,255,255,0.08); }
+    .nav-cta {
+      background: var(--color-accent) !important;
+      color: var(--color-white) !important;
+      padding: 8px 18px !important;
+      border-radius: var(--radius) !important;
+    }
+    .nav-cta:hover { background: var(--color-accent-dark) !important; }
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--color-white);
+      font-size: 1.4rem;
+      cursor: pointer;
+      padding: 4px;
+    }
+    @media (max-width: 768px) {
+      nav { display: none; flex-direction: column; position: absolute; top: 68px; left: 0; right: 0; background: var(--color-primary); padding: 16px 20px; gap: 4px; box-shadow: 0 8px 16px rgba(0,0,0,0.3); }
+      nav.open { display: flex; }
+      nav a { padding: 12px 16px; border-radius: var(--radius); width: 100%; }
+      .mobile-menu-btn { display: block; }
+      #site-header { position: relative; }
+    }
+
+    /* ============================================
+       TOP BAR
+    ============================================ */
+    .top-bar {
+      background: var(--color-accent);
+      color: var(--color-white);
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 7px 0;
+      text-align: center;
+      letter-spacing: 0.3px;
+    }
+    .top-bar a { color: var(--color-white); text-decoration: underline; }
+    .top-bar .top-bar-inner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .top-bar-item { display: flex; align-items: center; gap: 6px; }
+
+    /* ============================================
+       HERO
+    ============================================ */
+    #hero {
+      background: linear-gradient(135deg, #0d0d1a 0%, #1a1a2e 50%, #0f1923 100%);
+      color: var(--color-white);
+      padding: 90px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.4;
+    }
+    .hero-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(230,57,70,0.15);
+      border: 1px solid rgba(230,57,70,0.4);
+      color: #ff8a93;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 40px;
+      margin-bottom: 1.2rem;
+    }
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1.1;
+      letter-spacing: 1px;
+      margin-bottom: 1.2rem;
+    }
+    .hero-title em {
+      font-style: normal;
+      color: var(--color-accent);
+    }
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.75);
+      max-width: 480px;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .hero-stats {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 2rem;
+    }
+    .hero-stat { text-align: center; }
+    .hero-stat-num {
+      font-family: var(--font-heading);
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--color-accent);
+      line-height: 1;
+    }
+    .hero-stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+    .hero-card {
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 32px;
+    }
+    .hero-card-title {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--color-white);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .hero-card-title i { color: var(--color-accent); }
+    .trust-list { display: flex; flex-direction: column; gap: 14px; }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: rgba(255,255,255,0.85);
+      font-size: 0.95rem;
+    }
+    .trust-icon {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      background: rgba(230,57,70,0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-accent);
+      font-size: 0.95rem;
+    }
+    .trust-item strong { display: block; color: var(--color-white); font-size: 0.95rem; }
+    .trust-item span { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+    .stars-row { display: flex; gap: 3px; color: var(--color-star); font-size: 0.85rem; margin-top: 1.5rem; }
+    .stars-label { color: rgba(255,255,255,0.6); font-size: 0.8rem; margin-top: 4px; }
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-card { max-width: 480px; }
+    }
+
+    /* ============================================
+       SERVICES
+    ============================================ */
+    #services { padding: 80px 0; background: var(--color-white); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 24px;
+    }
+    .service-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: var(--color-accent);
+      transition: width 0.3s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(230,57,70,0.2);
+    }
+    .service-card:hover::after { width: 100%; }
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(230,57,70,0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-accent);
+      font-size: 1.3rem;
+      margin-bottom: 16px;
+    }
+    .service-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      color: var(--color-primary);
+    }
+    .service-card p { font-size: 0.9rem; color: var(--color-muted); line-height: 1.6; margin-bottom: 14px; }
+    .service-price {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-accent);
+      letter-spacing: 0.5px;
+    }
+
+    /* ============================================
+       WHY US STRIP
+    ============================================ */
+    #why-us {
+      background: var(--color-primary);
+      color: var(--color-white);
+      padding: 56px 0;
+    }
+    .why-us-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+      text-align: center;
+    }
+    .why-item i {
+      font-size: 2rem;
+      color: var(--color-accent);
+      margin-bottom: 12px;
+    }
+    .why-item h4 {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    .why-item p { font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+    /* ============================================
+       SCHEDULING FORM
+    ============================================ */
+    #schedule {
+      padding: 80px 0;
+      background: var(--color-surface);
+    }
+    .schedule-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .schedule-info h2 { margin-bottom: 0.4rem; }
+    .schedule-info .section-subtitle { margin-bottom: 1.8rem; }
+    .info-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+    .info-icon {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      background: var(--color-accent);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-white);
+      font-size: 1rem;
+    }
+    .info-text strong { display: block; font-size: 0.9rem; font-weight: 600; color: var(--color-primary); margin-bottom: 2px; }
+    .info-text span { font-size: 0.85rem; color: var(--color-muted); }
+    .form-card {
+      background: var(--color-white);
+      border-radius: 12px;
+      padding: 36px;
+      box-shadow: var(--shadow-lg);
+    }
+    .form-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--color-surface);
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    .form-group label .req { color: var(--color-accent); margin-left: 2px; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--color-text);
+      background: var(--color-white);
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 3px rgba(230,57,70,0.12);
+    }
+    .form-group textarea { min-height: 90px; resize: vertical; }
+    .form-group .error-msg { display: none; color: var(--color-accent); font-size: 0.78rem; margin-top: 4px; }
+    .form-group.has-error input,
+    .form-group.has-error select,
+    .form-group.has-error textarea { border-color: var(--color-accent); }
+    .form-group.has-error .error-msg { display: block; }
+    .form-submit-row { margin-top: 8px; }
+    .form-submit-row .btn { width: 100%; justify-content: center; padding: 14px; font-size: 1rem; }
+    .form-note { font-size: 0.78rem; color: var(--color-muted); text-align: center; margin-top: 12px; }
+    #form-success {
+      display: none;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    #form-success .success-icon {
+      width: 72px;
+      height: 72px;
+      background: #e8f5e9;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: #2e7d32;
+      margin: 0 auto 20px;
+    }
+    #form-success h3 {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: 8px;
+      border: none;
+      padding: 0;
+    }
+    #form-success p { color: var(--color-muted); font-size: 0.95rem; }
+    @media (max-width: 860px) {
+      .schedule-inner { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================
+       REVIEWS
+    ============================================ */
+    #reviews { padding: 80px 0; background: var(--color-white); }
+    .reviews-aggregate {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      background: var(--color-primary);
+      color: var(--color-white);
+      border-radius: 16px;
+      padding: 28px 40px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    .reviews-rating-big {
+      font-family: var(--font-heading);
+      font-size: 4rem;
+      font-weight: 700;
+      color: var(--color-white);
+      line-height: 1;
+    }
+    .reviews-meta { text-align: left; }
+    .review-stars-large { display: flex; gap: 4px; color: var(--color-star); font-size: 1.4rem; margin-bottom: 4px; }
+    .reviews-meta p { font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+    .reviews-divider { width: 1px; height: 64px; background: rgba(255,255,255,0.15); }
+    .google-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+    }
+    .google-badge i { font-size: 1.6rem; color: #4285f4; }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 36px;
+    }
+    .review-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 24px;
+      transition: box-shadow var(--transition);
+    }
+    .review-card:hover { box-shadow: var(--shadow-lg); }
+    .review-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .reviewer-avatar {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--color-white);
+    }
+    .reviewer-name { font-weight: 600; font-size: 0.95rem; color: var(--color-primary); }
+    .reviewer-date { font-size: 0.78rem; color: var(--color-muted); margin-top: 1px; }
+    .review-stars { display: flex; gap: 2px; color: var(--color-star); font-size: 0.85rem; margin-bottom: 10px; }
+    .review-text { font-size: 0.9rem; color: #444; line-height: 1.7; }
+    .reviews-cta { text-align: center; }
+    .reviews-cta p { color: var(--color-muted); font-size: 0.9rem; margin-bottom: 14px; }
+    @media (max-width: 600px) {
+      .reviews-divider { display: none; }
+      .reviews-meta { text-align: center; }
+    }
+
+    /* ============================================
+       ABOUT
+    ============================================ */
+    #about { padding: 80px 0; background: var(--color-surface); }
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .about-content .section-header { text-align: left; }
+    .about-lead {
+      font-size: 1.05rem;
+      color: var(--color-text);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+    .about-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 2rem;
+    }
+    .badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--color-white);
+      border: 1.5px solid var(--color-border);
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+    .badge i { color: var(--color-accent); font-size: 0.9rem; }
+    .contact-card {
+      background: var(--color-white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .contact-map {
+      width: 100%;
+      height: 200px;
+      background: #d1d5db;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-map iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .contact-details { padding: 28px; }
+    .contact-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .contact-row:last-child { margin-bottom: 0; }
+    .contact-row-icon {
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      background: rgba(230,57,70,0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-accent);
+      font-size: 0.9rem;
+    }
+    .contact-row-text strong { display: block; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--color-muted); margin-bottom: 2px; }
+    .contact-row-text a { color: var(--color-primary); font-weight: 500; }
+    .contact-row-text a:hover { color: var(--color-accent); }
+    .hours-table { width: 100%; border-collapse: collapse; }
+    .hours-table td { font-size: 0.88rem; padding: 3px 0; color: var(--color-text); }
+    .hours-table td:last-child { text-align: right; color: var(--color-muted); }
+    .hours-today td { font-weight: 700; color: var(--color-accent) !important; }
+    @media (max-width: 860px) {
+      .about-inner { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================
+       FOOTER
+    ============================================ */
+    footer {
+      background: var(--color-primary);
+      color: rgba(255,255,255,0.65);
+      padding: 48px 0 24px;
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 36px;
+    }
+    .footer-brand .logo { margin-bottom: 14px; }
+    .footer-brand p { font-size: 0.85rem; line-height: 1.7; }
+    .footer-col h4 {
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--color-white);
+      margin-bottom: 14px;
+    }
+    .footer-col ul li { margin-bottom: 8px; }
+    .footer-col ul li a { font-size: 0.85rem; transition: color var(--transition); }
+    .footer-col ul li a:hover { color: var(--color-white); }
+    .footer-hours-row { display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 6px; }
+    .footer-hours-row span:last-child { color: rgba(255,255,255,0.45); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.8rem;
+    }
+    .footer-bottom a:hover { color: var(--color-white); }
+    @media (max-width: 768px) {
+      .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+
+    /* ============================================
+       SCROLL TO TOP
+    ============================================ */
+    #scroll-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 44px;
+      height: 44px;
+      background: var(--color-accent);
+      color: var(--color-white);
+      border: none;
+      border-radius: 50%;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-lg);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition), transform var(--transition);
+      z-index: 999;
+    }
+    #scroll-top.visible { opacity: 1; pointer-events: auto; }
+    #scroll-top:hover { transform: translateY(-3px); }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-inner">
+        <div class="top-bar-item"><i class="fas fa-clock"></i> Wed–Fri 8am–5pm &bull; Sat 9am–1pm</div>
+        <div class="top-bar-item"><i class="fas fa-phone"></i> <a href="tel:+12693494544">(269) 349-4544</a></div>
+        <div class="top-bar-item"><i class="fas fa-map-marker-alt"></i> 5716 D Ave W, Kalamazoo, MI 49009</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header id="site-header">
+    <div class="container header-inner">
+      <a href="#" class="logo" aria-label="Van's Auto Repair Home">
+        <div class="logo-icon"><i class="fas fa-wrench"></i></div>
+        <div class="logo-text">
+          Van's Auto Repair
+          <span>Kalamazoo, MI</span>
+        </div>
+      </a>
+      <button class="mobile-menu-btn" aria-label="Toggle menu" onclick="toggleNav()">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav id="main-nav">
+        <a href="#services">Services</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#about">About</a>
+        <a href="#about">Contact</a>
+        <a href="#schedule" class="nav-cta">Book Appointment</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="hero" aria-label="Hero">
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge"><i class="fas fa-star"></i> 4.8★ Rated by 71 Customers</div>
+        <h1 class="hero-title">Quality Repairs.<br /><em>Fair Prices.</em><br />Done Right.</h1>
+        <p class="hero-subtitle">Trusted auto repair in Kalamazoo. ASE certified technicians, transparent estimates, and repairs that last. Same-day service available.</p>
+        <div class="hero-actions">
+          <a href="#schedule" class="btn btn-primary"><i class="fas fa-calendar-check"></i> Book Appointment</a>
+          <a href="tel:+12695550147" class="btn btn-outline"><i class="fas fa-phone"></i> Call Now</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-num">4.8★</div>
+            <div class="hero-stat-label">Google Rating</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">71</div>
+            <div class="hero-stat-label">Customer Reviews</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">ASE</div>
+            <div class="hero-stat-label">Certified</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">Same</div>
+            <div class="hero-stat-label">Day Service</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-card" aria-label="Why choose us">
+        <div class="hero-card-title"><i class="fas fa-shield-halved"></i> Why Customers Trust Us</div>
+        <ul class="trust-list">
+          <li class="trust-item">
+            <div class="trust-icon"><i class="fas fa-certificate"></i></div>
+            <div>
+              <strong>ASE Certified Technicians</strong>
+              <span>All repairs meet factory standards</span>
+            </div>
+          </li>
+          <li class="trust-item">
+            <div class="trust-icon"><i class="fas fa-dollar-sign"></i></div>
+            <div>
+              <strong>Upfront, Honest Pricing</strong>
+              <span>Written estimate before any work begins</span>
+            </div>
+          </li>
+          <li class="trust-item">
+            <div class="trust-icon"><i class="fas fa-rotate-right"></i></div>
+            <div>
+              <strong>12-Month / 12K-Mile Warranty</strong>
+              <span>On all parts and labor</span>
+            </div>
+          </li>
+          <li class="trust-item">
+            <div class="trust-icon"><i class="fas fa-calendar-day"></i></div>
+            <div>
+              <strong>Same-Day Service Available</strong>
+              <span>Most repairs completed same day</span>
+            </div>
+          </li>
+        </ul>
+        <div class="stars-row" aria-label="5 stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <div class="stars-label">4.8 out of 5 · 71 Google Reviews</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" aria-label="Our Services">
+    <div class="container">
+      <div class="section-header">
+        <div class="accent-line"></div>
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-subtitle">We work on all makes and models — domestic and import.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-oil-can"></i></div>
+          <h3>Oil Change</h3>
+          <p>Full synthetic, conventional, or high-mileage oil change with filter replacement and multi-point inspection.</p>
+          <span class="service-price">From $49</span>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-car-burst"></i></div>
+          <h3>Brake Service</h3>
+          <p>Pad replacement, rotor resurfacing or replacement, brake fluid flush, and caliper inspection.</p>
+          <span class="service-price">From $149/axle</span>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-circle-dot"></i></div>
+          <h3>Tire Services</h3>
+          <p>Mount &amp; balance, rotation, flat repair, TPMS reset. We carry name-brand tires at competitive prices.</p>
+          <span class="service-price">From $20/tire</span>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-magnifying-glass-chart"></i></div>
+          <h3>Engine Diagnostics</h3>
+          <p>Check engine light scan, comprehensive diagnostic report, and a no-charge estimate to fix what we find.</p>
+          <span class="service-price">Free estimate</span>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-snowflake"></i></div>
+          <h3>A/C &amp; Heating</h3>
+          <p>Refrigerant recharge, compressor replacement, heater core service, and cabin air filter replacement.</p>
+          <span class="service-price">From $89</span>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-battery-full"></i></div>
+          <h3>Battery &amp; Electrical</h3>
+          <p>Battery test and replacement, alternator, starter, and full electrical wiring diagnosis.</p>
+          <span class="service-price">From $129</span>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-car"></i></div>
+          <h3>Suspension &amp; Steering</h3>
+          <p>Shocks, struts, ball joints, tie rods, wheel alignment, and handling inspections.</p>
+          <span class="service-price">From $99</span>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-gears"></i></div>
+          <h3>Transmission Service</h3>
+          <p>Fluid and filter change, flush service, and full rebuilds. All makes and models.</p>
+          <span class="service-price">From $149</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="why-us" aria-label="Why choose Kalamazoo Auto Care">
+    <div class="container">
+      <div class="why-us-grid">
+        <div class="why-item">
+          <i class="fas fa-handshake"></i>
+          <h4>No Surprises</h4>
+          <p>You approve every repair before we start. Written estimates, always.</p>
+        </div>
+        <div class="why-item">
+          <i class="fas fa-house-chimney-user"></i>
+          <h4>Family Owned</h4>
+          <p>Owner Mike is in the shop every day. Not a chain — we know your name.</p>
+        </div>
+        <div class="why-item">
+          <i class="fas fa-medal"></i>
+          <h4>ASE Certified</h4>
+          <p>Every technician is ASE certified and stays current with training.</p>
+        </div>
+        <div class="why-item">
+          <i class="fas fa-rotate-left"></i>
+          <h4>12-Month Warranty</h4>
+          <p>All parts and labor warrantied for 12 months or 12,000 miles.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHEDULE -->
+  <section id="schedule" aria-label="Book an Appointment">
+    <div class="container schedule-inner">
+      <div class="schedule-info">
+        <div class="section-header" style="text-align:left">
+          <div class="accent-line"></div>
+          <h2 class="section-title">Book an Appointment</h2>
+          <p class="section-subtitle">We'll confirm within one business hour.</p>
+        </div>
+        <div class="info-item">
+          <div class="info-icon"><i class="fas fa-calendar-check"></i></div>
+          <div class="info-text">
+            <strong>Same-Day Availability</strong>
+            <span>Call by 10am for same-day service on most repairs</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon"><i class="fas fa-phone"></i></div>
+          <div class="info-text">
+            <strong>Prefer to Call?</strong>
+            <span><a href="tel:+12693494544" style="color:var(--color-accent);font-weight:600">(269) 349-4544</a></span>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon"><i class="fas fa-clock"></i></div>
+          <div class="info-text">
+            <strong>Hours</strong>
+            <span>Wed–Fri 8:00am–5:00pm<br />Sat 9:00am–1:00pm</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon"><i class="fas fa-location-dot"></i></div>
+          <div class="info-text">
+            <strong>Location</strong>
+            <span>5716 D Ave W<br />Kalamazoo, MI 49009</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <h3><i class="fas fa-calendar-plus" style="color:var(--color-accent);margin-right:8px"></i>Request an Appointment</h3>
+        <form id="appointment-form" novalidate>
+          <div class="form-row">
+            <div class="form-group" id="fg-name">
+              <label for="name">Full Name <span class="req">*</span></label>
+              <input type="text" id="name" name="name" placeholder="Jane Smith" autocomplete="name" />
+              <div class="error-msg">Please enter your name.</div>
+            </div>
+            <div class="form-group" id="fg-phone">
+              <label for="phone">Phone Number <span class="req">*</span></label>
+              <input type="tel" id="phone" name="phone" placeholder="(269) 555-0000" autocomplete="tel" />
+              <div class="error-msg">Please enter a valid phone number.</div>
+            </div>
+          </div>
+          <div class="form-group" id="fg-email">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="jane@example.com" autocomplete="email" />
+            <div class="error-msg">Please enter a valid email address.</div>
+          </div>
+          <div class="form-group" id="fg-vehicle">
+            <label for="vehicle">Vehicle (Year, Make &amp; Model) <span class="req">*</span></label>
+            <input type="text" id="vehicle" name="vehicle" placeholder="e.g. 2019 Ford F-150" />
+            <div class="error-msg">Please describe your vehicle.</div>
+          </div>
+          <div class="form-row">
+            <div class="form-group" id="fg-service">
+              <label for="service">Service Needed <span class="req">*</span></label>
+              <select id="service" name="service">
+                <option value="">— Select a service —</option>
+                <option>Oil Change</option>
+                <option>Brake Service</option>
+                <option>Tire Services</option>
+                <option>Engine Diagnostics</option>
+                <option>A/C &amp; Heating</option>
+                <option>Battery &amp; Electrical</option>
+                <option>Suspension &amp; Steering</option>
+                <option>Transmission Service</option>
+                <option>Other / Not Sure</option>
+              </select>
+              <div class="error-msg">Please select a service.</div>
+            </div>
+            <div class="form-group" id="fg-date">
+              <label for="appt-date">Preferred Date <span class="req">*</span></label>
+              <input type="date" id="appt-date" name="appt-date" />
+              <div class="error-msg">Please pick a preferred date.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="notes">Additional Notes</label>
+            <textarea id="notes" name="notes" placeholder="Describe the issue, any warning lights, symptoms…"></textarea>
+          </div>
+          <div class="form-submit-row">
+            <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Request Appointment</button>
+          </div>
+          <p class="form-note"><i class="fas fa-lock" style="margin-right:4px"></i>Your info is never shared. We'll confirm by phone within one business hour.</p>
+        </form>
+        <div id="form-success">
+          <div class="success-icon"><i class="fas fa-check"></i></div>
+          <h3>Request Received!</h3>
+          <p>Thanks! We'll call you within one business hour to confirm your appointment.<br />Questions? Call us at <a href="tel:+12695550147" style="color:var(--color-accent)">(269) 555-0147</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews" aria-label="Customer Reviews">
+    <div class="container">
+      <div class="section-header">
+        <div class="accent-line"></div>
+        <h2 class="section-title">What Customers Say</h2>
+        <p class="section-subtitle">Don't take our word for it — here's what your neighbors think.</p>
+      </div>
+      <div class="reviews-aggregate" role="region" aria-label="Aggregate rating">
+        <div class="reviews-rating-big">4.8</div>
+        <div class="reviews-meta">
+          <div class="review-stars-large" aria-label="4.8 out of 5 stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-stroke"></i>
+          </div>
+          <p>Based on 71 Google Reviews</p>
+        </div>
+        <div class="reviews-divider" aria-hidden="true"></div>
+        <div class="google-badge">
+          <i class="fab fa-google"></i>
+          <div>
+            <strong style="color:#fff;display:block;font-size:0.95rem">Google Reviews</strong>
+            <span>Verified customer feedback</span>
+          </div>
+        </div>
+      </div>
+      <div class="reviews-grid">
+        <article class="review-card">
+          <div class="review-header">
+            <div class="reviewer-avatar" style="background:#4285f4">S</div>
+            <div>
+              <div class="reviewer-name">Sarah M.</div>
+              <div class="reviewer-date">March 2025</div>
+            </div>
+          </div>
+          <div class="review-stars" aria-label="5 stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="review-text">"I've been bringing both my cars here for years. Mike and his team are the most honest mechanics I've ever dealt with — they told me I didn't need a repair another shop said was urgent and saved me $400. Highly recommend."</p>
+        </article>
+        <article class="review-card">
+          <div class="review-header">
+            <div class="reviewer-avatar" style="background:#34a853">J</div>
+            <div>
+              <div class="reviewer-name">James T.</div>
+              <div class="reviewer-date">January 2025</div>
+            </div>
+          </div>
+          <div class="review-stars" aria-label="5 stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="review-text">"Dropped my truck off at 8am with a brake problem and had it back by noon. Pricing was very reasonable and they explained everything clearly. This is my go-to shop now."</p>
+        </article>
+        <article class="review-card">
+          <div class="review-header">
+            <div class="reviewer-avatar" style="background:#ea4335">L</div>
+            <div>
+              <div class="reviewer-name">Linda &amp; Ron F.</div>
+              <div class="reviewer-date">February 2025</div>
+            </div>
+          </div>
+          <div class="review-stars" aria-label="5 stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="review-text">"We've been customers for 12 years. Wouldn't go anywhere else. The whole team is friendly, professional, and they really stand behind their work. Five stars every time."</p>
+        </article>
+        <article class="review-card">
+          <div class="review-header">
+            <div class="reviewer-avatar" style="background:#fbbc04;color:#333">D</div>
+            <div>
+              <div class="reviewer-name">Derek K.</div>
+              <div class="reviewer-date">April 2025</div>
+            </div>
+          </div>
+          <div class="review-stars" aria-label="5 stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="review-text">"Had a weird noise that two other shops couldn't diagnose. These guys figured it out in an hour. Really impressed by the expertise here. Fair price too."</p>
+        </article>
+      </div>
+      <div class="reviews-cta">
+        <p>See all 71 reviews from Kalamazoo customers on Google</p>
+        <a href="https://www.google.com/search?q=Van%27s+Auto+Repair+Kalamazoo+reviews" target="_blank" rel="noopener" class="btn btn-dark">
+          <i class="fab fa-google"></i> Read All Google Reviews
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT + CONTACT -->
+  <section id="about" aria-label="About Us and Contact">
+    <div class="container about-inner">
+      <div class="about-content">
+        <div class="section-header" style="text-align:left">
+          <div class="accent-line"></div>
+          <h2 class="section-title">About the Shop</h2>
+        </div>
+        <p class="about-lead">Van's Auto Repair is a trusted name in Kalamazoo auto repair. With a focus on straightforward diagnostics, fair pricing, and repairs that last, we've earned the trust of hundreds of local drivers. We work on all makes and models — domestic and import — and treat every car like it's our own.</p>
+        <p class="about-lead" style="margin-top:-0.5rem">When you bring your vehicle to us, you'll experience honest communication and expert service. Our ASE certified technicians handle everything from routine maintenance to complex diagnostics, and we stand behind every repair with a comprehensive warranty.</p>
+        <div class="about-badges">
+          <div class="badge"><i class="fas fa-certificate"></i> ASE Certified</div>
+          <div class="badge"><i class="fas fa-car"></i> AAA Approved</div>
+          <div class="badge"><i class="fas fa-store"></i> NAPA AutoCare</div>
+          <div class="badge"><i class="fas fa-house-chimney-user"></i> Family Owned</div>
+          <div class="badge"><i class="fas fa-rotate-right"></i> 12-Mo Warranty</div>
+        </div>
+        <a href="#schedule" class="btn btn-primary"><i class="fas fa-calendar-check"></i> Book an Appointment</a>
+      </div>
+      <div class="contact-card">
+        <!-- GOOGLE MAPS EMBED -->
+        <div class="contact-map">
+          <iframe
+            title="Van's Auto Repair location map"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2954.8!2d-85.6398!3d42.2614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8824619a5b5b5b5b%3A0x5716davewestkalamazoo!2s5716%20D%20Ave%20W%2C%20Kalamazoo%2C%20MI%2049009!5e0!3m2!1sen!2sus!4v1700000000000"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+        <div class="contact-details">
+          <div class="contact-row">
+            <div class="contact-row-icon"><i class="fas fa-location-dot"></i></div>
+            <div class="contact-row-text">
+              <strong>Address</strong>
+              <a href="https://maps.google.com/?q=5716+D+Ave+W+Kalamazoo+MI+49009" target="_blank" rel="noopener">5716 D Ave W<br />Kalamazoo, MI 49009</a>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-row-icon"><i class="fas fa-phone"></i></div>
+            <div class="contact-row-text">
+              <strong>Phone</strong>
+              <a href="tel:+12693494544">(269) 349-4544</a>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-row-icon"><i class="fas fa-envelope"></i></div>
+            <div class="contact-row-text">
+              <strong>Email</strong>
+              <a href="mailto:vansautorepair@yahoo.com">vansautorepair@yahoo.com</a>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-row-icon"><i class="fas fa-clock"></i></div>
+            <div class="contact-row-text">
+              <strong>Hours of Operation</strong>
+              <table class="hours-table" aria-label="Hours of operation">
+                <tbody>
+                  <tr id="hour-sun"><td>Sunday</td><td>Closed</td></tr>
+                  <tr id="hour-mon"><td>Monday</td><td>Closed</td></tr>
+                  <tr id="hour-tue"><td>Tuesday</td><td>Closed</td></tr>
+                  <tr id="hour-wed"><td>Wednesday</td><td>8:00 AM – 5:00 PM</td></tr>
+                  <tr id="hour-thu"><td>Thursday</td><td>8:00 AM – 5:00 PM</td></tr>
+                  <tr id="hour-fri"><td>Friday</td><td>8:00 AM – 5:00 PM</td></tr>
+                  <tr id="hour-sat"><td>Saturday</td><td>9:00 AM – 1:00 PM</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="logo">
+            <div class="logo-icon" style="width:36px;height:36px;font-size:1rem"><i class="fas fa-wrench"></i></div>
+            <div class="logo-text" style="font-size:1.1rem">
+              Van's Auto Repair
+              <span>Kalamazoo, MI</span>
+            </div>
+          </div>
+          <p>Trusted auto repair in Kalamazoo. ASE certified, fair pricing, quality service. 4.8★ rated by local customers.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#schedule">Book Appointment</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#about">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Hours</h4>
+          <div class="footer-hours-row"><span>Wed – Fri</span><span>8:00 AM – 5:00 PM</span></div>
+          <div class="footer-hours-row"><span>Saturday</span><span>9:00 AM – 1:00 PM</span></div>
+          <div class="footer-hours-row"><span>Sun – Tue</span><span>Closed</span></div>
+          <div style="margin-top:16px">
+            <a href="tel:+12693494544" class="btn btn-primary" style="padding:10px 20px;font-size:0.85rem">
+              <i class="fas fa-phone"></i> (269) 349-4544
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2025 Van's Auto Repair. All rights reserved.</span>
+        <span>5716 D Ave W, Kalamazoo, MI 49009 &bull; <a href="tel:+12693494544">(269) 349-4544</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCROLL TO TOP -->
+  <button id="scroll-top" aria-label="Scroll to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script>
+    // ─── Mobile nav toggle ───────────────────────────────────────
+    function toggleNav() {
+      document.getElementById('main-nav').classList.toggle('open');
+    }
+    document.querySelectorAll('#main-nav a').forEach(a => {
+      a.addEventListener('click', () => document.getElementById('main-nav').classList.remove('open'));
+    });
+
+    // ─── Set min date for appointment picker to today ────────────
+    (function() {
+      const dateInput = document.getElementById('appt-date');
+      const today = new Date();
+      const yyyy = today.getFullYear();
+      const mm = String(today.getMonth() + 1).padStart(2, '0');
+      const dd = String(today.getDate()).padStart(2, '0');
+      dateInput.min = `${yyyy}-${mm}-${dd}`;
+    })();
+
+    // ─── Highlight today's hours row ────────────────────────────
+    (function() {
+      const dayIds = ['hour-sun','hour-mon','hour-tue','hour-wed','hour-thu','hour-fri','hour-sat'];
+      const today = new Date().getDay();
+      const row = document.getElementById(dayIds[today]);
+      if (row) row.classList.add('hours-today');
+    })();
+
+    // ─── Appointment form validation & submit ───────────────────
+    document.getElementById('appointment-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      let valid = true;
+
+      function validate(id, test) {
+        const fg = document.getElementById('fg-' + id);
+        const el = document.getElementById(id);
+        if (!fg || !el) return;
+        const ok = test(el.value.trim());
+        fg.classList.toggle('has-error', !ok);
+        if (!ok) valid = false;
+      }
+
+      validate('name',    v => v.length >= 2);
+      validate('phone',   v => /[\d\s\-().+]{7,}/.test(v));
+      validate('vehicle', v => v.length >= 3);
+      validate('service', v => v !== '');
+      validate('date',    v => v !== '');
+
+      // email is optional but validate format if filled
+      const emailVal = document.getElementById('email').value.trim();
+      const emailFg  = document.getElementById('fg-email');
+      if (emailVal && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
+        emailFg.classList.add('has-error');
+        valid = false;
+      } else {
+        emailFg.classList.remove('has-error');
+      }
+
+      if (!valid) return;
+
+      // Show success state
+      document.getElementById('appointment-form').style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+
+      // In production: replace above with a fetch() POST to your form handler
+      // e.g. Formspree: add action="https://formspree.io/f/YOUR_ID" method="POST" to <form>
+      //      and remove this JS submit handler
+    });
+
+    // ─── Scroll-to-top button ────────────────────────────────────
+    const scrollBtn = document.getElementById('scroll-top');
+    window.addEventListener('scroll', () => {
+      scrollBtn.classList.toggle('visible', window.scrollY > 400);
+    });
+  </script>
+</body>
+</html>
