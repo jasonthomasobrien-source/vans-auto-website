@@ -23,6 +23,12 @@ function formatDate(iso) {
   return new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 }
 
+/* === NAVIGATION === */
+
+function navigateToProfile(id) {
+  window.location.href = 'customer-profile.html?id=' + id;
+}
+
 /* === STATE === */
 
 let allCustomers = [];
@@ -35,11 +41,12 @@ const now = Date.now();
 function renderTable(customers) {
   const tbody = document.getElementById('customer-tbody');
   document.getElementById('customer-count').textContent = `${customers.length} customers`;
+  document.getElementById('customer-count-header').textContent = `${customers.length} customers`;
 
   tbody.innerHTML = customers.map(c => {
     const due = isDueForService(c.lastVisit, now);
     return `
-      <tr class="${due ? 'overdue' : ''}" onclick="openHistory(${c.id})">
+      <tr class="${due ? 'overdue' : ''}" onclick="navigateToProfile(${c.id})" style="cursor:pointer">
         <td class="name">${c.name} ${due ? '<span style="color:var(--yellow);font-size:11px">⚠ Due</span>' : ''}</td>
         <td>${c.vehicle}</td>
         <td>${formatDate(c.lastVisit)}</td>
@@ -75,35 +82,6 @@ function renderDueSection(customers) {
       ${due.length > 5 ? `<div class="subtitle" style="margin-top:8px">+ ${due.length - 5} more — search to find them</div>` : ''}
     </div>
   `;
-}
-
-/* === HISTORY PANEL === */
-
-function openHistory(id) {
-  const customer = allCustomers.find(c => c.id === id);
-  if (!customer) return;
-  document.getElementById('history-name').textContent = customer.name;
-  document.getElementById('history-vehicle').textContent = customer.vehicle;
-  document.getElementById('history-ltv').innerHTML = `
-    <div style="display:flex;gap:20px">
-      <div><div class="label">Lifetime Value</div><div style="font-size:20px;font-weight:700;color:var(--green)">${formatCurrency(customer.totalSpent)}</div></div>
-      <div><div class="label">Visits</div><div style="font-size:20px;font-weight:700">${customer.history.length}</div></div>
-    </div>
-  `;
-  document.getElementById('history-list').innerHTML = customer.history.map(h => `
-    <div class="history-row">
-      <div style="display:flex;justify-content:space-between;align-items:baseline">
-        <span class="history-service">${h.service}</span>
-        <span class="history-cost">${formatCurrency(h.cost)}</span>
-      </div>
-      <div class="history-meta">${formatDate(h.date)} · ${h.tech}${h.notes ? ' · ' + h.notes : ''}</div>
-    </div>
-  `).join('');
-  document.getElementById('history-panel').classList.add('open');
-}
-
-function closeHistory() {
-  document.getElementById('history-panel').classList.remove('open');
 }
 
 /* === SORT === */
