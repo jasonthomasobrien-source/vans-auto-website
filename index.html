@@ -60,6 +60,36 @@
     }
 
     /* ============================================
+       ANIMATIONS
+    ============================================ */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* ============================================
        RESET & BASE
     ============================================ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -314,6 +344,7 @@
       padding: 6px 14px;
       border-radius: 40px;
       margin-bottom: 1.2rem;
+      animation: fadeInUp 0.6s ease-out 0.1s both;
     }
     .hero-title {
       font-family: var(--font-heading);
@@ -323,6 +354,7 @@
       line-height: 1.1;
       letter-spacing: 1px;
       margin-bottom: 1.2rem;
+      animation: fadeInUp 0.6s ease-out 0.2s both;
     }
     .hero-title em {
       font-style: normal;
@@ -334,14 +366,16 @@
       max-width: 480px;
       margin-bottom: 2rem;
       line-height: 1.7;
+      animation: fadeInUp 0.6s ease-out 0.3s both;
     }
-    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 2.5rem; animation: fadeInUp 0.6s ease-out 0.4s both; }
     .hero-stats {
       display: flex;
       gap: 28px;
       flex-wrap: wrap;
       border-top: 1px solid rgba(255,255,255,0.12);
       padding-top: 2rem;
+      animation: fadeInUp 0.6s ease-out 0.5s both;
     }
     .hero-stat { text-align: center; }
     .hero-stat-num {
@@ -358,6 +392,7 @@
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 16px;
       padding: 32px;
+      animation: fadeInUp 0.6s ease-out 0.6s both;
     }
     .hero-card-title {
       font-family: var(--font-heading);
@@ -435,6 +470,9 @@
       border-color: rgba(230,57,70,0.2);
     }
     .service-card:hover::after { width: 100%; }
+    .service-card.in-view {
+      animation: fadeInUp 0.5s ease-out forwards;
+    }
     .service-icon {
       width: 52px;
       height: 52px;
@@ -576,6 +614,7 @@
     .form-group textarea:focus {
       border-color: var(--color-accent);
       box-shadow: 0 0 0 3px rgba(230,57,70,0.12);
+      animation: fadeIn 0.3s ease-out;
     }
     .form-group textarea { min-height: 90px; resize: vertical; }
     .form-group .error-msg { display: none; color: var(--color-accent); font-size: 0.78rem; margin-top: 4px; }
@@ -668,6 +707,9 @@
       transition: box-shadow var(--transition);
     }
     .review-card:hover { box-shadow: var(--shadow-lg); }
+    .review-card.in-view {
+      animation: fadeInUp 0.5s ease-out forwards;
+    }
     .review-header {
       display: flex;
       align-items: center;
@@ -1436,6 +1478,19 @@
     window.addEventListener('scroll', () => {
       scrollBtn.classList.toggle('visible', window.scrollY > 400);
     });
+
+    // ─── Fade-in animation on scroll ──────────────────────────────
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.service-card').forEach(card => observer.observe(card));
+    document.querySelectorAll('.review-card').forEach(card => observer.observe(card));
   </script>
 </body>
 </html>
